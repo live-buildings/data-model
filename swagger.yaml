@@ -28,11 +28,11 @@ components:
               x-ngsi:
                 uri: https://schema.org/addressRegion
             addressDepartment:
-              description: 'In french ''Département'''
+              description: 'Property. The department in which the locality is, and which is in the region. In french ''Département'''
               type: string
               x-ngsi:
-                uri: http://livebuildings.org/dataModel.Address/addressDepartment
-                uri-prefix: http://livebuildings.org/dataModel.Address/
+                uri: https://live-buildings.github.io/data-model/terms#addressDepartment
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
             addressLocality:
               description: 'Property. The locality in which the street address is, and which is in the region. Model:''https://schema.org/addressLocality''. In french ''Commune'''
               type: string
@@ -379,7 +379,7 @@ components:
           format: uri
           type: string
           x-ngsi:
-            uri: http://livebuildings.org/dataModel.Organization/hasHeadOffice
+            uri: https://live-buildings.github.io/data-model/terms#hasHeadOffice
             model: https://schema.org/URL
             type: Relationship
             
@@ -407,11 +407,11 @@ components:
               x-ngsi:
                 uri: https://schema.org/addressRegion
             addressDepartment:
-              description: 'In french ''Département'''
+              description: 'Property. The department in which the locality is, and which is in the region. In french ''Département'''
               type: string
               x-ngsi:
-                uri: http://livebuildings.org/dataModel.Address/addressDepartment
-                uri-prefix: http://livebuildings.org/dataModel.Address/
+                uri: hhttps://live-buildings.github.io/data-model/terms#addressDepartment
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
             addressLocality:
               description: 'Property. The locality in which the street address is, and which is in the region. Model:''https://schema.org/addressLocality''. In french ''Commune'''
               type: string
