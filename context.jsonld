@@ -1,0 +1,43 @@
+{
+  @context: [
+  {
+    type: "@type",
+    id: "@id",
+    ngsi-ld: "https://uri.etsi.org/ngsi-ld/",
+    fiware: "https://uri.fiware.org/ns/data-models#",
+    schema: "https://schema.org/",
+    Organization: "https://smartdatamodels.org/dataModel.Organization/Organization",
+    address: "schema:PostalAddress",
+    addressCountry: "schema:addressCountry",
+    addressDepartment: "http://livebuildings.org/dataModel.Address/addressDepartment",
+    addressLocality: "schema:addressLocality",
+    addressRegion: "schema:addressRegion",
+    aggregateRating: "https://smartdatamodels.org/dataModel.Organization/aggregateRating",
+    alternateName: "https://smartdatamodels.org/alternateName",
+    areaServed: "https://smartdatamodels.org/areaServed",
+    author: "https://smartdatamodels.org/dataModel.Organization/author",
+    bestRating: "https://smartdatamodels.org/dataModel.Organization/bestRating",
+    dataProvider: "https://smartdatamodels.org/dataProvider",
+    dateCreated: "https://smartdatamodels.org/dateCreated",
+    dateModified: "https://smartdatamodels.org/dateModified",
+    description: "http://purl.org/dc/terms/description",
+    headOffice: "http://livebuildings.org/dataModel.Organization/hasHeadOffice",
+    itemReviewed: "schema:itemReviewed",
+    legalName: "https://smartdatamodels.org/dataModel.Organization/legalName",
+    location: "ngsi-ld:location",
+    name: "https://smartdatamodels.org/name",
+    owner: "https://smartdatamodels.org/owner",
+    postOfficeBoxNumber: "schema:postOfficeBoxNumber",
+    postalCode: "schema:postalCode",
+    ratingCount: "schema:ratingCount",
+    reviewAspect: "https://smartdatamodels.org/dataModel.Organization/reviewAspect",
+    reviewCount: "schema:reviewCount",
+    seeAlso: "https://smartdatamodels.org/seeAlso",
+    source: "https://smartdatamodels.org/source",
+    streetAddress: "schema:streetAddress",
+    taxID: "https://smartdatamodels.org/dataModel.Organization/taxID",
+    url: "https://smartdatamodels.org/dataModel.Organization/url"
+  },
+  "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
+  ]
+}
