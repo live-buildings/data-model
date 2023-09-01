@@ -392,6 +392,9 @@ components:
 
     Building:
       description: Information on a given Building
+      x-ngsi:
+        uri: https://smartdatamodels.org/dataModel.Building/Building
+        uri-prefix: https://smartdatamodels.org/dataModel.Building/
       properties:
         address:
           description: The mailing address
@@ -442,6 +445,7 @@ components:
           description: An alternative name for this item
           type: string
           x-ngsi:
+            uri: https://schema.org/alternateName
             type: Property
         areaServed:
           description: The geographic area where a service or offered item is provided
@@ -449,6 +453,7 @@ components:
           x-ngsi:
             model: https://schema.org/Text
             type: Property
+            uri: https://schema.org/areaServed
         category:
           description: 'Category of the building. Enum:''apartments, bakehouse, barn, bridge, bungalow, bunker, cathedral, cabin, carport, chapel, church, civic, commercial, conservatory, construction, cowshed, detached, digester, dormitory, farm, farm_auxiliary, garage, garages, garbage_shed, grandstand, greenhouse, hangar, hospital, hotel, house, houseboat, hut, industrial, kindergarten, kiosk, mosque, office, parking, pavilion, public, residential, retail, riding_hall, roof, ruins, school, service, shed, shrine, stable, stadium, static_caravan, sty, synagogue, temple, terrace, train_station, transformer_tower, transportation, university, warehouse, water_tower'''
           items:
@@ -519,48 +524,47 @@ components:
           type: array
           x-ngsi:
             type: Property
-        collapseRisk:
-          description: Probability of total collapse of the building.
-          maximum: 1
-          minimum: 0
-          type: number
-          x-ngsi:
-            model: https://schema.org/Number
-            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category
         dataProvider:
           description: A sequence of characters identifying the provider of the harmonised data entity.
           type: string
           x-ngsi:
             type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
         dateCreated:
           description: Entity creation timestamp. This will usually be allocated by the storage platform.
           format: date-time
           type: string
           x-ngsi:
             type: Property
+            uri: https://smartdatamodels.org/dateCreated
         dateModified:
           description: Timestamp of the last modification of the entity. This will usually be allocated by the storage platform.
           format: date-time
           type: string
           x-ngsi:
             type: Property
+            uri: https://smartdatamodels.org/dateModified
         description:
           description: A description of this item
           type: string
           x-ngsi:
             type: Property
+            uri: http://purl.org/dc/terms/description
         floorsAboveGround:
           description: Floors above the ground level
           type: number
           x-ngsi:
             model: https://schema.org/Number
             type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsAboveGround
         floorsBelowGround:
           description: Floors below the ground level
           type: number
           x-ngsi:
             model: https://schema.org/Number
             type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsBelowGround
         id:
           anyOf: &anyof
             - description: Property. Identifier format of any NGSI entity
@@ -727,11 +731,13 @@ components:
               type: object
           x-ngsi:
             type: GeoProperty
+            uri: ngsi-ld:location
         name:
           description: The name of this item.
           type: string
           x-ngsi:
             type: Property
+            uri: https://smartdatamodels.org/name
         occupier:
           description: Person or entity using the building
           items:
@@ -744,6 +750,7 @@ components:
           x-ngsi:
             model: https://schema.org/URL
             type: Relationship
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/occupier
         openingHours:
           description: Opening hours of this building.
           items:
@@ -752,6 +759,7 @@ components:
           x-ngsi:
             model: https://schema.org/openingHours
             type: Property
+            uri: https://schema.org/openingHours
         owner:
           description: A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)
           items:
@@ -760,6 +768,7 @@ components:
           type: array
           x-ngsi:
             type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/owner
         peopleCapacity:
           description: Allowed people present at the building
           minimum: 0
@@ -794,6 +803,7 @@ components:
           description: Reference to the map containing the building
           x-ngsi:
             type: Relationship
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap
         seeAlso:
           description: list of uri pointing to additional resources about the item
           oneOf:
@@ -806,11 +816,13 @@ components:
               type: string
           x-ngsi:
             type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/seeAlso
         source:
           description: 'A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.'
           type: string
           x-ngsi:
             type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
         type:
           description: NGSI Entity type
           enum:
