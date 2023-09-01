@@ -2,8 +2,8 @@
 openapi: "3.0.3"
 info:
   description:  |
-    An organization such as a school, NGO, corporation, club, etc, mapped from schema.org
-  title: Organization
+    LiveBuildings data model
+  title: LiveBuildings data model
   version: "0.0.1"
 
 components:
