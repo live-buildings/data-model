@@ -8,54 +8,44 @@ info:
 
 components:
   schemas:
-    Address:
+    PostalAddress:
       description: The mailing address of the item
-      properties:
-        addressCountry:
-          description: 'Property. The country. For example, Spain. Model:''https://schema.org/addressCountry''. In french ''Pays''' 
-          type: string
-          x-ngsi:
-            uri: https://schema.org/addressCountry
-        addressRegion:
-          description: 'Property. The region in which the locality is, and which is in the country. Model:''https://schema.org/addressRegion''. In french ''Région'''
-          type: string
-          x-ngsi:
-            uri: https://schema.org/addressRegion
-        addressDepartment:
-          description: 'Property. The department in which the locality is, and which is in the region. In french ''Département'''
-          type: string
-          x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#addressDepartment
-            uri-prefix: https://live-buildings.github.io/data-model/terms#
-        addressLocality:
-          description: 'Property. The locality in which the street address is, and which is in the region. Model:''https://schema.org/addressLocality''. In french ''Commune'''
-          type: string
-          x-ngsi:
-            uri: https://schema.org/addressLocality
-        postOfficeBoxNumber:
-          description: 'Property. The post office box number for PO box addresses. For example, 03578. Model:''https://schema.org/postOfficeBoxNumber'''
-          type: string
-          x-ngsi:
-            uri: https://schema.org/postOfficeBoxNumber
-        postalCode:
-          description: 'Property. The postal code. For example, 24004. Model:''https://schema.org/https://schema.org/postalCode''. In french ''Code Postal'''
-          type: string
-          x-ngsi:
-            uri: https://schema.org/postalCode
-        streetAddress:
-          description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''Numéro et rue'''
-          type: string
-          x-ngsi:
-            uri: https://schema.org/streetAddress
       type: object
       x-ngsi:
         uri: https://schema.org/PostalAddress
         uri-prefix: https://schema.org/
         model: https://schema.org/address
         type: Property
+      properties:
+        addressCountry:
+          description: 'Property. The country. For example, Spain. Model:''https://schema.org/addressCountry''. In french ''Pays''' 
+          type: string
+        addressRegion:
+          description: 'Property. The region in which the locality is, and which is in the country. Model:''https://schema.org/addressRegion''. In french ''Région'''
+          type: string
+        addressDepartment:
+          description: 'Property. The department in which the locality is, and which is in the region. In french ''Département'''
+          type: string
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#addressDepartment
+        addressLocality:
+          description: 'Property. The locality in which the street address is, and which is in the region. Model:''https://schema.org/addressLocality''. In french ''Commune'''
+          type: string
+        postOfficeBoxNumber:
+          description: 'Property. The post office box number for PO box addresses. For example, 03578. Model:''https://schema.org/postOfficeBoxNumber'''
+          type: string
+        postalCode:
+          description: 'Property. The postal code. For example, 24004. Model:''https://schema.org/https://schema.org/postalCode''. In french ''Code Postal'''
+          type: string
+        streetAddress:
+          description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''Numéro et rue'''
+          type: string
 
     Location:
       description: 'Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon'
+      x-ngsi:
+        uri: https://uri.etsi.org/ngsi-ld/location
+        type: GeoProperty
       oneOf:
         - description: GeoProperty. Geojson reference to the item. Point
           properties:
@@ -205,9 +195,6 @@ components:
             - coordinates
           title: GeoJSON MultiPolygon
           type: object
-      x-ngsi:
-        uri: ngsi-ld:location
-        type: GeoProperty
 
     Organization:
       description: 'An organization such as a school, NGO, corporation, club, etc, mapped from schema.org'
@@ -216,7 +203,7 @@ components:
         uri-prefix: https://smartdatamodels.org/dataModel.Organization/
       properties:
         address: 
-          $ref: "#/components/schemas/Address"
+          $ref: "#/components/schemas/PostalAddress"
         aggregateRating:
           description: 'The average rating based on multiple ratings or reviews. Privacy:''low'''
           properties:
@@ -403,7 +390,7 @@ components:
         uri-prefix: https://smartdatamodels.org/dataModel.Building/
       properties:
         address:
-          $ref: "#/components/schemas/Address"
+          $ref: "#/components/schemas/PostalAddress"
         alternateName:
           description: An alternative name for this item
           type: string
@@ -664,8 +651,7 @@ paths:
               - Organization
             type: string
       responses: 
-        ? "200"
-        : 
+        "200": 
           content: 
             application/ld+json: 
               examples: 
