@@ -523,19 +523,6 @@ components:
           x-ngsi:
             type: Property
             uri: https://smartdatamodels.org/name
-        occupier:
-          description: Person or entity using the building
-          items:
-            oneOf:
-              - format: uri
-                type: string
-              - anyOf: *anyof
-                description: Property. Unique identifier of the entity
-          type: array
-          x-ngsi:
-            model: https://schema.org/URL
-            type: Relationship
-            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/occupier
         openingHours:
           description: Opening hours of this building.
           items:
