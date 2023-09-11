@@ -636,6 +636,7 @@ components:
       type: object
       x-derived-from: https://smartdatamodels.org/dataModel.Building/Building
       x-license-url: https://creativecommons.org/licenses/by/4.0/
+      x-model-schema: https://smart-data-models.github.io/dataModel.Building/Building/schema.json
 
 paths: 
   /ngsi-ld/v1/entities: 
