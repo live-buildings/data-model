@@ -1,12 +1,148 @@
-<html>
-<h1>LiveBuildings data-model terms definitions</h1>
+<!DOCTYPE html>
+<html lang="en" class="overflow-y-scroll">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="LiveBuildings - Data-model terms definitions">
+    <title>Terms</title>
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.3.2/dist/css/orange-helvetica.min.css" rel="stylesheet"
+          integrity="sha384-A0Qk1uKfS1i83/YuU13i2nx5pk79PkIfNFOVzTcjCMPGKIDj9Lqx9lJmV7cdBVQZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.3.2/dist/css/boosted.min.css" rel="stylesheet"
+          integrity="sha384-fyenpx19UpfUhZ+SD9o9IdxeIJKE6upKx0B54OcXy1TqnO660Qw9xw6rOASP+eir" crossorigin="anonymous">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body id="app" class="d-flex flex-column gap-3">
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <h1 class="title"><a href="#" class="link-underline link-underline-opacity-0">LiveBuildings</a></h1>
+        </div>
+        <span class="navbar-text">Data-model terms definitions</span>
+    </div>
+</nav>
+<div v-cloak class="container-fluid">
+    <div class="row gy-3">
+        <div class="col col-sm-auto">
+            <nav class="list-group list-group-flush">
+                <a v-for="(component, id) in components" :href="'#' + id"
+                   class="list-group-item list-group-item-action"
+                   :class="{active: id === selectedComponent?.id}">{{ id }}</a>
+            </nav>
+        </div>
 
-<h2>Postal Address</h2>
-<a id="addressDepartment"><h3>addressDepartment</h3></a>
-Property. The department in which the locality is, and which is in the region. In french: 'Département'
+        <main class="col">
+            <article v-if="selectedComponent" ref="selectedComponentElement">
+                <div class="bg-body title-bar mb-3">
+                    <div class="container-fluid">
+                        <h2 class="display-1" :id="selectedComponent.id">{{ selectedComponent.id }}</h2>
+                    </div>
+                </div>
+                <p>{{ selectedComponent.description }}</p>
+                <dl>
+                    <template v-for="property in selectedComponent.properties" :key="property.id">
+                        <dt :id="buildId(selectedComponent.id, property.id)">
+                            <a :href="'#'+buildId(selectedComponent.id, property.id)"
+                               class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+                               :class="{'link-primary': selectedPropertyId === property.id}">{{property.id}}</a>
+                        </dt>
+                        <dd>{{ property.description }}</dd>
+                    </template>
+                </dl>
+            </article>
+        </main>
+    </div>
+</div>
+<script type="module">
+    import {
+        createApp,
+        ref,
+        computed,
+        onUnmounted,
+        watchEffect
+    } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js';
+    import * as yaml from 'https://unpkg.com/js-yaml@4.1/dist/js-yaml.mjs';
 
-<h2>Building</h2>
-<a id="hasHeadOffice"><h3>hasHeadOffice</h3></a>
-Relationship to the head office Building of the organization.
-  
+    const OPENAPI_TERM_KEY = 'x-lb-terms';
+    const ID_SEPARATOR = '.';
+
+    const app = createApp({
+        setup() {
+            const hash = useHash();
+
+            const selectedComponentId = computed(() => hash.value.split(ID_SEPARATOR)[0]);
+            const selectedPropertyId = computed(() => hash.value.split(ID_SEPARATOR)[1]);
+            const selectedComponentElement = ref(null);
+
+            const components = ref({})
+            fetch('./swagger.yaml')
+                .then(res => res.text())
+                .then(ymlApi => yaml.load(ymlApi))
+                .then(api => components.value = mapLiveBuildingsComponents(api));
+
+            const selectedComponent = computed(() => components.value[selectedComponentId.value]);
+
+            watchEffect(() => {
+                if (selectedPropertyId.value && selectedComponentElement.value) {
+                    document.getElementById(hash.value)?.scrollIntoView();
+                }
+            });
+
+            return {
+                components,
+                selectedComponent,
+                selectedComponentElement,
+                selectedPropertyId,
+                buildId: (...array) => array.join(ID_SEPARATOR),
+            };
+        }
+    });
+
+    app.mount('#app');
+
+    function useHash() {
+        const hash = ref(window.location.hash.substring(1));
+        const updateHash = () => hash.value = window.location.hash.substring(1);
+        window.addEventListener('hashchange', updateHash, {passive: true});
+
+        onUnmounted(() => window.removeEventListener('hashchange', updateHash));
+        return hash;
+    }
+
+    function mapLiveBuildingsComponents(api) {
+        const components = {};
+        for (const componentId in api.components.schemas) {
+            const component = api.components.schemas[componentId];
+
+            if (isLiveBuildingsElement(component)) {
+                const properties = [];
+                for (const propertyId in component.properties) {
+                    const property = component.properties[propertyId];
+
+                    if (isLiveBuildingsElement(property)) {
+                        properties.push({
+                            id: propertyId,
+                            ...property
+                        });
+                    }
+                }
+
+                components[componentId] = {
+                    ...component,
+                    id: componentId,
+                    properties,
+                };
+            }
+        }
+        return components;
+    }
+
+    function isLiveBuildingsElement(element) {
+        return element[OPENAPI_TERM_KEY] ? element[OPENAPI_TERM_KEY].enabled === true : false;
+    }
+</script>
+</body>
 </html>
