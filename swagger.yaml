@@ -1,7 +1,7 @@
 ---
 openapi: "3.0.3"
 info:
-  description:  |
+  description: |
     LiveBuildings data model
   title: LiveBuildings data model
   version: "0.0.1"
@@ -11,6 +11,8 @@ components:
     PostalAddress:
       description: The mailing address of the item
       type: object
+      x-lb-terms:
+        enabled: true
       x-ngsi:
         uri: https://schema.org/PostalAddress
         uri-prefix: https://schema.org/
@@ -18,7 +20,7 @@ components:
         type: Property
       properties:
         addressCountry:
-          description: 'Property. The country. For example, Spain. Model:''https://schema.org/addressCountry''. In french ''Pays''' 
+          description: 'Property. The country. For example, Spain. Model:''https://schema.org/addressCountry''. In french ''Pays'''
           type: string
         addressRegion:
           description: 'Property. The region in which the locality is, and which is in the country. Model:''https://schema.org/addressRegion''. In french ''Région'''
@@ -26,8 +28,10 @@ components:
         addressDepartment:
           description: 'Property. The department in which the locality is, and which is in the region. In french ''Département'''
           type: string
+          x-lb-terms:
+            enabled: true
           x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#addressDepartment
+            uri: https://live-buildings.github.io/data-model/terms#PostalAddress.addressDepartment
         addressLocality:
           description: 'Property. The locality in which the street address is, and which is in the region. Model:''https://schema.org/addressLocality''. In french ''Commune'''
           type: string
@@ -198,11 +202,13 @@ components:
 
     Organization:
       description: 'An organization such as a school, NGO, corporation, club, etc, mapped from schema.org'
+      x-lb-terms:
+        enabled: true
       x-ngsi:
         uri: https://smartdatamodels.org/dataModel.Organization/Organization
         uri-prefix: https://smartdatamodels.org/dataModel.Organization/
       properties:
-        address: 
+        address:
           $ref: "#/components/schemas/PostalAddress"
         aggregateRating:
           description: 'The average rating based on multiple ratings or reviews. Privacy:''low'''
@@ -358,11 +364,13 @@ components:
           description: Relationship to the head office Building of the organization.
           format: uri
           type: string
+          x-lb-terms:
+            enabled: true
           x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#hasHeadOffice
+            uri: https://live-buildings.github.io/data-model/terms#Organization.headOffice
             model: https://schema.org/URL
             type: Relationship
-            
+
       required:
         - id
         - type
@@ -599,34 +607,32 @@ components:
       x-license-url: https://creativecommons.org/licenses/by/4.0/
       x-model-schema: https://smart-data-models.github.io/dataModel.Building/Building/schema.json
 
-paths: 
-  /ngsi-ld/v1/entities: 
-    get: 
+paths:
+  /ngsi-ld/v1/entities:
+    get:
       description: "Retrieve a set of entities which matches a specific query from an NGSI-LD system"
-      parameters: 
-        - 
-          in: query
+      parameters:
+        - in: query
           name: type
           required: true
-          schema: 
-            enum: 
+          schema:
+            enum:
               - Organization
             type: string
-      responses: 
-        "200": 
-          content: 
-            application/ld+json: 
-              examples: 
-                keyvalues: 
+      responses:
+        "200":
+          content:
+            application/ld+json:
+              examples:
+                keyvalues:
                   summary: "Key-Values Pairs"
-                  value: 
-                normalized: 
+                  value:
+                normalized:
                   summary: "Normalized NGSI-LD"
-                  value: 
+                  value:
           description: OK
-      tags: 
+      tags:
         - ngsi-ld
-tags: 
-  - 
-    description: "NGSI-LD Linked-data Format"
+tags:
+  - description: "NGSI-LD Linked-data Format"
     name: ngsi-ld
