@@ -32,7 +32,7 @@
             <nav class="list-group list-group-flush">
                 <a v-for="(component, id) in components" :href="'#' + id"
                    class="list-group-item list-group-item-action"
-                   :class="{active: id === selectedComponent?.id}">{{ id }}</a>
+                   :class="{active: id === selectedComponent?.id}">{{ component.name }}</a>
             </nav>
         </div>
 
@@ -42,20 +42,28 @@
                 <!-- Component details -->
                 <div class="bg-body title-bar mb-3">
                     <div class="container-fluid">
-                        <h2 class="display-1" :id="selectedComponent.id">{{ selectedComponent.id }}</h2>
+                        <h2 class="display-1" :id="selectedComponent.id">{{ selectedComponent.name }}</h2>
                     </div>
                 </div>
                 <p>{{ selectedComponent.description }}</p>
+                <p v-if="selectedComponent.namespace">For more info: <a
+                        :href="selectNgsiUri(selectedComponent)"
+                        target="_blank">{{selectNgsiUri(selectedComponent)}}</a>
+                </p>
 
                 <!-- Component property list -->
                 <dl>
-                    <template v-for="property in selectedComponent.properties" :key="property.id">
-                        <dt :id="buildId(selectedComponent.id, property.id)">
-                            <a :href="'#'+buildId(selectedComponent.id, property.id)"
+                    <template v-for="property in selectedComponentProperties" :key="propertyId">
+                        <h3 :id="property.id">
+                            <a :href="'#' + property.id"
                                class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
-                               :class="{'link-primary': selectedPropertyId === property.id}">{{property.id}}</a>
-                        </dt>
-                        <dd>{{ property.description }}</dd>
+                               :class="{'link-primary': hash === property.id}">{{property.name}}</a>
+                        </h3>
+                        <p>{{ property.description }}</p>
+                        <p v-if="property.namespace">For more info: <a
+                                :href="selectNgsiUri(property)"
+                                target="_blank">{{selectNgsiUri(property)}}</a>
+                        </p>
                     </template>
                 </dl>
             </article>
@@ -72,24 +80,25 @@
     } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js';
     import * as yaml from 'https://unpkg.com/js-yaml@4.1/dist/js-yaml.mjs';
 
-    const OPENAPI_TERM_KEY = 'x-lb-terms';
-    const ID_SEPARATOR = '.';
-
     const app = createApp({
         setup() {
             // Load the component list to display
-            const {data: components} = useComponentListQuery();
+            const {data} = useElementsToDisplayQuery();
+            const components = computed(() => data.value.components);
 
             // Update the selected component and property on URL hash change
             const hash = useHash();
-            const selectedComponentId = computed(() => hash.value.split(ID_SEPARATOR)[0]);
-            const selectedPropertyId = computed(() => hash.value.split(ID_SEPARATOR)[1]);
-            const selectedComponent = computed(() => components.value[selectedComponentId.value]);
+            const selectedComponent = computed(() => {
+                const selectedElementId = hash.value;
+                const {components, properties} = data.value;
+                return components[selectedElementId] ?? components[properties[selectedElementId]?.componentId];
+            });
+            const selectedComponentProperties = computed(() => selectedComponent.value.properties.map(id => data.value.properties[id]));
 
             // Scroll to the component property after dom rendering
             const selectedComponentElement = ref(null);
             watchEffect(() => {
-                if (selectedPropertyId.value && selectedComponentElement.value) {
+                if (hash.value && selectedComponentElement.value) {
                     document.getElementById(hash.value)?.scrollIntoView();
                 }
             });
@@ -98,9 +107,10 @@
             return {
                 components,
                 selectedComponent,
+                selectedComponentProperties,
                 selectedComponentElement,
-                selectedPropertyId,
-                buildId: (...array) => array.join(ID_SEPARATOR),
+                hash,
+                selectNgsiUri,
             };
         }
     });
@@ -121,57 +131,170 @@
 
     /**
      * Fetches the component dictionary to display from an OpenAPI schema file
-     * @returns {{data: Ref<{[componentId: string]: Component}>}} A reactive object with the dictionary
+     * @returns {{data: Ref<{components: {[hash: string]: Component}, properties: {[hash: string]: Property}}>}} A reactive object with the dictionary
      */
-    function useComponentListQuery() {
-        const data = ref({})
+    function useElementsToDisplayQuery() {
+        const data = ref({components: {}, properties: {}})
         fetch('./swagger.yaml')
             .then(res => res.text())
             .then(ymlApi => yaml.load(ymlApi))
-            .then(api => data.value = filterComponentsToDisplay(api));
+            .then(api => data.value = normalizeElementsToDisplay(api));
         return {data};
     }
 
     /**
      * Filter the component to display
      * @param api An OpenAPI schema object
-     * @returns {{[componentId: string]: Component}} A dictionary of components to display
+     * @returns {{components: {[hash: string]: Component}, properties: {[hash: string]: Property}}} A dictionary of components to display
      */
-    function filterComponentsToDisplay(api) {
-        const components = {};
-        for (const componentId in api.components.schemas) {
-            const component = api.components.schemas[componentId];
+    function normalizeElementsToDisplay(api) {
+        const elements = {properties: {}, components: {}};
+        for (const componentKey in api.components.schemas) {
+            const component = api.components.schemas[componentKey];
+            const {id: componentId, namespace: componentNamespace} = buildElementUiId(componentKey, component);
+            const componentName = selectElementNgsiName(componentKey, component);
+
+            const properties = [];
+            for (const propertyKey in component.properties) {
+                const property = component.properties[propertyKey];
+
+                if (isElementToDisplayed(property)) {
+                    const {id, namespace} = buildElementUiId(propertyKey, property);
+                    const name = selectElementNgsiName(propertyKey, property);
+
+                    warnIfDuplicatedIds(id, elements.properties);
+                    warnIfDuplicatedIds(id, elements.components);
+
+                    elements.properties[id] = {
+                        id,
+                        namespace,
+                        name,
+                        componentId,
+                        ...property
+                    };
+
+                    properties.push(id);
+                }
+            }
 
             if (isElementToDisplayed(component)) {
-                const properties = [];
-                for (const propertyId in component.properties) {
-                    const property = component.properties[propertyId];
-
-                    if (isElementToDisplayed(property)) {
-                        properties.push({
-                            id: propertyId,
-                            ...property
-                        });
-                    }
-                }
-
-                components[componentId] = {
+                warnIfDuplicatedIds(componentId, elements.components);
+                elements.components[componentId] = {
                     ...component,
                     id: componentId,
+                    namespace: componentNamespace,
+                    name: componentName,
                     properties,
                 };
             }
         }
-        return components;
+        return elements;
     }
 
     /**
      * Checks if an OpenAPI element must be displayed
-     * @param element An OpenAPI element
+     * @param element The OpenAPI element schema
      * @returns {boolean} True if the element must be displayed
      */
     function isElementToDisplayed(element) {
-        return element[OPENAPI_TERM_KEY] ? element[OPENAPI_TERM_KEY].enabled === true : false;
+        const liveBuildingsExt = selectLiveBuildingExtension(element);
+        return liveBuildingsExt ? liveBuildingsExt.enabled === true : false;
+    }
+
+    /**
+     * Returns the element NGSI name from the element OpenAPI schema
+     * @param key The OpenAPI element key
+     * @param element The OpenAPI element schema
+     * @returns {string} The element NGSI name
+     */
+    function selectElementNgsiName(key, element) {
+        const uriPrefix = selectNgsiUriPrefix(element);
+        const uri = selectNgsiUri(element);
+        if (uriPrefix && uri) {
+            return uri.replace(uriPrefix, '');
+        }
+        if (uri) {
+            return new URL(uri).hash.substring(1);
+        }
+        throw new Error(`Unable to find element name for ${key}`);
+    }
+
+    /**
+     * Build an element id for the UI
+     * @param key The OpenAPI element key
+     * @param element  The OpenAPI element schema
+     * @returns {{namespace: string, id: string}} The element UI id with the element UI namespace
+     */
+    function buildElementUiId(key, element) {
+        const namespace = buildElementUiNamespace(key, element);
+        const name = selectElementNgsiName(key, element);
+        let idParts = [];
+        if (namespace) {
+            idParts.push(namespace);
+        }
+        idParts.push(name);
+        return {id: idParts.join('/'), namespace};
+    }
+
+    /**
+     * Build an element namespace for the UI (undefined if the URI hostname is the same as the UI hostname)
+     * @param key The OpenAPI element key
+     * @param element  The OpenAPI element schema
+     * @returns {string} The element UI namespace
+     */
+    function buildElementUiNamespace(key, element) {
+        const uri = selectNgsiUri(element);
+        const namespace = new URL(uri).hostname;
+        if (namespace !== window.location.hostname) {
+            return namespace;
+        }
+    }
+
+    /**
+     * Emits a console warning if an id already exists in a record
+     * @param id The id to check
+     * @param record The record to check
+     */
+    function warnIfDuplicatedIds(id, record) {
+        if (record[id]) {
+            console.warn(`Duplicated ids : ${id}`);
+        }
+    }
+
+    /**
+     * Returns the element NGSI extension schema from the element OpenAPI schema
+     * @param element The OpenAPI element schema
+     * @returns {*} The element NGSI extension schema
+     */
+    function selectNgsiExtension(element) {
+        return element['x-ngsi'];
+    }
+
+    /**
+     * Returns the element NGSI URI from the element OpenAPI schema
+     * @param element The OpenAPI element schema
+     * @returns {string} The element NGSI URI
+     */
+    function selectNgsiUri(element) {
+        return selectNgsiExtension(element)?.['uri'];
+    }
+
+    /**
+     * Returns the element NGSI URI prefix from the element OpenAPI schema
+     * @param element The OpenAPI element schema
+     * @returns {string} The element NGSI URI prefix
+     */
+    function selectNgsiUriPrefix(element) {
+        return selectNgsiExtension(element)?.['uri-prefix'];
+    }
+
+    /**
+     * Returns the element Live Buildings extension schema from the element OpenAPI schema
+     * @param element The OpenAPI element schema
+     * @returns {*} The element Live Buildings extension schema
+     */
+    function selectLiveBuildingExtension(element) {
+        return element['x-lb-terms'];
     }
 </script>
 </body>

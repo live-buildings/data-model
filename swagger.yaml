@@ -31,7 +31,8 @@ components:
           x-lb-terms:
             enabled: true
           x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#PostalAddress.addressDepartment
+            uri: https://live-buildings.github.io/data-model/terms#addressDepartment
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         addressLocality:
           description: 'Property. The locality in which the street address is, and which is in the region. Model:''https://schema.org/addressLocality''. In french ''Commune'''
           type: string
@@ -367,7 +368,8 @@ components:
           x-lb-terms:
             enabled: true
           x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#Organization.headOffice
+            uri: https://live-buildings.github.io/data-model/terms#hasHeadOffice
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
             model: https://schema.org/URL
             type: Relationship
 
