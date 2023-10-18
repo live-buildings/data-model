@@ -3,39 +3,985 @@
         {
             "type": "@type",
             "id": "@id",
+            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
             "Building": "https://smartdatamodels.org/dataModel.Building/Building",
             "Location": "https://uri.etsi.org/ngsi-ld/location",
             "Organization": "https://smartdatamodels.org/dataModel.Organization/Organization",
             "PostalAddress": "https://schema.org/PostalAddress",
             "address": "https://schema.org/PostalAddress",
-            "addressCountry": "https://schema.org/addressCountry",
-            "addressLocality": "https://schema.org/addressLocality",
-            "addressRegion": "https://schema.org/addressRegion",
+            "addressCountry": {
+                "@id": "https://schema.org/addressCountry",
+                "@type": "xsd:string"
+            },
+            "addressDepartment": {
+                "@id": "https://live-buildings.github.io/data-model/terms#addressDepartment",
+                "@type": "xsd:string"
+            },
+            "addressLocality": {
+                "@id": "https://schema.org/addressLocality",
+                "@type": "xsd:string"
+            },
+            "addressRegion": {
+                "@id": "https://schema.org/addressRegion",
+                "@type": "xsd:string"
+            },
             "aggregateRating": "https://smartdatamodels.org/dataModel.Organization/aggregateRating",
-            "alternateName": "https://schema.org/alternateName",
-            "areaServed": "https://schema.org/areaServed",
-            "author": "https://smartdatamodels.org/dataModel.Organization/author",
-            "bestRating": "https://smartdatamodels.org/dataModel.Organization/bestRating",
-            "dateCreated": "https://smartdatamodels.org/dateCreated",
-            "dateModified": "https://smartdatamodels.org/dateModified",
-            "description": "http://purl.org/dc/terms/description",
-            "itemReviewed": "https://schema.org/itemReviewed",
-            "legalName": "https://smartdatamodels.org/dataModel.Organization/legalName",
-            "location": "https://uri.etsi.org/ngsi-ld/location",
-            "name": "https://smartdatamodels.org/name",
-            "openingHours": "https://schema.org/openingHours",
-            "peopleCapacity": "https://smartdatamodels.org/dataModel.Building/peopleCapacity",
-            "peopleOccupancy": "https://smartdatamodels.org/dataModel.Building/peopleOccupancy",
-            "peopleOccupancyDetails": "https://smartdatamodels.org/dataModel.Building/peopleOccupancyDetails",
-            "postOfficeBoxNumber": "https://schema.org/postOfficeBoxNumber",
-            "postalCode": "https://schema.org/postalCode",
-            "ratingCount": "https://schema.org/ratingCount",
-            "reviewAspect": "https://smartdatamodels.org/dataModel.Organization/reviewAspect",
-            "reviewCount": "https://schema.org/reviewCount",
-            "streetAddress": "https://schema.org/streetAddress",
-            "taxID": "https://smartdatamodels.org/dataModel.Organization/taxID",
-            "url": "https://smartdatamodels.org/dataModel.Organization/url"
+            "alternateName": {
+                "@id": "https://schema.org/alternateName",
+                "@type": "xsd:string"
+            },
+            "areaServed": {
+                "@id": "https://schema.org/areaServed",
+                "@type": "xsd:string"
+            },
+            "author": {
+                "@id": "https://smartdatamodels.org/dataModel.Organization/author",
+                "@type": "@id"
+            },
+            "bestRating": {
+                "@id": "https://smartdatamodels.org/dataModel.Organization/bestRating",
+                "@type": "xsd:number"
+            },
+            "category": {
+                "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category",
+                "@type": "xsd:array"
+            },
+            "dataProvider": {
+                "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider",
+                "@type": "xsd:string"
+            },
+            "dateCreated": {
+                "@id": "https://smartdatamodels.org/dateCreated",
+                "@type": "xs:dateTime"
+            },
+            "dateModified": {
+                "@id": "https://smartdatamodels.org/dateModified",
+                "@type": "xs:dateTime"
+            },
+            "description": {
+                "@id": "http://purl.org/dc/terms/description",
+                "@type": "xsd:string"
+            },
+            "floorsAboveGround": {
+                "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsAboveGround",
+                "@type": "xsd:number"
+            },
+            "floorsBelowGround": {
+                "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsBelowGround",
+                "@type": "xsd:number"
+            },
+            "headOffice": {
+                "@id": "https://live-buildings.github.io/data-model/terms#hasHeadOffice",
+                "@type": "@id"
+            },
+            "itemReviewed": {
+                "@id": "https://schema.org/itemReviewed",
+                "@type": "xsd:undefined"
+            },
+            "legalName": {
+                "@id": "https://smartdatamodels.org/dataModel.Organization/legalName",
+                "@type": "xsd:string"
+            },
+            "location": {
+                "@id": "https://uri.etsi.org/ngsi-ld/location",
+                "@type": "xsd:undefined"
+            },
+            "name": {
+                "@id": "https://smartdatamodels.org/name",
+                "@type": "xsd:string"
+            },
+            "openingHours": {
+                "@id": "https://schema.org/openingHours",
+                "@type": "xsd:array"
+            },
+            "owner": {
+                "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/owner",
+                "@type": "xsd:array"
+            },
+            "peopleCapacity": {
+                "@id": "https://smartdatamodels.org/dataModel.Building/peopleCapacity",
+                "@type": "xsd:number"
+            },
+            "peopleOccupancy": {
+                "@id": "https://smartdatamodels.org/dataModel.Building/peopleOccupancy",
+                "@type": "xsd:number"
+            },
+            "peopleOccupancyDetails": {
+                "@id": "https://smartdatamodels.org/dataModel.Building/peopleOccupancyDetails",
+                "@type": "xsd:number"
+            },
+            "postOfficeBoxNumber": {
+                "@id": "https://schema.org/postOfficeBoxNumber",
+                "@type": "xsd:string"
+            },
+            "postalCode": {
+                "@id": "https://schema.org/postalCode",
+                "@type": "xsd:string"
+            },
+            "ratingCount": {
+                "@id": "https://schema.org/ratingCount",
+                "@type": "xsd:number"
+            },
+            "refMap": {
+                "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap",
+                "@type": "@id"
+            },
+            "reviewAspect": {
+                "@id": "https://smartdatamodels.org/dataModel.Organization/reviewAspect",
+                "@type": "xsd:string"
+            },
+            "reviewCount": {
+                "@id": "https://schema.org/reviewCount",
+                "@type": "xsd:number"
+            },
+            "source": {
+                "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source",
+                "@type": "xsd:string"
+            },
+            "streetAddress": {
+                "@id": "https://schema.org/streetAddress",
+                "@type": "xsd:string"
+            },
+            "taxID": {
+                "@id": "https://smartdatamodels.org/dataModel.Organization/taxID",
+                "@type": "xsd:string"
+            },
+            "url": {
+                "@id": "https://smartdatamodels.org/dataModel.Organization/url",
+                "@type": "xs:anyURI"
+            }
         },
         "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
+    ],
+    "@graph": [
+        {
+            "@id": "https://schema.org/PostalAddress",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The mailing address of the item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "PostalAddress"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "addressCountry",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Property. The country. For example, Spain. Model:'https://schema.org/addressCountry'. In french 'Pays'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "addressCountry"
+                }
+            ]
+        },
+        {
+            "@id": "addressRegion",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Property. The region in which the locality is, and which is in the country. Model:'https://schema.org/addressRegion'. In french 'Région'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "addressRegion"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#addressDepartment",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Property. The department in which the locality is, and which is in the region. In french 'Département'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "addressDepartment"
+                }
+            ]
+        },
+        {
+            "@id": "addressLocality",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Property. The locality in which the street address is, and which is in the region. Model:'https://schema.org/addressLocality'. In french 'Commune'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "addressLocality"
+                }
+            ]
+        },
+        {
+            "@id": "postOfficeBoxNumber",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Property. The post office box number for PO box addresses. For example, 03578. Model:'https://schema.org/postOfficeBoxNumber'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "postOfficeBoxNumber"
+                }
+            ]
+        },
+        {
+            "@id": "postalCode",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Property. The postal code. For example, 24004. Model:'https://schema.org/https://schema.org/postalCode'. In french 'Code Postal'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "postalCode"
+                }
+            ]
+        },
+        {
+            "@id": "streetAddress",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Property. The street address. Model:'https://schema.org/streetAddress'. In french: 'Numéro et rue'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "streetAddress"
+                }
+            ]
+        },
+        {
+            "@id": "Location",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "Location"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://smartdatamodels.org/dataModel.Organization/Organization",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "An organization such as a school, NGO, corporation, club, etc, mapped from schema.org"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "Organization"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://schema.org/address",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The mailing address of the item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "address"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/aggregateRating",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The average rating based on multiple ratings or reviews. Privacy:'low'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "aggregateRating"
+                }
+            ]
+        },
+        {
+            "@id": "alternateName",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "An alternative name for this item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "alternateName"
+                }
+            ]
+        },
+        {
+            "@id": "areaServed",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The geographic area where a service or offered item is provided"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "areaServed"
+                }
+            ]
+        },
+        {
+            "@id": "author",
+            "@type": "ngsi-ld:Relationship",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "author"
+                }
+            ]
+        },
+        {
+            "@id": "bestRating",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "bestRating"
+                }
+            ]
+        },
+        {
+            "@id": "dataProvider",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A sequence of characters identifying the provider of the harmonised data entity."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dataProvider"
+                }
+            ]
+        },
+        {
+            "@id": "dateCreated",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Entity creation timestamp. This will usually be allocated by the storage platform."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dateCreated"
+                }
+            ]
+        },
+        {
+            "@id": "dateModified",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dateModified"
+                }
+            ]
+        },
+        {
+            "@id": "description",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A description of this item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "description"
+                }
+            ]
+        },
+        {
+            "@id": "id",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Unique identifier of the entity"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "id"
+                }
+            ]
+        },
+        {
+            "@id": "legalName",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The official name of the organization, e.g. the registered company name."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "legalName"
+                }
+            ]
+        },
+        {
+            "@id": "location",
+            "@type": "ngsi-ld:GeoProperty",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "location"
+                }
+            ]
+        },
+        {
+            "@id": "name",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The name of this item."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "name"
+                }
+            ]
+        },
+        {
+            "@id": "owner",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "owner"
+                }
+            ]
+        },
+        {
+            "@id": "reviewAspect",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "This Review or Rating is relevant to this part or facet of the itemReviewed"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "reviewAspect"
+                }
+            ]
+        },
+        {
+            "@id": "source",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "source"
+                }
+            ]
+        },
+        {
+            "@id": "taxID",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "taxID"
+                }
+            ]
+        },
+        {
+            "@id": "url",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "URL which provides a description or further information about this item."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "url"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#headOffice",
+            "@type": "ngsi-ld:Relationship",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship to the head office Building of the organization."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "headOffice"
+                }
+            ]
+        },
+        {
+            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Information on a given Building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "Building"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://schema.org/address",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The mailing address of the item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "address"
+                }
+            ]
+        },
+        {
+            "@id": "alternateName",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "An alternative name for this item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "alternateName"
+                }
+            ]
+        },
+        {
+            "@id": "areaServed",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The geographic area where a service or offered item is provided"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "areaServed"
+                }
+            ]
+        },
+        {
+            "@id": "category",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Category of the building. Enum:'apartments, bakehouse, barn, bridge, bungalow, bunker, cathedral, cabin, carport, chapel, church, civic, commercial, conservatory, construction, cowshed, detached, digester, dormitory, farm, farm_auxiliary, garage, garages, garbage_shed, grandstand, greenhouse, hangar, hospital, hotel, house, houseboat, hut, industrial, kindergarten, kiosk, mosque, office, parking, pavilion, public, residential, retail, riding_hall, roof, ruins, school, service, shed, shrine, stable, stadium, static_caravan, sty, synagogue, temple, terrace, train_station, transformer_tower, transportation, university, warehouse, water_tower'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "category"
+                }
+            ]
+        },
+        {
+            "@id": "dataProvider",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A sequence of characters identifying the provider of the harmonised data entity."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dataProvider"
+                }
+            ]
+        },
+        {
+            "@id": "dateCreated",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Entity creation timestamp. This will usually be allocated by the storage platform."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dateCreated"
+                }
+            ]
+        },
+        {
+            "@id": "dateModified",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dateModified"
+                }
+            ]
+        },
+        {
+            "@id": "description",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A description of this item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "description"
+                }
+            ]
+        },
+        {
+            "@id": "floorsAboveGround",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Floors above the ground level"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "floorsAboveGround"
+                }
+            ]
+        },
+        {
+            "@id": "floorsBelowGround",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Floors below the ground level"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "floorsBelowGround"
+                }
+            ]
+        },
+        {
+            "@id": "id",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Unique identifier of the entity"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "id"
+                }
+            ]
+        },
+        {
+            "@id": "location",
+            "@type": "ngsi-ld:GeoProperty",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "location"
+                }
+            ]
+        },
+        {
+            "@id": "name",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The name of this item."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "name"
+                }
+            ]
+        },
+        {
+            "@id": "openingHours",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Opening hours of this building."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "openingHours"
+                }
+            ]
+        },
+        {
+            "@id": "owner",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "owner"
+                }
+            ]
+        },
+        {
+            "@id": "peopleCapacity",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Allowed people present at the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "peopleCapacity"
+                }
+            ]
+        },
+        {
+            "@id": "peopleOccupancy",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "People present at the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "peopleOccupancy"
+                }
+            ]
+        },
+        {
+            "@id": "peopleOccupancyDetails",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "People present at the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "peopleOccupancyDetails"
+                }
+            ]
+        },
+        {
+            "@id": "refMap",
+            "@type": "ngsi-ld:Relationship",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Reference to the map containing the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "refMap"
+                }
+            ]
+        },
+        {
+            "@id": "source",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "source"
+                }
+            ]
+        }
     ]
 }
