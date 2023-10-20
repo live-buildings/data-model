@@ -382,6 +382,8 @@ components:
 
     Site:
       description: A part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It is intended to contain or contains one or more buildings.
+      x-lb-terms:
+        enabled: true
       x-ngsi:
         uri: https://w3id.org/bot#Site
       allOf: # Same properties as Building
@@ -389,6 +391,8 @@ components:
         
     Building:
       description: Information on a given Building
+      x-lb-terms:
+        enabled: true
       x-ngsi:
         uri: https://smartdatamodels.org/dataModel.Building/Building
         uri-prefix: https://smartdatamodels.org/dataModel.Building/
