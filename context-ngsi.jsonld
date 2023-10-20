@@ -4,6 +4,7 @@
             "type": "@type",
             "id": "@id",
             "Building": "https://smartdatamodels.org/dataModel.Building/Building",
+            "CrossDomain": "https://live-buildings.github.io/data-model/none",
             "Location": "https://uri.etsi.org/ngsi-ld/location",
             "Organization": "https://smartdatamodels.org/dataModel.Organization/Organization",
             "PostalAddress": "https://schema.org/PostalAddress",
