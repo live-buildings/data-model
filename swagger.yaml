@@ -8,6 +8,22 @@ info:
 
 components:
   schemas:
+    CrossDomain:
+      description: Some cross-domain properties.
+      type: object
+      properties:
+        dataProvider:
+          description: A sequence of characters identifying the provider of the harmonised data entity.
+          type: string
+          x-ngsi:
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
+            type: Property
+        source:
+          description: A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.
+          type: string
+          x-ngsi:
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
+            type: Property
 
     PostalAddress:
       description: The mailing address of the item
@@ -27,7 +43,7 @@ components:
           description: 'Property. The region in which the locality is, and which is in the country. Model:''https://schema.org/addressRegion''. In french ''RÃ©gion'''
           type: string
         addressDepartment:
-          description: 'Property. The department in which the locality is, and which is in the region. In french ''DÃ©partement'''
+          description: 'Property. The department in which the locality is, and which is in the region. In french ''Département'''
           type: string
           x-lb-terms:
             enabled: true
@@ -44,7 +60,7 @@ components:
           description: 'Property. The postal code. For example, 24004. Model:''https://schema.org/https://schema.org/postalCode''. In french ''Code Postal'''
           type: string
         streetAddress:
-          description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''NumÃ©ro et rue'''
+          description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''Numéro et rue'''
           type: string
 
     Location:
