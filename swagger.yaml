@@ -10,8 +10,6 @@ components:
   schemas:
     CrossDomain:
       description: Some cross-domain properties.
-      x-lb-terms:
-        enabled: true
       properties:
         dataProvider:
           description: A sequence of characters identifying the provider of the harmonised data entity.
