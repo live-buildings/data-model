@@ -8,21 +8,6 @@ info:
 
 components:
   schemas:
-    CrossDomain:
-      description: Some cross-domain properties.
-      properties:
-        dataProvider:
-          description: A sequence of characters identifying the provider of the harmonised data entity.
-          type: string
-          x-ngsi:
-            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
-            type: Property
-        source:
-          description: A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.
-          type: string
-          x-ngsi:
-            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
-            type: Property
 
     PostalAddress:
       description: The mailing address of the item
