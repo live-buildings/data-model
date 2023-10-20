@@ -10,7 +10,8 @@ components:
   schemas:
     CrossDomain:
       description: Some cross-domain properties.
-      type: object
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/none
       properties:
         dataProvider:
           description: A sequence of characters identifying the provider of the harmonised data entity.
@@ -40,10 +41,10 @@ components:
           description: 'Property. The country. For example, Spain. Model:''https://schema.org/addressCountry''. In french ''Pays'''
           type: string
         addressRegion:
-          description: 'Property. The region in which the locality is, and which is in the country. Model:''https://schema.org/addressRegion''. In french ''RÃ©gion'''
+          description: 'Property. The region in which the locality is, and which is in the country. Model:''https://schema.org/addressRegion''. In french ''Region'''
           type: string
         addressDepartment:
-          description: 'Property. The department in which the locality is, and which is in the region. In french ''Département'''
+          description: 'Property. The department in which the locality is, and which is in the region. In french ''Departement'''
           type: string
           x-lb-terms:
             enabled: true
@@ -60,7 +61,7 @@ components:
           description: 'Property. The postal code. For example, 24004. Model:''https://schema.org/https://schema.org/postalCode''. In french ''Code Postal'''
           type: string
         streetAddress:
-          description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''Numéro et rue'''
+          description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''Numero et rue'''
           type: string
 
     Location:
