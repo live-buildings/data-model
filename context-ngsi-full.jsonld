@@ -1,5 +1,6 @@
 {
-    "@context": {
+    "@context": [
+        {
             "type": "@type",
             "id": "@id",
             "Building": "https://smartdatamodels.org/dataModel.Building/Building",
@@ -48,5 +49,7 @@
             "streetAddress": "https://schema.org/streetAddress",
             "taxID": "https://smartdatamodels.org/dataModel.Organization/taxID",
             "url": "https://smartdatamodels.org/dataModel.Organization/url"
-    }
+        },
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
+    ]
 }
