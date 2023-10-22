@@ -415,21 +415,56 @@ components:
         uri: https://smartdatamodels.org/dataModel.Building/Building
         uri-prefix: https://smartdatamodels.org/dataModel.Building/
       properties:
-        address:
-          $ref: "#/components/schemas/PostalAddress"
+        id:
+          anyOf: &anyof
+            - description: Property. Identifier format of any NGSI entity
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+            - description: Property. Identifier format of any NGSI entity
+              format: uri
+              type: string
+          description: Unique identifier of the entity
+          x-ngsi:
+            type: Property
+        type:
+          description: NGSI Entity type
+          enum:
+            - Building
+          type: string
+          x-ngsi:
+            type: Property
+        shortId:
+          description: A short id of this item. Typically an UID that uniquely identifies this item among all items of same type.
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#shortId
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        name:
+          description: The name of this item.
+          type: string
+          x-ngsi:
+            type: Property
+            uri: https://smartdatamodels.org/name
+        shortName:
+          description: A short name for this item. Typically for display purpose.
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#shortName
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         alternateName:
           description: An alternative name for this item
           type: string
           x-ngsi:
             uri: https://schema.org/alternateName
             type: Property
-        areaServed:
-          description: The geographic area where a service or offered item is provided
-          type: string
-          x-ngsi:
-            model: https://schema.org/Text
-            type: Property
-            uri: https://schema.org/areaServed
         category:
           description: 'Category of the building. Enum:''apartments, bakehouse, barn, bridge, bungalow, bunker, cathedral, cabin, carport, chapel, church, civic, commercial, conservatory, construction, cowshed, detached, digester, dormitory, farm, farm_auxiliary, garage, garages, garbage_shed, grandstand, greenhouse, hangar, hospital, hotel, house, houseboat, hut, industrial, kindergarten, kiosk, mosque, office, parking, pavilion, public, residential, retail, riding_hall, roof, ruins, school, service, shed, shrine, stable, stadium, static_caravan, sty, synagogue, temple, terrace, train_station, transformer_tower, transportation, university, warehouse, water_tower'''
           items:
@@ -501,6 +536,17 @@ components:
           x-ngsi:
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category
+        address:
+          $ref: "#/components/schemas/PostalAddress"
+        location:
+          $ref: "#/components/schemas/Location"
+        areaServed:
+          description: The geographic area where a service or offered item is provided
+          type: string
+          x-ngsi:
+            model: https://schema.org/Text
+            type: Property
+            uri: https://schema.org/areaServed
         dataProvider:
           description: A sequence of characters identifying the provider of the harmonised data entity.
           type: string
@@ -541,27 +587,6 @@ components:
             model: https://schema.org/Number
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsBelowGround
-        id:
-          anyOf: &anyof
-            - description: Property. Identifier format of any NGSI entity
-              maxLength: 256
-              minLength: 1
-              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
-              type: string
-            - description: Property. Identifier format of any NGSI entity
-              format: uri
-              type: string
-          description: Unique identifier of the entity
-          x-ngsi:
-            type: Property
-        location:
-          $ref: "#/components/schemas/Location"
-        name:
-          description: The name of this item.
-          type: string
-          x-ngsi:
-            type: Property
-            uri: https://smartdatamodels.org/name
         openingHours:
           description: Opening hours of this building.
           items:
@@ -656,13 +681,6 @@ components:
           x-ngsi:
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
-        type:
-          description: NGSI Entity type
-          enum:
-            - Building
-          type: string
-          x-ngsi:
-            type: Property
       required:
         - type
         - id

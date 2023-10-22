@@ -45,6 +45,8 @@
             "refMap": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap",
             "reviewAspect": "https://smartdatamodels.org/dataModel.Organization/reviewAspect",
             "reviewCount": "https://schema.org/reviewCount",
+            "shortId": "https://live-buildings.github.io/data-model/terms#shortId",
+            "shortName": "https://live-buildings.github.io/data-model/terms#shortName",
             "source": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source",
             "streetAddress": "https://schema.org/streetAddress",
             "taxID": "https://smartdatamodels.org/dataModel.Organization/taxID",
