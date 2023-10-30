@@ -127,7 +127,7 @@ A part of the physical world or a virtual world that is inherently both located 
 -  `alternateName`: An alternative name for this item
    -  Attribute type: **Property**. 
    -  Optional
--  `category`: Category of the site. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'
+-  `category`: Category of the item. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'
    -  Attribute type: **Property**. 
    -  Optional
 -  `address`: The mailing address of the item
@@ -145,31 +145,31 @@ A part of the physical world or a virtual world that is inherently both located 
 -  `description`: A description of this item
    -  Attribute type: **Property**. 
    -  Optional
--  `openingHours`: Opening hours of this site.
+-  `openingHours`: Opening hours of this place.
    -  Attribute type: **Property**. [openingHours](https://schema.org/openingHours)
    -  Optional
 -  `owner`: A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)
    -  Attribute type: **Property**. 
    -  Optional
--  `occupier`: Person or entity using the site.
+-  `occupier`: Person or entity using the place.
    -  Attribute type: **Property**. 
    -  Optional
--  `peopleCapacity`: Allowed people present at the site
+-  `peopleCapacity`: Allowed people present at the place.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `employeeCount`: Number of employees attached to this site.
+-  `employeeCount`: Number of employees attached to this place.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `individualWorkstationCount`: Number of individual workstations available in this site. An individual workstation is a workstation assigned or dedicated to a particular person.
+-  `individualWorkstationCount`: Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `flexWorkstationCount`: Number of flex workstations available in this site. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
+-  `flexWorkstationCount`: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `peopleOccupancy`: People present at the site
+-  `peopleOccupancy`: People present at the place.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `refMap`: Reference to the map containing the building
+-  `refMap`: Reference to the map containing the item.
    -  Attribute type: **Relationship**. 
    -  Optional
 -  `source`: A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.
@@ -199,7 +199,7 @@ Information on a given Building
 -  `alternateName`: An alternative name for this item
    -  Attribute type: **Property**. 
    -  Optional
--  `category`: Category of the building. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'
+-  `category`: Category of the item. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'
    -  Attribute type: **Property**. 
    -  Optional
 -  `address`: The mailing address of the item
@@ -223,22 +223,22 @@ Information on a given Building
 -  `owner`: A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)
    -  Attribute type: **Property**. 
    -  Optional
--  `occupier`: Person or entity using the building.
+-  `occupier`: Person or entity using the place.
    -  Attribute type: **Property**. 
    -  Optional
--  `peopleCapacity`: Allowed people present at the building
+-  `peopleCapacity`: Allowed people present at the place
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `employeeCount`: Number of employees attached to this building.
+-  `employeeCount`: Number of employees attached to this place.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `individualWorkstationCount`: Number of individual workstations available in this building. An individual workstation is a workstation assigned or dedicated to a particular person.
+-  `individualWorkstationCount`: Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `flexWorkstationCount`: Number of flex workstations available in this building. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
+-  `flexWorkstationCount`: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `peopleOccupancy`: People present at the building
+-  `peopleOccupancy`: People present at the place
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `refMap`: Reference to the map containing the building

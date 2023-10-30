@@ -456,7 +456,7 @@ components:
             uri: https://schema.org/alternateName
             type: Property
         category:
-          description: 'Category of the site. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
+          description: 'Category of the item. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
           items:
             enum:
               - commercial
@@ -497,7 +497,7 @@ components:
             type: Property
             uri: http://purl.org/dc/terms/description
         openingHours:
-          description: Opening hours of this site.
+          description: Opening hours of this place.
           items:
             type: string
           type: array
@@ -515,7 +515,7 @@ components:
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/owner
         occupier:
-          description: Person or entity using the site.
+          description: Person or entity using the place.
           items:
             anyOf: *anyof
             description: Property. Unique identifier of the entity
@@ -524,14 +524,14 @@ components:
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/occupier
         peopleCapacity:
-          description: Allowed people present at the site
+          description: Allowed people present at the place.
           minimum: 0
           type: number
           x-ngsi:
             model: https://schema.org/Number
             type: Property
         employeeCount:
-          description: Number of employees attached to this site.
+          description: Number of employees attached to this place.
           minimum: 0
           type: number
           x-lb-terms:
@@ -542,7 +542,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#employeeCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         individualWorkstationCount:
-          description: Number of individual workstations available in this site. An individual workstation is a workstation assigned or dedicated to a particular person.
+          description: Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person.
           minimum: 0
           type: number
           x-lb-terms:
@@ -553,7 +553,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#individualWorkstationCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         flexWorkstationCount:
-          description: Number of flex workstations available in this site. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
+          description: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
           minimum: 0
           type: number
           x-lb-terms:
@@ -564,7 +564,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#flexWorkstationCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         peopleOccupancy:
-          description: People present at the site
+          description: People present at the place.
           minimum: 0
           type: number
           x-ngsi:
@@ -580,7 +580,7 @@ components:
             - description: Property. Identifier format of any NGSI entity
               format: uri
               type: string
-          description: Reference to the map containing the building
+          description: Reference to the map containing the item.
           x-ngsi:
             type: Relationship
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap
@@ -656,7 +656,7 @@ components:
             uri: https://schema.org/alternateName
             type: Property
         category:
-          description: 'Category of the building. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
+          description: 'Category of the item. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
           items:
             enum:
               - commercial
@@ -715,7 +715,7 @@ components:
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/owner
         occupier:
-          description: Person or entity using the building.
+          description: Person or entity using the place.
           items:
             anyOf: *anyof
             description: Property. Unique identifier of the entity
@@ -724,14 +724,14 @@ components:
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/occupier
         peopleCapacity:
-          description: Allowed people present at the building
+          description: Allowed people present at the place
           minimum: 0
           type: number
           x-ngsi:
             model: https://schema.org/Number
             type: Property
         employeeCount:
-          description: Number of employees attached to this building.
+          description: Number of employees attached to this place.
           minimum: 0
           type: number
           x-lb-terms:
@@ -742,7 +742,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#employeeCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         individualWorkstationCount:
-          description: Number of individual workstations available in this building. An individual workstation is a workstation assigned or dedicated to a particular person.
+          description: Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person.
           minimum: 0
           type: number
           x-lb-terms:
@@ -753,7 +753,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#individualWorkstationCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         flexWorkstationCount:
-          description: Number of flex workstations available in this building. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
+          description: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
           minimum: 0
           type: number
           x-lb-terms:
@@ -764,7 +764,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#flexWorkstationCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         peopleOccupancy:
-          description: People present at the building
+          description: People present at the place
           minimum: 0
           type: number
           x-ngsi:

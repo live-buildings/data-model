@@ -822,7 +822,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Category of the site. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'"
+                    "@value": "Category of the item. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'"
                 }
             ],
             "rdfs:label": [
@@ -918,7 +918,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Opening hours of this site."
+                    "@value": "Opening hours of this place."
                 }
             ],
             "rdfs:label": [
@@ -950,7 +950,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Person or entity using the site."
+                    "@value": "Person or entity using the place."
                 }
             ],
             "rdfs:label": [
@@ -966,7 +966,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Allowed people present at the site"
+                    "@value": "Allowed people present at the place."
                 }
             ],
             "rdfs:label": [
@@ -982,7 +982,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Number of employees attached to this site."
+                    "@value": "Number of employees attached to this place."
                 }
             ],
             "rdfs:label": [
@@ -998,7 +998,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Number of individual workstations available in this site. An individual workstation is a workstation assigned or dedicated to a particular person."
+                    "@value": "Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person."
                 }
             ],
             "rdfs:label": [
@@ -1014,7 +1014,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Number of flex workstations available in this site. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people."
+                    "@value": "Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people."
                 }
             ],
             "rdfs:label": [
@@ -1030,7 +1030,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "People present at the site"
+                    "@value": "People present at the place."
                 }
             ],
             "rdfs:label": [
@@ -1046,7 +1046,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Reference to the map containing the building"
+                    "@value": "Reference to the map containing the item."
                 }
             ],
             "rdfs:label": [
@@ -1177,7 +1177,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Category of the building. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'"
+                    "@value": "Category of the item. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'"
                 }
             ],
             "rdfs:label": [
@@ -1305,7 +1305,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Person or entity using the building."
+                    "@value": "Person or entity using the place."
                 }
             ],
             "rdfs:label": [
@@ -1321,7 +1321,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Allowed people present at the building"
+                    "@value": "Allowed people present at the place"
                 }
             ],
             "rdfs:label": [
@@ -1337,7 +1337,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Number of employees attached to this building."
+                    "@value": "Number of employees attached to this place."
                 }
             ],
             "rdfs:label": [
@@ -1353,7 +1353,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Number of individual workstations available in this building. An individual workstation is a workstation assigned or dedicated to a particular person."
+                    "@value": "Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person."
                 }
             ],
             "rdfs:label": [
@@ -1369,7 +1369,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Number of flex workstations available in this building. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people."
+                    "@value": "Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people."
                 }
             ],
             "rdfs:label": [
@@ -1385,7 +1385,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "People present at the building"
+                    "@value": "People present at the place"
                 }
             ],
             "rdfs:label": [
