@@ -404,9 +404,199 @@ components:
         enabled: true
       x-ngsi:
         uri: https://w3id.org/bot#Site
-      allOf: # Same properties as Building
-        - $ref: '#/components/schemas/Building'
-        
+      properties:
+        id:
+          anyOf: &anyof
+            - description: Property. Identifier format of any NGSI entity
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+            - description: Property. Identifier format of any NGSI entity
+              format: uri
+              type: string
+          description: Unique identifier of the entity
+          x-ngsi:
+            type: Property
+        type:
+          description: NGSI Entity type
+          enum:
+            - Site
+          type: string
+          x-ngsi:
+            type: Property
+        shortId:
+          description: A short id of this item. Typically an UID that uniquely identifies this item among all items of same type.
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#shortId
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        name:
+          description: The name of this item.
+          type: string
+          x-ngsi:
+            type: Property
+            uri: https://smartdatamodels.org/name
+        shortName:
+          description: A short name for this item. Typically for display purpose.
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#shortName
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        alternateName:
+          description: An alternative name for this item
+          type: string
+          x-ngsi:
+            uri: https://schema.org/alternateName
+            type: Property
+        category:
+          description: 'Category of the site. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
+          items:
+            enum:
+              - commercial
+              - industrial
+              - office
+              - parking
+              - residential
+              - retail
+              - service
+              - technical
+              - warehouse
+            type: string
+          type: array
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category
+        address:
+          $ref: "#/components/schemas/PostalAddress"
+        location:
+          $ref: "#/components/schemas/Location"
+        areaServed:
+          description: The geographic area where a service or offered item is provided
+          type: string
+          x-ngsi:
+            model: https://schema.org/Text
+            type: Property
+            uri: https://schema.org/areaServed
+        dataProvider:
+          description: A sequence of characters identifying the provider of the harmonised data entity.
+          type: string
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
+        description:
+          description: A description of this item
+          type: string
+          x-ngsi:
+            type: Property
+            uri: http://purl.org/dc/terms/description
+        openingHours:
+          description: Opening hours of this site.
+          items:
+            type: string
+          type: array
+          x-ngsi:
+            model: https://schema.org/openingHours
+            type: Property
+            uri: https://schema.org/openingHours
+        owner:
+          description: A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)
+          items:
+            anyOf: *anyof
+            description: Property. Unique identifier of the entity
+          type: array
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/owner
+        occupier:
+          description: Person or entity using the site.
+          items:
+            anyOf: *anyof
+            description: Property. Unique identifier of the entity
+          type: array
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/occupier
+        peopleCapacity:
+          description: Allowed people present at the site
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+        employeeCount:
+          description: Number of employees attached to this site.
+          minimum: 0
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#employeeCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        individualWorkstationCount:
+          description: Number of individual workstations available in this site. An individual workstation is a workstation assigned or dedicated to a particular person.
+          minimum: 0
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#individualWorkstationCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        flexWorkstationCount:
+          description: Number of flex workstations available in this site. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
+          minimum: 0
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#flexWorkstationCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        peopleOccupancy:
+          description: People present at the site
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+        refMap:
+          anyOf:
+            - description: Property. Identifier format of any NGSI entity
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+            - description: Property. Identifier format of any NGSI entity
+              format: uri
+              type: string
+          description: Reference to the map containing the building
+          x-ngsi:
+            type: Relationship
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap
+        source:
+          description: 'A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.'
+          type: string
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
+      required:
+        - type
+        - id
+      type: object
+      x-derived-from: https://smartdatamodels.org/dataModel.Building/Building
+      x-license-url: https://creativecommons.org/licenses/by/4.0/
+
     Building:
       description: Information on a given Building
       x-lb-terms:
@@ -466,71 +656,18 @@ components:
             uri: https://schema.org/alternateName
             type: Property
         category:
-          description: 'Category of the building. Enum:''apartments, bakehouse, barn, bridge, bungalow, bunker, cathedral, cabin, carport, chapel, church, civic, commercial, conservatory, construction, cowshed, detached, digester, dormitory, farm, farm_auxiliary, garage, garages, garbage_shed, grandstand, greenhouse, hangar, hospital, hotel, house, houseboat, hut, industrial, kindergarten, kiosk, mosque, office, parking, pavilion, public, residential, retail, riding_hall, roof, ruins, school, service, shed, shrine, stable, stadium, static_caravan, sty, synagogue, temple, terrace, train_station, transformer_tower, transportation, university, warehouse, water_tower'''
+          description: 'Category of the building. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
           items:
             enum:
-              - apartments
-              - bakehouse
-              - barn
-              - bridge
-              - bungalow
-              - bunker
-              - cathedral
-              - cabin
-              - carport
-              - chapel
-              - church
-              - civic
               - commercial
-              - conservatory
-              - construction
-              - cowshed
-              - detached
-              - digester
-              - dormitory
-              - farm
-              - farm_auxiliary
-              - garage
-              - garages
-              - garbage_shed
-              - grandstand
-              - greenhouse
-              - hangar
-              - hospital
-              - hotel
-              - house
-              - houseboat
-              - hut
               - industrial
-              - kindergarten
-              - kiosk
-              - mosque
               - office
               - parking
-              - pavilion
-              - public
               - residential
               - retail
-              - riding_hall
-              - roof
-              - ruins
-              - school
               - service
-              - shed
-              - shrine
-              - stable
-              - stadium
-              - static_caravan
-              - sty
-              - synagogue
-              - temple
-              - terrace
-              - train_station
-              - transformer_tower
-              - transportation
-              - university
+              - technical
               - warehouse
-              - water_tower
             type: string
           type: array
           x-ngsi:
@@ -553,40 +690,12 @@ components:
           x-ngsi:
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
-        dateCreated:
-          description: Entity creation timestamp. This will usually be allocated by the storage platform.
-          format: date-time
-          type: string
-          x-ngsi:
-            type: Property
-            uri: https://smartdatamodels.org/dateCreated
-        dateModified:
-          description: Timestamp of the last modification of the entity. This will usually be allocated by the storage platform.
-          format: date-time
-          type: string
-          x-ngsi:
-            type: Property
-            uri: https://smartdatamodels.org/dateModified
         description:
           description: A description of this item
           type: string
           x-ngsi:
             type: Property
             uri: http://purl.org/dc/terms/description
-        floorsAboveGround:
-          description: Floors above the ground level
-          type: number
-          x-ngsi:
-            model: https://schema.org/Number
-            type: Property
-            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsAboveGround
-        floorsBelowGround:
-          description: Floors below the ground level
-          type: number
-          x-ngsi:
-            model: https://schema.org/Number
-            type: Property
-            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsBelowGround
         openingHours:
           description: Opening hours of this building.
           items:
@@ -633,7 +742,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#employeeCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         individualWorkstationCount:
-          description: Number of individual workstations available in this building. An individual workstation is a workstation assigned or dedicated to a particular person. 
+          description: Number of individual workstations available in this building. An individual workstation is a workstation assigned or dedicated to a particular person.
           minimum: 0
           type: number
           x-lb-terms:
@@ -644,7 +753,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#individualWorkstationCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         flexWorkstationCount:
-          description: Number of flex workstations available in this building. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people. 
+          description: Number of flex workstations available in this building. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
           minimum: 0
           type: number
           x-lb-terms:
@@ -681,15 +790,26 @@ components:
           x-ngsi:
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
+        floorsAboveGround:
+          description: Floors above the ground level
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsAboveGround
+        floorsBelowGround:
+          description: Floors below the ground level
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsBelowGround
       required:
         - type
         - id
-        - category
-        - address
       type: object
       x-derived-from: https://smartdatamodels.org/dataModel.Building/Building
       x-license-url: https://creativecommons.org/licenses/by/4.0/
-      x-model-schema: https://smart-data-models.github.io/dataModel.Building/Building/schema.json
 
 paths:
   /ngsi-ld/v1/entities:

@@ -112,7 +112,7 @@ A part of the physical world or a virtual world that is inherently both located 
 -  `id`: Unique identifier of the entity
    -  Attribute type: **Property**. 
    -  Required
--  `type`: NGSI Entity type. One of : `Building`.
+-  `type`: NGSI Entity type. One of : `Site`.
    -  Attribute type: **Property**. 
    -  Required
 -  `shortId`: A short id of this item. Typically an UID that uniquely identifies this item among all items of same type.
@@ -127,12 +127,12 @@ A part of the physical world or a virtual world that is inherently both located 
 -  `alternateName`: An alternative name for this item
    -  Attribute type: **Property**. 
    -  Optional
--  `category`: Category of the building. Enum:'apartments, bakehouse, barn, bridge, bungalow, bunker, cathedral, cabin, carport, chapel, church, civic, commercial, conservatory, construction, cowshed, detached, digester, dormitory, farm, farm_auxiliary, garage, garages, garbage_shed, grandstand, greenhouse, hangar, hospital, hotel, house, houseboat, hut, industrial, kindergarten, kiosk, mosque, office, parking, pavilion, public, residential, retail, riding_hall, roof, ruins, school, service, shed, shrine, stable, stadium, static_caravan, sty, synagogue, temple, terrace, train_station, transformer_tower, transportation, university, warehouse, water_tower'
+-  `category`: Category of the site. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'
    -  Attribute type: **Property**. 
-   -  Required
+   -  Optional
 -  `address`: The mailing address of the item
    -  Attribute type: **Property**. [address](https://schema.org/address)
-   -  Required
+   -  Optional
 -  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
    -  Attribute type: **GeoProperty**. 
    -  Optional
@@ -142,43 +142,31 @@ A part of the physical world or a virtual world that is inherently both located 
 -  `dataProvider`: A sequence of characters identifying the provider of the harmonised data entity.
    -  Attribute type: **Property**. 
    -  Optional
--  `dateCreated`: Entity creation timestamp. This will usually be allocated by the storage platform.
-   -  Attribute type: **Property**. 
-   -  Optional
--  `dateModified`: Timestamp of the last modification of the entity. This will usually be allocated by the storage platform.
-   -  Attribute type: **Property**. 
-   -  Optional
 -  `description`: A description of this item
    -  Attribute type: **Property**. 
    -  Optional
--  `floorsAboveGround`: Floors above the ground level
-   -  Attribute type: **Property**. [Number](https://schema.org/Number)
-   -  Optional
--  `floorsBelowGround`: Floors below the ground level
-   -  Attribute type: **Property**. [Number](https://schema.org/Number)
-   -  Optional
--  `openingHours`: Opening hours of this building.
+-  `openingHours`: Opening hours of this site.
    -  Attribute type: **Property**. [openingHours](https://schema.org/openingHours)
    -  Optional
 -  `owner`: A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)
    -  Attribute type: **Property**. 
    -  Optional
--  `occupier`: Person or entity using the building.
+-  `occupier`: Person or entity using the site.
    -  Attribute type: **Property**. 
    -  Optional
--  `peopleCapacity`: Allowed people present at the building
+-  `peopleCapacity`: Allowed people present at the site
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `employeeCount`: Number of employees attached to this building.
+-  `employeeCount`: Number of employees attached to this site.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `individualWorkstationCount`: Number of individual workstations available in this building. An individual workstation is a workstation assigned or dedicated to a particular person.
+-  `individualWorkstationCount`: Number of individual workstations available in this site. An individual workstation is a workstation assigned or dedicated to a particular person.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `flexWorkstationCount`: Number of flex workstations available in this building. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
+-  `flexWorkstationCount`: Number of flex workstations available in this site. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
--  `peopleOccupancy`: People present at the building
+-  `peopleOccupancy`: People present at the site
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `refMap`: Reference to the map containing the building
@@ -211,12 +199,12 @@ Information on a given Building
 -  `alternateName`: An alternative name for this item
    -  Attribute type: **Property**. 
    -  Optional
--  `category`: Category of the building. Enum:'apartments, bakehouse, barn, bridge, bungalow, bunker, cathedral, cabin, carport, chapel, church, civic, commercial, conservatory, construction, cowshed, detached, digester, dormitory, farm, farm_auxiliary, garage, garages, garbage_shed, grandstand, greenhouse, hangar, hospital, hotel, house, houseboat, hut, industrial, kindergarten, kiosk, mosque, office, parking, pavilion, public, residential, retail, riding_hall, roof, ruins, school, service, shed, shrine, stable, stadium, static_caravan, sty, synagogue, temple, terrace, train_station, transformer_tower, transportation, university, warehouse, water_tower'
+-  `category`: Category of the building. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'
    -  Attribute type: **Property**. 
-   -  Required
+   -  Optional
 -  `address`: The mailing address of the item
    -  Attribute type: **Property**. [address](https://schema.org/address)
-   -  Required
+   -  Optional
 -  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
    -  Attribute type: **GeoProperty**. 
    -  Optional
@@ -226,20 +214,8 @@ Information on a given Building
 -  `dataProvider`: A sequence of characters identifying the provider of the harmonised data entity.
    -  Attribute type: **Property**. 
    -  Optional
--  `dateCreated`: Entity creation timestamp. This will usually be allocated by the storage platform.
-   -  Attribute type: **Property**. 
-   -  Optional
--  `dateModified`: Timestamp of the last modification of the entity. This will usually be allocated by the storage platform.
-   -  Attribute type: **Property**. 
-   -  Optional
 -  `description`: A description of this item
    -  Attribute type: **Property**. 
-   -  Optional
--  `floorsAboveGround`: Floors above the ground level
-   -  Attribute type: **Property**. [Number](https://schema.org/Number)
-   -  Optional
--  `floorsBelowGround`: Floors below the ground level
-   -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `openingHours`: Opening hours of this building.
    -  Attribute type: **Property**. [openingHours](https://schema.org/openingHours)
@@ -270,6 +246,12 @@ Information on a given Building
    -  Optional
 -  `source`: A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.
    -  Attribute type: **Property**. 
+   -  Optional
+-  `floorsAboveGround`: Floors above the ground level
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+-  `floorsBelowGround`: Floors below the ground level
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 
 

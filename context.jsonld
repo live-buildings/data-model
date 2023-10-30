@@ -737,6 +737,342 @@
             }
         },
         {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Unique identifier of the entity"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "id"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A short id of this item. Typically an UID that uniquely identifies this item among all items of same type."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "shortId"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The name of this item."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "name"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A short name for this item. Typically for display purpose."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "shortName"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "An alternative name for this item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "alternateName"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Category of the site. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "category"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The mailing address of the item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "address"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "location"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The geographic area where a service or offered item is provided"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "areaServed"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A sequence of characters identifying the provider of the harmonised data entity."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dataProvider"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A description of this item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "description"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Opening hours of this site."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "openingHours"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "owner"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Person or entity using the site."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "occupier"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Allowed people present at the site"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "peopleCapacity"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees attached to this site."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "employeeCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of individual workstations available in this site. An individual workstation is a workstation assigned or dedicated to a particular person."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "individualWorkstationCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of flex workstations available in this site. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "flexWorkstationCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "People present at the site"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "peopleOccupancy"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Reference to the map containing the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "refMap"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "source"
+                }
+            ]
+        },
+        {
             "@id": "https://smartdatamodels.org/dataModel.Building/Building",
             "@type": "rdfs:Class",
             "rdfs:comment": [
@@ -841,7 +1177,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Category of the building. Enum:'apartments, bakehouse, barn, bridge, bungalow, bunker, cathedral, cabin, carport, chapel, church, civic, commercial, conservatory, construction, cowshed, detached, digester, dormitory, farm, farm_auxiliary, garage, garages, garbage_shed, grandstand, greenhouse, hangar, hospital, hotel, house, houseboat, hut, industrial, kindergarten, kiosk, mosque, office, parking, pavilion, public, residential, retail, riding_hall, roof, ruins, school, service, shed, shrine, stable, stadium, static_caravan, sty, synagogue, temple, terrace, train_station, transformer_tower, transportation, university, warehouse, water_tower'"
+                    "@value": "Category of the building. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'"
                 }
             ],
             "rdfs:label": [
@@ -921,38 +1257,6 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Entity creation timestamp. This will usually be allocated by the storage platform."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "dateCreated"
-                }
-            ]
-        },
-        {
-            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Timestamp of the last modification of the entity. This will usually be allocated by the storage platform."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "dateModified"
-                }
-            ]
-        },
-        {
-            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
                     "@value": "A description of this item"
                 }
             ],
@@ -960,38 +1264,6 @@
                 {
                     "@language": "en",
                     "@value": "description"
-                }
-            ]
-        },
-        {
-            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Floors above the ground level"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "floorsAboveGround"
-                }
-            ]
-        },
-        {
-            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Floors below the ground level"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "floorsBelowGround"
                 }
             ]
         },
@@ -1152,6 +1424,38 @@
                 {
                     "@language": "en",
                     "@value": "source"
+                }
+            ]
+        },
+        {
+            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Floors above the ground level"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "floorsAboveGround"
+                }
+            ]
+        },
+        {
+            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Floors below the ground level"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "floorsBelowGround"
                 }
             ]
         }
