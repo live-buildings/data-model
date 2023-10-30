@@ -119,11 +119,11 @@
                 "@type": "xsd:array"
             },
             "peopleCapacity": {
-                "@id": "https://w3id.org/peopleCapacity",
+                "@id": "undefinedpeopleCapacity",
                 "@type": "xsd:number"
             },
             "peopleOccupancy": {
-                "@id": "https://w3id.org/peopleOccupancy",
+                "@id": "undefinedpeopleOccupancy",
                 "@type": "xsd:number"
             },
             "postOfficeBoxNumber": {

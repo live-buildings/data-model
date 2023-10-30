@@ -817,7 +817,6 @@ components:
         enabled: true
       x-ngsi:
         uri: https://w3id.org/bot#Storey
-        uri-prefix: https://w3id.org/
       properties:
         id:
           anyOf: &anyof
