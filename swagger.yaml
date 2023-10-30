@@ -697,7 +697,7 @@ components:
             type: Property
             uri: http://purl.org/dc/terms/description
         openingHours:
-          description: Opening hours of this building.
+          description: Opening hours of this place.
           items:
             type: string
           type: array
@@ -804,6 +804,206 @@ components:
             model: https://schema.org/Number
             type: Property
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsBelowGround
+      required:
+        - type
+        - id
+      type: object
+      x-derived-from: https://smartdatamodels.org/dataModel.Building/Building
+      x-license-url: https://creativecommons.org/licenses/by/4.0/
+
+    Storey:
+      description: 'A part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. A bot:Storey is contained in one or more buildings, and is intended to contain one or more spaces that are horizontally connected. Storeys of a building are connected by means of vertical connections such as elevators and stairs. A bot:Storey encompasses both zones above and below ground, for example, a building with 21 floors above ground, one ground floor and 3 basements is equal to the sentence: A building has 25 instances of bot:Storey.'
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://w3id.org/bot#Storey
+        uri-prefix: https://w3id.org/
+      properties:
+        id:
+          anyOf: &anyof
+            - description: Property. Identifier format of any NGSI entity
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+            - description: Property. Identifier format of any NGSI entity
+              format: uri
+              type: string
+          description: Unique identifier of the entity
+          x-ngsi:
+            type: Property
+        type:
+          description: NGSI Entity type
+          enum:
+            - Storey
+          type: string
+          x-ngsi:
+            type: Property
+        shortId:
+          description: A short id of this item. Typically an UID that uniquely identifies this item among all items of same type.
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#shortId
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        name:
+          description: The name of this item.
+          type: string
+          x-ngsi:
+            type: Property
+            uri: https://smartdatamodels.org/name
+        shortName:
+          description: A short name for this item. Typically for display purpose.
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#shortName
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        alternateName:
+          description: An alternative name for this item
+          type: string
+          x-ngsi:
+            uri: https://schema.org/alternateName
+            type: Property
+        category:
+          description: 'Category of the item. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
+          items:
+            enum:
+              - commercial
+              - industrial
+              - office
+              - parking
+              - residential
+              - retail
+              - service
+              - technical
+              - warehouse
+            type: string
+          type: array
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category
+        address:
+          $ref: "#/components/schemas/PostalAddress"
+        location:
+          $ref: "#/components/schemas/Location"
+        areaServed:
+          description: The geographic area where a service or offered item is provided
+          type: string
+          x-ngsi:
+            model: https://schema.org/Text
+            type: Property
+            uri: https://schema.org/areaServed
+        dataProvider:
+          description: A sequence of characters identifying the provider of the harmonised data entity.
+          type: string
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
+        description:
+          description: A description of this item
+          type: string
+          x-ngsi:
+            type: Property
+            uri: http://purl.org/dc/terms/description
+        openingHours:
+          description: Opening hours of this place.
+          items:
+            type: string
+          type: array
+          x-ngsi:
+            model: https://schema.org/openingHours
+            type: Property
+            uri: https://schema.org/openingHours
+        owner:
+          description: A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)
+          items:
+            anyOf: *anyof
+            description: Property. Unique identifier of the entity
+          type: array
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/owner
+        occupier:
+          description: Person or entity using the place.
+          items:
+            anyOf: *anyof
+            description: Property. Unique identifier of the entity
+          type: array
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/occupier
+        peopleCapacity:
+          description: Allowed people present at the place
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+        employeeCount:
+          description: Number of employees attached to this place.
+          minimum: 0
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#employeeCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        individualWorkstationCount:
+          description: Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person.
+          minimum: 0
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#individualWorkstationCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        flexWorkstationCount:
+          description: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
+          minimum: 0
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#flexWorkstationCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        peopleOccupancy:
+          description: People present at the place
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+        refMap:
+          anyOf:
+            - description: Property. Identifier format of any NGSI entity
+              maxLength: 256
+              minLength: 1
+              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+              type: string
+            - description: Property. Identifier format of any NGSI entity
+              format: uri
+              type: string
+          description: Reference to the map containing the building
+          x-ngsi:
+            type: Relationship
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap
+        source:
+          description: 'A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.'
+          type: string
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
       required:
         - type
         - id

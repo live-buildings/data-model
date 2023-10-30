@@ -217,7 +217,7 @@ Information on a given Building
 -  `description`: A description of this item
    -  Attribute type: **Property**. 
    -  Optional
--  `openingHours`: Opening hours of this building.
+-  `openingHours`: Opening hours of this place.
    -  Attribute type: **Property**. [openingHours](https://schema.org/openingHours)
    -  Optional
 -  `owner`: A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)
@@ -252,6 +252,78 @@ Information on a given Building
    -  Optional
 -  `floorsBelowGround`: Floors below the ground level
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+
+
+
+# Storey
+
+A part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. A bot:Storey is contained in one or more buildings, and is intended to contain one or more spaces that are horizontally connected. Storeys of a building are connected by means of vertical connections such as elevators and stairs. A bot:Storey encompasses both zones above and below ground, for example, a building with 21 floors above ground, one ground floor and 3 basements is equal to the sentence: A building has 25 instances of bot:Storey.
+-  `id`: Unique identifier of the entity
+   -  Attribute type: **Property**. 
+   -  Required
+-  `type`: NGSI Entity type. One of : `Storey`.
+   -  Attribute type: **Property**. 
+   -  Required
+-  `shortId`: A short id of this item. Typically an UID that uniquely identifies this item among all items of same type.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `name`: The name of this item.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `shortName`: A short name for this item. Typically for display purpose.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `alternateName`: An alternative name for this item
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `category`: Category of the item. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `address`: The mailing address of the item
+   -  Attribute type: **Property**. [address](https://schema.org/address)
+   -  Optional
+-  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
+   -  Attribute type: **GeoProperty**. 
+   -  Optional
+-  `areaServed`: The geographic area where a service or offered item is provided
+   -  Attribute type: **Property**. [Text](https://schema.org/Text)
+   -  Optional
+-  `dataProvider`: A sequence of characters identifying the provider of the harmonised data entity.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `description`: A description of this item
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `openingHours`: Opening hours of this place.
+   -  Attribute type: **Property**. [openingHours](https://schema.org/openingHours)
+   -  Optional
+-  `owner`: A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `occupier`: Person or entity using the place.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `peopleCapacity`: Allowed people present at the place
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+-  `employeeCount`: Number of employees attached to this place.
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+-  `individualWorkstationCount`: Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person.
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+-  `flexWorkstationCount`: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+-  `peopleOccupancy`: People present at the place
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+-  `refMap`: Reference to the map containing the building
+   -  Attribute type: **Relationship**. 
+   -  Optional
+-  `source`: A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.
+   -  Attribute type: **Property**. 
    -  Optional
 
 
