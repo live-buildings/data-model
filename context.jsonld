@@ -119,11 +119,11 @@
                 "@type": "xsd:array"
             },
             "peopleCapacity": {
-                "@id": "undefinedpeopleCapacity",
+                "@id": "https://smartdatamodels.org/dataModel.Building/peopleCapacity",
                 "@type": "xsd:number"
             },
             "peopleOccupancy": {
-                "@id": "undefinedpeopleOccupancy",
+                "@id": "https://smartdatamodels.org/dataModel.Building/peopleOccupancy",
                 "@type": "xsd:number"
             },
             "postOfficeBoxNumber": {
