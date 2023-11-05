@@ -6,12 +6,17 @@
             "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
             "xsd": "http://www.w3.org/2001/XMLSchema#",
             "Building": "https://smartdatamodels.org/dataModel.Building/Building",
+            "ContainedIn": "https://schema.org/containedIn",
             "CrossDomain": "https://live-buildings.github.io/data-model/none",
             "Location": "https://uri.etsi.org/ngsi-ld/location",
             "Organization": "https://smartdatamodels.org/dataModel.Organization/Organization",
             "PostalAddress": "https://schema.org/PostalAddress",
             "Site": "https://w3id.org/bot#Site",
             "Storey": "https://w3id.org/bot#Storey",
+            "additionalProperty": {
+                "@id": "https://schema.org/additionalProperty",
+                "@type": "xsd:string"
+            },
             "address": "https://schema.org/PostalAddress",
             "addressCountry": {
                 "@id": "https://schema.org/addressCountry",
@@ -46,9 +51,22 @@
                 "@id": "https://smartdatamodels.org/dataModel.Organization/bestRating",
                 "@type": "xsd:number"
             },
+            "building": {
+                "@id": "https://smartdatamodels.org/dataModel.Building/Building",
+                "@type": "xsd:string"
+            },
             "category": {
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category",
                 "@type": "xsd:array"
+            },
+            "containedIn": "https://schema.org/containedIn",
+            "country": {
+                "@id": "https://schema.org/country",
+                "@type": "xsd:string"
+            },
+            "countrySubdivision": {
+                "@id": "https://live-buildings.github.io/data-model/terms#countrySubdivision",
+                "@type": "xsd:string"
             },
             "dataProvider": {
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider",
@@ -61,6 +79,10 @@
             "dateModified": {
                 "@id": "https://smartdatamodels.org/dateModified",
                 "@type": "xs:dateTime"
+            },
+            "department": {
+                "@id": "https://live-buildings.github.io/data-model/terms#department",
+                "@type": "xsd:string"
             },
             "description": {
                 "@id": "http://purl.org/dc/terms/description",
@@ -96,6 +118,10 @@
             },
             "legalName": {
                 "@id": "https://smartdatamodels.org/dataModel.Organization/legalName",
+                "@type": "xsd:string"
+            },
+            "locality": {
+                "@id": "https://live-buildings.github.io/data-model/terms#locality",
                 "@type": "xsd:string"
             },
             "location": {
@@ -142,6 +168,10 @@
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap",
                 "@type": "@id"
             },
+            "region": {
+                "@id": "https://live-buildings.github.io/data-model/terms#region",
+                "@type": "xsd:string"
+            },
             "reviewAspect": {
                 "@id": "https://smartdatamodels.org/dataModel.Organization/reviewAspect",
                 "@type": "xsd:string"
@@ -158,8 +188,16 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#shortName",
                 "@type": "xsd:string"
             },
+            "site": {
+                "@id": "https://w3id.org/bot#Site",
+                "@type": "xsd:string"
+            },
             "source": {
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source",
+                "@type": "xsd:string"
+            },
+            "storey": {
+                "@id": "https://w3id.org/bot#Storey",
                 "@type": "xsd:string"
             },
             "streetAddress": {
@@ -168,6 +206,10 @@
             },
             "taxID": {
                 "@id": "https://smartdatamodels.org/dataModel.Organization/taxID",
+                "@type": "xsd:string"
+            },
+            "territorialRealEstateDivision": {
+                "@id": "https://live-buildings.github.io/data-model/terms#territorialRealEstateDivision",
                 "@type": "xsd:string"
             },
             "url": {
@@ -230,6 +272,22 @@
             ]
         },
         {
+            "@id": "https://live-buildings.github.io/data-model/none",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A property-value pair representing an additional characteristic of the entity, e.g. a product feature or another characteristic for which there is no matching property."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "additionalProperty"
+                }
+            ]
+        },
+        {
             "@id": "https://schema.org/PostalAddress",
             "@type": "rdfs:Class",
             "rdfs:comment": [
@@ -254,7 +312,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Property. The country. For example, Spain. Model:'https://schema.org/addressCountry'. In french 'Pays'"
+                    "@value": "Property. The country. For example, Spain. Model:'https://schema.org/addressCountry'. In french: 'Pays'"
                 }
             ],
             "rdfs:label": [
@@ -270,7 +328,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Property. The region in which the locality is, and which is in the country. Model:'https://schema.org/addressRegion'. In french 'Region'"
+                    "@value": "Property. The region in which the department is, and which is in the country. Model:'https://schema.org/addressRegion'. In french: 'Region'"
                 }
             ],
             "rdfs:label": [
@@ -286,7 +344,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Property. The department in which the locality is, and which is in the region. In french 'Departement'"
+                    "@value": "Property. The department in which the locality is, and which is in the region. In french: 'Departement'"
                 }
             ],
             "rdfs:label": [
@@ -302,7 +360,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Property. The locality in which the street address is, and which is in the region. Model:'https://schema.org/addressLocality'. In french 'Commune'"
+                    "@value": "Property. The locality in which the street address is, and which is in the region. Model:'https://schema.org/addressLocality'. In french: 'Commune'"
                 }
             ],
             "rdfs:label": [
@@ -334,7 +392,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Property. The postal code. For example, 24004. Model:'https://schema.org/https://schema.org/postalCode'. In french 'Code Postal'"
+                    "@value": "Property. The postal code. For example, 24004. Model:'https://schema.org/https://schema.org/postalCode'. In french: 'Code Postal'"
                 }
             ],
             "rdfs:label": [
@@ -357,6 +415,169 @@
                 {
                     "@language": "en",
                     "@value": "streetAddress"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The basic containment relation between a place and one that contains it."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "ContainedIn"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The country the item is contained in. For example: \"urn:AdministrativeArea:Country:FR\". Model:'https://schema.org/country'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "country"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. One or several (an array of) administrative subdivision of a Country the item is contained in. E.g: \"urn:AdministrativeArea:CountrySubdivision:FR:FranceEntiere\""
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "countrySubdivision"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The region the item is contained in. Typically, a region contains a department, and is contained in a country and/or some countrySubdivision(s). Model:'https://schema.org/addressRegion'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "region"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The department the item is contained in. Typically, a department contains a locality and is contained in a region."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "department"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The locality the item is contained in. Typically, a locality contains streets and sites, and is contained in a department. In french: 'Commune'"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "locality"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The bot:Site(s) the item is contained in"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "site"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The Building the item is contained in"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "building"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The Storey or Floor the item is contained in"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "storey"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: \"urn:AdministrativeArea:orange:dit:IDF\""
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "territorialRealEstateDivision"
                 }
             ]
         },
@@ -855,6 +1076,22 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
+                    "@value": "The basic containment relation between a place and one that contains it."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "containedIn"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Site",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
                     "@value": "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
                 }
             ],
@@ -1201,6 +1438,22 @@
                 {
                     "@language": "en",
                     "@value": "address"
+                }
+            ]
+        },
+        {
+            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The basic containment relation between a place and one that contains it."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "containedIn"
                 }
             ]
         },
@@ -1588,6 +1841,22 @@
                 {
                     "@language": "en",
                     "@value": "address"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Storey",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The basic containment relation between a place and one that contains it."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "containedIn"
                 }
             ]
         },

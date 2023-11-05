@@ -25,6 +25,12 @@ components:
           x-ngsi:
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
             type: Property
+        additionalProperty:
+          description: A property-value pair representing an additional characteristic of the entity, e.g. a product feature or another characteristic for which there is no matching property.
+          type: string
+          x-ngsi:
+            uri: https://schema.org/additionalProperty
+            type: Property
 
     PostalAddress:
       description: The mailing address of the item
@@ -38,13 +44,13 @@ components:
         type: Property
       properties:
         addressCountry:
-          description: 'Property. The country. For example, Spain. Model:''https://schema.org/addressCountry''. In french ''Pays'''
+          description: 'Property. The country. For example, Spain. Model:''https://schema.org/addressCountry''. In french: ''Pays'''
           type: string
         addressRegion:
-          description: 'Property. The region in which the locality is, and which is in the country. Model:''https://schema.org/addressRegion''. In french ''Region'''
+          description: 'Property. The region in which the department is, and which is in the country. Model:''https://schema.org/addressRegion''. In french: ''Region'''
           type: string
         addressDepartment:
-          description: 'Property. The department in which the locality is, and which is in the region. In french ''Departement'''
+          description: 'Property. The department in which the locality is, and which is in the region. In french: ''Departement'''
           type: string
           x-lb-terms:
             enabled: true
@@ -52,17 +58,87 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#addressDepartment
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         addressLocality:
-          description: 'Property. The locality in which the street address is, and which is in the region. Model:''https://schema.org/addressLocality''. In french ''Commune'''
+          description: 'Property. The locality in which the street address is, and which is in the region. Model:''https://schema.org/addressLocality''. In french: ''Commune'''
           type: string
         postOfficeBoxNumber:
           description: 'Property. The post office box number for PO box addresses. For example, 03578. Model:''https://schema.org/postOfficeBoxNumber'''
           type: string
         postalCode:
-          description: 'Property. The postal code. For example, 24004. Model:''https://schema.org/https://schema.org/postalCode''. In french ''Code Postal'''
+          description: 'Property. The postal code. For example, 24004. Model:''https://schema.org/https://schema.org/postalCode''. In french: ''Code Postal'''
           type: string
         streetAddress:
           description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''Numero et rue'''
           type: string
+
+    ContainedIn:
+      description: The basic containment relation between a place and one that contains it.
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://schema.org/containedIn
+        uri-prefix: https://schema.org/
+        model: https://schema.org/containedIn
+        type: Property
+      properties:
+        country:
+          description: 'Relationship. The country the item is contained in. For example: "urn:AdministrativeArea:Country:FR". Model:''https://schema.org/country''.'
+          type: string
+        countrySubdivision:
+          description: 'Relationship. One or several (an array of) administrative subdivision of a Country the item is contained in. E.g: "urn:AdministrativeArea:CountrySubdivision:FR:FranceEntiere"'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#countrySubdivision
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        region:
+          description: 'Relationship. The region the item is contained in. Typically, a region contains a department, and is contained in a country and/or some countrySubdivision(s). Model:''https://schema.org/addressRegion''.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#region
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        department:
+          description: 'Relationship. The department the item is contained in. Typically, a department contains a locality and is contained in a region.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#department
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        locality:
+          description: 'Relationship. The locality the item is contained in. Typically, a locality contains streets and sites, and is contained in a department. In french: ''Commune'''
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#locality
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        site:
+          description: 'Relationship. The bot:Site(s) the item is contained in'
+          type: string
+          x-ngsi:
+            uri: https://w3id.org/bot#Site
+        building:
+          description: 'Relationship. The Building the item is contained in'
+          type: string
+          x-ngsi:
+            uri: https://smartdatamodels.org/dataModel.Building/Building
+        storey:
+          description: 'Relationship. The Storey or Floor the item is contained in'
+          type: string
+          x-ngsi:
+            uri: https://w3id.org/bot#Storey
+        territorialRealEstateDivision:
+          description: 'Relationship. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: "urn:AdministrativeArea:orange:dit:IDF"'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#territorialRealEstateDivision
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
 
     Location:
       description: 'Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon'
@@ -475,6 +551,8 @@ components:
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category
         address:
           $ref: "#/components/schemas/PostalAddress"
+        containedIn:
+          $ref: "#/components/schemas/ContainedIn"
         location:
           $ref: "#/components/schemas/Location"
         areaServed:
@@ -677,6 +755,8 @@ components:
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category
         address:
           $ref: "#/components/schemas/PostalAddress"
+        containedIn:
+          $ref: "#/components/schemas/ContainedIn"
         location:
           $ref: "#/components/schemas/Location"
         areaServed:
@@ -892,6 +972,8 @@ components:
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category
         address:
           $ref: "#/components/schemas/PostalAddress"
+        containedIn:
+          $ref: "#/components/schemas/ContainedIn"
         location:
           $ref: "#/components/schemas/Location"
         areaServed:

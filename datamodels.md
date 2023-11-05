@@ -7,31 +7,67 @@ Some cross-domain properties.
 -  `source`: A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.
    -  Attribute type: **Property**. 
    -  Optional
+-  `additionalProperty`: A property-value pair representing an additional characteristic of the entity, e.g. a product feature or another characteristic for which there is no matching property.
+   -  Attribute type: **Property**. 
+   -  Optional
 
 
 
 # PostalAddress
 
 The mailing address of the item
--  `addressCountry`: Property. The country. For example, Spain. Model:'https://schema.org/addressCountry'. In french 'Pays'
+-  `addressCountry`: Property. The country. For example, Spain. Model:'https://schema.org/addressCountry'. In french: 'Pays'
    -  Attribute type: **Property**. 
    -  Optional
--  `addressRegion`: Property. The region in which the locality is, and which is in the country. Model:'https://schema.org/addressRegion'. In french 'Region'
+-  `addressRegion`: Property. The region in which the department is, and which is in the country. Model:'https://schema.org/addressRegion'. In french: 'Region'
    -  Attribute type: **Property**. 
    -  Optional
--  `addressDepartment`: Property. The department in which the locality is, and which is in the region. In french 'Departement'
+-  `addressDepartment`: Property. The department in which the locality is, and which is in the region. In french: 'Departement'
    -  Attribute type: **Property**. 
    -  Optional
--  `addressLocality`: Property. The locality in which the street address is, and which is in the region. Model:'https://schema.org/addressLocality'. In french 'Commune'
+-  `addressLocality`: Property. The locality in which the street address is, and which is in the region. Model:'https://schema.org/addressLocality'. In french: 'Commune'
    -  Attribute type: **Property**. 
    -  Optional
 -  `postOfficeBoxNumber`: Property. The post office box number for PO box addresses. For example, 03578. Model:'https://schema.org/postOfficeBoxNumber'
    -  Attribute type: **Property**. 
    -  Optional
--  `postalCode`: Property. The postal code. For example, 24004. Model:'https://schema.org/https://schema.org/postalCode'. In french 'Code Postal'
+-  `postalCode`: Property. The postal code. For example, 24004. Model:'https://schema.org/https://schema.org/postalCode'. In french: 'Code Postal'
    -  Attribute type: **Property**. 
    -  Optional
 -  `streetAddress`: Property. The street address. Model:'https://schema.org/streetAddress'. In french: 'Numero et rue'
+   -  Attribute type: **Property**. 
+   -  Optional
+
+
+
+# ContainedIn
+
+The basic containment relation between a place and one that contains it.
+-  `country`: Relationship. The country the item is contained in. For example: "urn:AdministrativeArea:Country:FR". Model:'https://schema.org/country'.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `countrySubdivision`: Relationship. One or several (an array of) administrative subdivision of a Country the item is contained in. E.g: "urn:AdministrativeArea:CountrySubdivision:FR:FranceEntiere"
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `region`: Relationship. The region the item is contained in. Typically, a region contains a department, and is contained in a country and/or some countrySubdivision(s). Model:'https://schema.org/addressRegion'.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `department`: Relationship. The department the item is contained in. Typically, a department contains a locality and is contained in a region.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `locality`: Relationship. The locality the item is contained in. Typically, a locality contains streets and sites, and is contained in a department. In french: 'Commune'
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `site`: Relationship. The bot:Site(s) the item is contained in
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `building`: Relationship. The Building the item is contained in
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `storey`: Relationship. The Storey or Floor the item is contained in
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `territorialRealEstateDivision`: Relationship. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: "urn:AdministrativeArea:orange:dit:IDF"
    -  Attribute type: **Property**. 
    -  Optional
 
@@ -133,6 +169,9 @@ A part of the physical world or a virtual world that is inherently both located 
 -  `address`: The mailing address of the item
    -  Attribute type: **Property**. [address](https://schema.org/address)
    -  Optional
+-  `containedIn`: The basic containment relation between a place and one that contains it.
+   -  Attribute type: **Property**. [containedIn](https://schema.org/containedIn)
+   -  Optional
 -  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
    -  Attribute type: **GeoProperty**. 
    -  Optional
@@ -204,6 +243,9 @@ Information on a given Building
    -  Optional
 -  `address`: The mailing address of the item
    -  Attribute type: **Property**. [address](https://schema.org/address)
+   -  Optional
+-  `containedIn`: The basic containment relation between a place and one that contains it.
+   -  Attribute type: **Property**. [containedIn](https://schema.org/containedIn)
    -  Optional
 -  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
    -  Attribute type: **GeoProperty**. 
@@ -282,6 +324,9 @@ A part of the physical world or a virtual world that is inherently both located 
    -  Optional
 -  `address`: The mailing address of the item
    -  Attribute type: **Property**. [address](https://schema.org/address)
+   -  Optional
+-  `containedIn`: The basic containment relation between a place and one that contains it.
+   -  Attribute type: **Property**. [containedIn](https://schema.org/containedIn)
    -  Optional
 -  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
    -  Attribute type: **GeoProperty**. 
