@@ -40,7 +40,7 @@ The mailing address of the item
 
 
 
-# IsContainedIn
+# ContainedIn
 
 The basic containment relation between a place and one that contains it.
 -  `country`: Relationship. The country the item is contained in. For example: "urn:AdministrativeArea:Country:FR". Model:'https://schema.org/country'.

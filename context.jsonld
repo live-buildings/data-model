@@ -6,8 +6,8 @@
             "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
             "xsd": "http://www.w3.org/2001/XMLSchema#",
             "Building": "https://smartdatamodels.org/dataModel.Building/Building",
+            "ContainedIn": "https://schema.org/containedIn",
             "CrossDomain": "https://live-buildings.github.io/data-model/none",
-            "IsContainedIn": "https://schema.org/containedIn",
             "Location": "https://uri.etsi.org/ngsi-ld/location",
             "Organization": "https://smartdatamodels.org/dataModel.Organization/Organization",
             "PostalAddress": "https://schema.org/PostalAddress",
@@ -430,7 +430,7 @@
             "rdfs:label": [
                 {
                     "@language": "en",
-                    "@value": "IsContainedIn"
+                    "@value": "ContainedIn"
                 }
             ],
             "rdfs:subClassOf": {
