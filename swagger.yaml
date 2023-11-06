@@ -120,17 +120,20 @@ components:
           description: 'Relationship. The bot:Site(s) the item is contained in'
           type: string
           x-ngsi:
-            uri: https://w3id.org/bot#Site
+            uri: https://live-buildings.github.io/data-model/terms#site
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         building:
           description: 'Relationship. The Building the item is contained in'
           type: string
           x-ngsi:
-            uri: https://smartdatamodels.org/dataModel.Building/Building
+            uri: https://live-buildings.github.io/data-model/terms#building
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         storey:
           description: 'Relationship. The Storey or Floor the item is contained in'
           type: string
           x-ngsi:
-            uri: https://w3id.org/bot#Storey
+            uri: https://live-buildings.github.io/data-model/terms#storey
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         territorialRealEstateDivision:
           description: 'Relationship. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: "urn:AdministrativeArea:orange:dit:IDF"'
           type: string
