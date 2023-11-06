@@ -70,7 +70,7 @@ components:
           description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''Numero et rue'''
           type: string
 
-    ContainedIn:
+    IsContainedIn:
       description: The basic containment relation between a place and one that contains it.
       type: object
       x-lb-terms:
@@ -555,7 +555,7 @@ components:
         address:
           $ref: "#/components/schemas/PostalAddress"
         containedIn:
-          $ref: "#/components/schemas/ContainedIn"
+          $ref: "#/components/schemas/IsContainedIn"
         location:
           $ref: "#/components/schemas/Location"
         areaServed:
@@ -759,7 +759,7 @@ components:
         address:
           $ref: "#/components/schemas/PostalAddress"
         containedIn:
-          $ref: "#/components/schemas/ContainedIn"
+          $ref: "#/components/schemas/IsContainedIn"
         location:
           $ref: "#/components/schemas/Location"
         areaServed:
@@ -976,7 +976,7 @@ components:
         address:
           $ref: "#/components/schemas/PostalAddress"
         containedIn:
-          $ref: "#/components/schemas/ContainedIn"
+          $ref: "#/components/schemas/IsContainedIn"
         location:
           $ref: "#/components/schemas/Location"
         areaServed:
