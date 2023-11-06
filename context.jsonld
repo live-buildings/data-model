@@ -52,7 +52,7 @@
                 "@type": "xsd:number"
             },
             "building": {
-                "@id": "https://smartdatamodels.org/dataModel.Building/Building",
+                "@id": "https://live-buildings.github.io/data-model/terms#building",
                 "@type": "xsd:string"
             },
             "category": {
@@ -189,7 +189,7 @@
                 "@type": "xsd:string"
             },
             "site": {
-                "@id": "https://w3id.org/bot#Site",
+                "@id": "https://live-buildings.github.io/data-model/terms#site",
                 "@type": "xsd:string"
             },
             "source": {
@@ -197,7 +197,7 @@
                 "@type": "xsd:string"
             },
             "storey": {
-                "@id": "https://w3id.org/bot#Storey",
+                "@id": "https://live-buildings.github.io/data-model/terms#storey",
                 "@type": "xsd:string"
             },
             "streetAddress": {
