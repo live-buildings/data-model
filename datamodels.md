@@ -73,6 +73,66 @@ The basic containment relation between a place and one that contains it.
 
 
 
+# PeopleOccupancy
+
+People present at the place, given from a variety of points of view. These points of view are typically different ways of estimating occupancy.
+-  `peopleOccupancyMainView`: Number of people present at the place, from the main viewpoint, probably the most accurate, or the one most used.
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+-  `peopleOccupancyAccessControlView`: Number of people present at the place, from the access control system viewpoint.
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+-  `peopleOccupancyIPNetworkView`: Number of people present at the place, from an IP network point of view. Typically, this is the number of people present at the place, estimated on the basis of the number of IP connections on the network.
+   -  Attribute type: **Property**. [Number](https://schema.org/Number)
+   -  Optional
+
+
+
+# AdministrativeArea
+
+A geographical region, typically under the jurisdiction of a particular government, or company.
+-  `id`: Unique identifier of the entity
+   -  Attribute type: **Property**. 
+   -  Required
+-  `type`: NGSI Entity type. One of : `Building`.
+   -  Attribute type: **Property**. 
+   -  Required
+-  `shortId`: A short id of this item. Typically an UID that uniquely identifies this item among all items of same type.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `name`: The name of this item.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `shortName`: A short name for this item. Typically for display purpose.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `alternateName`: An alternative name for this item
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `category`: Category of the item. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `address`: The mailing address of the item
+   -  Attribute type: **Property**. [address](https://schema.org/address)
+   -  Optional
+-  `containedIn`: The basic containment relation between a place and one that contains it.
+   -  Attribute type: **Property**. [containedIn](https://schema.org/containedIn)
+   -  Optional
+-  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
+   -  Attribute type: **GeoProperty**. 
+   -  Optional
+-  `dataProvider`: A sequence of characters identifying the provider of the harmonised data entity.
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `description`: A description of this item
+   -  Attribute type: **Property**. 
+   -  Optional
+-  `source`: A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.
+   -  Attribute type: **Property**. 
+   -  Optional
+
+
+
 # Organization
 
 An organization such as a school, NGO, corporation, club, etc, mapped from schema.org
@@ -175,6 +235,9 @@ A part of the physical world or a virtual world that is inherently both located 
 -  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
    -  Attribute type: **GeoProperty**. 
    -  Optional
+-  `peopleOccupancy`: People present at the place, given from a variety of points of view. These points of view are typically different ways of estimating occupancy.
+   -  Attribute type: **Property**. 
+   -  Optional
 -  `areaServed`: The geographic area where a service or offered item is provided
    -  Attribute type: **Property**. [Text](https://schema.org/Text)
    -  Optional
@@ -203,9 +266,6 @@ A part of the physical world or a virtual world that is inherently both located 
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `flexWorkstationCount`: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
-   -  Attribute type: **Property**. [Number](https://schema.org/Number)
-   -  Optional
--  `peopleOccupancy`: People present at the place.
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `refMap`: Reference to the map containing the item.
@@ -250,6 +310,9 @@ Information on a given Building
 -  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
    -  Attribute type: **GeoProperty**. 
    -  Optional
+-  `peopleOccupancy`: People present at the place, given from a variety of points of view. These points of view are typically different ways of estimating occupancy.
+   -  Attribute type: **Property**. 
+   -  Optional
 -  `areaServed`: The geographic area where a service or offered item is provided
    -  Attribute type: **Property**. [Text](https://schema.org/Text)
    -  Optional
@@ -278,9 +341,6 @@ Information on a given Building
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `flexWorkstationCount`: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
-   -  Attribute type: **Property**. [Number](https://schema.org/Number)
-   -  Optional
--  `peopleOccupancy`: People present at the place
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `refMap`: Reference to the map containing the building
@@ -331,6 +391,9 @@ A part of the physical world or a virtual world that is inherently both located 
 -  `location`: Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon
    -  Attribute type: **GeoProperty**. 
    -  Optional
+-  `peopleOccupancy`: People present at the place, given from a variety of points of view. These points of view are typically different ways of estimating occupancy.
+   -  Attribute type: **Property**. 
+   -  Optional
 -  `areaServed`: The geographic area where a service or offered item is provided
    -  Attribute type: **Property**. [Text](https://schema.org/Text)
    -  Optional
@@ -359,9 +422,6 @@ A part of the physical world or a virtual world that is inherently both located 
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `flexWorkstationCount`: Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people.
-   -  Attribute type: **Property**. [Number](https://schema.org/Number)
-   -  Optional
--  `peopleOccupancy`: People present at the place
    -  Attribute type: **Property**. [Number](https://schema.org/Number)
    -  Optional
 -  `refMap`: Reference to the map containing the building
