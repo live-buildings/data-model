@@ -57,7 +57,7 @@
                 "@type": "xsd:string"
             },
             "capacity": {
-                "@id": "https://live-buildings.github.io/data-model/terms#Zone.capacity",
+                "@id": "https://live-buildings.github.io/data-model/terms#ZoneCapacity",
                 "@type": "xsd:string"
             },
             "category": {
