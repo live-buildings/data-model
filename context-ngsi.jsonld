@@ -25,7 +25,7 @@
         "author": "https://smartdatamodels.org/dataModel.Organization/author",
         "bestRating": "https://smartdatamodels.org/dataModel.Organization/bestRating",
         "building": "https://live-buildings.github.io/data-model/terms#building",
-        "capacity": "https://live-buildings.github.io/data-model/terms#Zone.capacity",
+        "capacity": "https://live-buildings.github.io/data-model/terms#ZoneCapacity",
         "category": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/category",
         "containedIn": "https://schema.org/containedIn",
         "country": "https://schema.org/country",
