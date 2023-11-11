@@ -5,16 +5,15 @@
             "id": "@id",
             "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
             "xsd": "http://www.w3.org/2001/XMLSchema#",
-            "AdministrativeArea": "https://schema.org/AdministrativeArea",
             "Building": "https://smartdatamodels.org/dataModel.Building/Building",
             "ContainedIn": "https://schema.org/containedIn",
             "CrossDomain": "https://live-buildings.github.io/data-model/none",
             "Location": "https://uri.etsi.org/ngsi-ld/location",
             "Organization": "https://smartdatamodels.org/dataModel.Organization/Organization",
-            "PeopleOccupancy": "https://live-buildings.github.io/data-model/terms#peopleOccupancy",
             "PostalAddress": "https://schema.org/PostalAddress",
             "Site": "https://w3id.org/bot#Site",
             "Storey": "https://w3id.org/bot#Storey",
+            "Zone": "https://w3id.org/bot#Zone",
             "additionalProperty": {
                 "@id": "https://schema.org/additionalProperty",
                 "@type": "xsd:string"
@@ -55,6 +54,10 @@
             },
             "building": {
                 "@id": "https://live-buildings.github.io/data-model/terms#building",
+                "@type": "xsd:string"
+            },
+            "capacity": {
+                "@id": "https://live-buildings.github.io/data-model/terms#Zone.capacity",
                 "@type": "xsd:string"
             },
             "category": {
@@ -150,17 +153,8 @@
                 "@id": "https://smartdatamodels.org/dataModel.Building/peopleCapacity",
                 "@type": "xsd:number"
             },
-            "peopleOccupancy": "https://live-buildings.github.io/data-model/terms#peopleOccupancy",
-            "peopleOccupancyAccessControlView": {
-                "@id": "https://live-buildings.github.io/data-model/terms#peopleOccupancyAccessControlView",
-                "@type": "xsd:number"
-            },
-            "peopleOccupancyIPNetworkView": {
-                "@id": "https://live-buildings.github.io/data-model/terms#peopleOccupancyIPNetworkView",
-                "@type": "xsd:number"
-            },
-            "peopleOccupancyMainView": {
-                "@id": "https://live-buildings.github.io/data-model/terms#peopleOccupancyMainView",
+            "peopleOccupancy": {
+                "@id": "https://smartdatamodels.org/dataModel.Building/peopleOccupancy",
                 "@type": "xsd:number"
             },
             "postOfficeBoxNumber": {
@@ -295,6 +289,41 @@
                 {
                     "@language": "en",
                     "@value": "additionalProperty"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Zone",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A part of the physical world or a virtual world that is inherently both located in this world and has a 3D spatial extent; Sub-classes of bot:Zone include bot:Site, bot:Building, bot:Storey, or bot:Space. An instance of bot:Zone can contain other bot:Zone instances, making it possible to group or subdivide zones. An instance of bot:Zone can be adjacent to or intersecting other bot:Zone instances."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "Zone"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://w3id.org/bot#Zone",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A test property."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "capacity"
                 }
             ]
         },
@@ -593,73 +622,6 @@
             ]
         },
         {
-            "@id": "https://live-buildings.github.io/data-model/terms#peopleOccupancy",
-            "@type": "rdfs:Class",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "People present at the place, given from a variety of points of view. These points of view are typically different ways of estimating occupancy."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "PeopleOccupancy"
-                }
-            ],
-            "rdfs:subClassOf": {
-                "@id": "schema:Thing"
-            }
-        },
-        {
-            "@id": "https://live-buildings.github.io/data-model/terms#peopleOccupancy",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Number of people present at the place, from the main viewpoint, probably the most accurate, or the one most used."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "peopleOccupancyMainView"
-                }
-            ]
-        },
-        {
-            "@id": "https://live-buildings.github.io/data-model/terms#peopleOccupancy",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Number of people present at the place, from the access control system viewpoint."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "peopleOccupancyAccessControlView"
-                }
-            ]
-        },
-        {
-            "@id": "https://live-buildings.github.io/data-model/terms#peopleOccupancy",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Number of people present at the place, from an IP network point of view. Typically, this is the number of people present at the place, estimated on the basis of the number of IP connections on the network."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "peopleOccupancyIPNetworkView"
-                }
-            ]
-        },
-        {
             "@id": "https://uri.etsi.org/ngsi-ld/location",
             "@type": "rdfs:Class",
             "rdfs:comment": [
@@ -677,217 +639,6 @@
             "rdfs:subClassOf": {
                 "@id": "schema:Thing"
             }
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "rdfs:Class",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A geographical region, typically under the jurisdiction of a particular government, or company."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "AdministrativeArea"
-                }
-            ],
-            "rdfs:subClassOf": {
-                "@id": "schema:Thing"
-            }
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Unique identifier of the entity"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "id"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A short id of this item. Typically an UID that uniquely identifies this item among all items of same type."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "shortId"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "The name of this item."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "name"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A short name for this item. Typically for display purpose."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "shortName"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "An alternative name for this item"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "alternateName"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Category of the item. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "category"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "The mailing address of the item"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "address"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "The basic containment relation between a place and one that contains it."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "containedIn"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "location"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A sequence of characters identifying the provider of the harmonised data entity."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "dataProvider"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A description of this item"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "description"
-                }
-            ]
-        },
-        {
-            "@id": "https://schema.org/AdministrativeArea",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "source"
-                }
-            ]
         },
         {
             "@id": "https://smartdatamodels.org/dataModel.Organization/Organization",
@@ -1248,358 +999,6 @@
             }
         },
         {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Unique identifier of the entity"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "id"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A short id of this item. Typically an UID that uniquely identifies this item among all items of same type."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "shortId"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "The name of this item."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "name"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A short name for this item. Typically for display purpose."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "shortName"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "An alternative name for this item"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "alternateName"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Category of the item. Enum:'commercial, industrial, office, parking, residential, retail, service, technical, warehouse'"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "category"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "The mailing address of the item"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "address"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "The basic containment relation between a place and one that contains it."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "containedIn"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "location"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "People present at the place, given from a variety of points of view. These points of view are typically different ways of estimating occupancy."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "peopleOccupancy"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "The geographic area where a service or offered item is provided"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "areaServed"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A sequence of characters identifying the provider of the harmonised data entity."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "dataProvider"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A description of this item"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "description"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Opening hours of this place."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "openingHours"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "owner"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Person or entity using the place."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "occupier"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Allowed people present at the place."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "peopleCapacity"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Number of employees attached to this place."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "employeeCount"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Number of individual workstations available in this place. An individual workstation is a workstation assigned or dedicated to a particular person."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "individualWorkstationCount"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Number of flex workstations available in this place. A flex workstation is a workstation that is not assigned or dedicated to a particular person, and can be used alternatively by different people."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "flexWorkstationCount"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Reference to the map containing the item."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "refMap"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Site",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "source"
-                }
-            ]
-        },
-        {
             "@id": "https://smartdatamodels.org/dataModel.Building/Building",
             "@type": "rdfs:Class",
             "rdfs:comment": [
@@ -1768,22 +1167,6 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "People present at the place, given from a variety of points of view. These points of view are typically different ways of estimating occupancy."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "peopleOccupancy"
-                }
-            ]
-        },
-        {
-            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
                     "@value": "The geographic area where a service or offered item is provided"
                 }
             ],
@@ -1935,6 +1318,22 @@
                 {
                     "@language": "en",
                     "@value": "flexWorkstationCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://smartdatamodels.org/dataModel.Building/Building",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "People present at the place"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "peopleOccupancy"
                 }
             ]
         },
@@ -2171,22 +1570,6 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "People present at the place, given from a variety of points of view. These points of view are typically different ways of estimating occupancy."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "peopleOccupancy"
-                }
-            ]
-        },
-        {
-            "@id": "https://w3id.org/bot#Storey",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
                     "@value": "The geographic area where a service or offered item is provided"
                 }
             ],
@@ -2338,6 +1721,22 @@
                 {
                     "@language": "en",
                     "@value": "flexWorkstationCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/bot#Storey",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "People present at the place"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "peopleOccupancy"
                 }
             ]
         },
