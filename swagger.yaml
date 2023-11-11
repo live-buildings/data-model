@@ -317,7 +317,7 @@ components:
           type: object
 
     AdministrativeArea:
-      description: A geographical region, typically under the jurisdiction of a particular government, or company.
+      description: 'A geographical region, typically under the jurisdiction of a particular government, or company.'
       x-lb-terms:
         enabled: true
       x-ngsi:
@@ -893,6 +893,33 @@ components:
           $ref: "#/components/schemas/ContainedIn"
         location:
           $ref: "#/components/schemas/Location"
+        peopleOccupancy:
+          description: 'Number of people present at the place. Compared to other peopleOccupancy* estimates, this one should be the most accurate.'
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#peopleOccupancy
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        peopleOccupancyAccessControlView:
+          description: 'Number of people present at the place, from an access control system point of view. Typically an estimate based on the number of people who have used their access badge to enter the place.'
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#peopleOccupancyAccessControlView
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        peopleOccupancyIPNetworkView:
+          description: 'Number of people present at the place, from an IP network point of view. Typically an estimate on the basis of the number of IP connections on the place''s network.'
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#peopleOccupancyIPNetworkView
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         areaServed:
           description: The geographic area where a service or offered item is provided
           type: string
@@ -980,14 +1007,6 @@ components:
             type: Property
             uri: https://live-buildings.github.io/data-model/terms#flexWorkstationCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
-        peopleOccupancy:
-          description: People present at the place
-          minimum: 0
-          type: number
-          x-ngsi:
-            model: https://schema.org/Number
-            type: Property
-            uri: https://smartdatamodels.org/dataModel.Building/peopleOccupancy
         refMap:
           anyOf:
             - description: Property. Identifier format of any NGSI entity
@@ -1110,6 +1129,33 @@ components:
           $ref: "#/components/schemas/ContainedIn"
         location:
           $ref: "#/components/schemas/Location"
+        peopleOccupancy:
+          description: 'Number of people present at the place. Compared to other peopleOccupancy* estimates, this one should be the most accurate.'
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#peopleOccupancy
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        peopleOccupancyAccessControlView:
+          description: 'Number of people present at the place, from an access control system point of view. Typically an estimate based on the number of people who have used their access badge to enter the place.'
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#peopleOccupancyAccessControlView
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        peopleOccupancyIPNetworkView:
+          description: 'Number of people present at the place, from an IP network point of view. Typically an estimate on the basis of the number of IP connections on the place''s network.'
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+            uri: https://live-buildings.github.io/data-model/terms#peopleOccupancyIPNetworkView
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         areaServed:
           description: The geographic area where a service or offered item is provided
           type: string
@@ -1197,14 +1243,6 @@ components:
             type: Property
             uri: https://live-buildings.github.io/data-model/terms#flexWorkstationCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
-        peopleOccupancy:
-          description: People present at the place
-          minimum: 0
-          type: number
-          x-ngsi:
-            model: https://schema.org/Number
-            type: Property
-            uri: https://smartdatamodels.org/dataModel.Building/peopleOccupancy
         refMap:
           anyOf:
             - description: Property. Identifier format of any NGSI entity
