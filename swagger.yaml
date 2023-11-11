@@ -402,7 +402,7 @@ components:
               x-ngsi:
                 model: https://schema.org/Number
                 type: Property
-                uri: https://live-buildings.github.io/data-model/peopleCapacity
+                uri: https://live-buildings.github.io/data-model/terms#peopleCapacity
                 uri-prefix: https://live-buildings.github.io/data-model/terms#
             peopleOccupancy:
               description: 'Number of people present at the place. Compared to other peopleOccupancy* estimates, this one should be the most accurate.'
