@@ -13,6 +13,15 @@ Some cross-domain properties.
 
 
 
+# Zone
+
+A part of the physical world or a virtual world that is inherently both located in this world and has a 3D spatial extent; Sub-classes of bot:Zone include bot:Site, bot:Building, bot:Storey, or bot:Space. An instance of bot:Zone can contain other bot:Zone instances, making it possible to group or subdivide zones. An instance of bot:Zone can be adjacent to or intersecting other bot:Zone instances.
+-  `capacity`: A test property.
+   -  Attribute type: **Property**. 
+   -  Optional
+
+
+
 # PostalAddress
 
 The mailing address of the item
@@ -145,6 +154,9 @@ An organization such as a school, NGO, corporation, club, etc, mapped from schem
 # Site
 
 A part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It is intended to contain or contains one or more buildings.
+-  `capacity`: A test property.
+   -  Attribute type: **Property**. 
+   -  Optional
 -  `id`: Unique identifier of the entity
    -  Attribute type: **Property**. 
    -  Required
