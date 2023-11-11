@@ -119,7 +119,7 @@
                 "@type": "xsd:array"
             },
             "peopleCapacity": {
-                "@id": "https://live-buildings.github.io/data-model/peopleCapacity",
+                "@id": "https://live-buildings.github.io/data-model/terms#peopleCapacity",
                 "@type": "xsd:number"
             },
             "peopleOccupancy": {
