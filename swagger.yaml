@@ -502,7 +502,6 @@ components:
                 type: string
               type: array
               x-ngsi:
-                model: https://schema.org/openingHours
                 type: Property
                 uri: https://schema.org/openingHours
 
@@ -562,8 +561,7 @@ components:
               description: 'The official name of the organization, e.g. the registered company name.'
               type: string
               x-ngsi:
-                uri: https://smartdatamodels.org/dataModel.Organization/legalName
-                model: https://schema.org/legalName
+                uri: https://schema.org/legalName
                 type: Property
             owner:
               description: 'A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)'
@@ -578,8 +576,7 @@ components:
               description: 'The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.'
               type: string
               x-ngsi:
-                uri: https://smartdatamodels.org/dataModel.Organization/taxID
-                model: https://schema.org/taxID
+                uri: https://schema.org/taxID
                 type: Property
             headOffice:
               description: 'Relationship to the head office Building of the organization.'

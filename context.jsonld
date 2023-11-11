@@ -94,7 +94,7 @@
                 "@type": "xsd:number"
             },
             "legalName": {
-                "@id": "https://smartdatamodels.org/dataModel.Organization/legalName",
+                "@id": "https://schema.org/legalName",
                 "@type": "xsd:string"
             },
             "locality": {
@@ -171,7 +171,7 @@
                 "@type": "xsd:string"
             },
             "taxID": {
-                "@id": "https://smartdatamodels.org/dataModel.Organization/taxID",
+                "@id": "https://schema.org/taxID",
                 "@type": "xsd:string"
             },
             "territorialRealEstateDivision": {
