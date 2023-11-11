@@ -390,9 +390,6 @@ components:
       allOf:
         - $ref: '#/components/schemas/Thing'
         - type: object
-          required:
-            - id
-            - type
           properties:
             address:
               $ref: "#/components/schemas/PostalAddress"
@@ -521,9 +518,6 @@ components:
       allOf:
         - $ref: '#/components/schemas/Zone'
         - type: object
-          required:
-            - id
-            - type
           properties:
             category:
               description: 'Category of the item. Enum TODO'
@@ -557,16 +551,10 @@ components:
       x-ngsi:
         uri: https://schema.org/Organization
         uri-prefix: https://schema.org/
-      required:
-        - id
-        - type
       x-license-url: https://creativecommons.org/licenses/by/4.0/
       allOf:
         - $ref: '#/components/schemas/Thing'
         - type: object
-          required:
-            - id
-            - type
           properties:
             address:
               $ref: "#/components/schemas/PostalAddress"
@@ -616,9 +604,6 @@ components:
       allOf:
         - $ref: '#/components/schemas/Zone'
         - type: object
-          required:
-            - id
-            - type
           properties:
             category:
               description: 'Category of the item. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
@@ -651,9 +636,6 @@ components:
       allOf:
         - $ref: '#/components/schemas/Zone'
         - type: object
-          required:
-            - id
-            - type
           properties:
             category:
               description: 'Category of the item. Enum:''commercial, industrial, office, parking, residential, retail, service, technical, warehouse'''
@@ -700,9 +682,6 @@ components:
       allOf:
         - $ref: '#/components/schemas/Zone'
         - type: object
-          required:
-            - id
-            - type
           properties:
             category:
               description: 'Category of the item. TODO'
@@ -723,19 +702,10 @@ paths:
           required: true
           schema:
             enum:
-              - Organization
+              - Thing
             type: string
       responses:
         "200":
-          content:
-            application/ld+json:
-              examples:
-                keyvalues:
-                  summary: "Key-Values Pairs"
-                  value:
-                normalized:
-                  summary: "Normalized NGSI-LD"
-                  value:
           description: OK
       tags:
         - ngsi-ld
