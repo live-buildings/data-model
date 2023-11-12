@@ -95,18 +95,24 @@ components:
         site:
           description: 'Relationship. The bot:Site(s) the item is contained in'
           type: string
+          x-lb-terms:
+            enabled: true
           x-ngsi:
             uri: https://live-buildings.github.io/data-model/terms#site
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         building:
           description: 'Relationship. The Building the item is contained in'
           type: string
+          x-lb-terms:
+            enabled: true
           x-ngsi:
             uri: https://live-buildings.github.io/data-model/terms#building
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         storey:
           description: 'Relationship. The Storey or Floor the item is contained in'
           type: string
+          x-lb-terms:
+            enabled: true
           x-ngsi:
             uri: https://live-buildings.github.io/data-model/terms#storey
             uri-prefix: https://live-buildings.github.io/data-model/terms#
@@ -399,6 +405,8 @@ components:
               description: 'Allowed people present at the place.'
               minimum: 0
               type: number
+              x-lb-terms:
+                enabled: true
               x-ngsi:
                 model: https://schema.org/Number
                 type: Property
@@ -408,6 +416,8 @@ components:
               description: 'Number of people present at the place. Compared to other peopleOccupancy* estimates, this one should be the most accurate.'
               minimum: 0
               type: number
+              x-lb-terms:
+                enabled: true
               x-ngsi:
                 model: https://schema.org/Number
                 type: Property
@@ -417,6 +427,8 @@ components:
               description: 'Number of people present at the place, from an access control system point of view. Typically an estimate based on the number of people who have used their access badge to enter the place.'
               minimum: 0
               type: number
+              x-lb-terms:
+                enabled: true
               x-ngsi:
                 model: https://schema.org/Number
                 type: Property
@@ -426,25 +438,27 @@ components:
               description: 'Number of people present at the place, from an IP network point of view. Typically an estimate on the basis of the number of IP connections on the place''s network.'
               minimum: 0
               type: number
+              x-lb-terms:
+                enabled: true
               x-ngsi:
                 model: https://schema.org/Number
                 type: Property
                 uri: https://live-buildings.github.io/data-model/terms#peopleOccupancyIPNetworkView
                 uri-prefix: https://live-buildings.github.io/data-model/terms#
-                refMap:
-                  anyOf:
-                    - description: Property. Identifier format of any NGSI entity
-                      maxLength: 256
-                      minLength: 1
-                      pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
-                      type: string
-                    - description: Property. Identifier format of any NGSI entity
-                      format: uri
-                      type: string
-                  description: Reference to the map containing the item.
-                  x-ngsi:
-                    type: Relationship
-                    uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap
+            refMap:
+              anyOf:
+                - description: Property. Identifier format of any NGSI entity
+                  maxLength: 256
+                  minLength: 1
+                  pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+                  type: string
+                - description: Property. Identifier format of any NGSI entity
+                  format: uri
+                  type: string
+              description: Reference to the map containing the item.
+              x-ngsi:
+                type: Relationship
+                uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap
             owner:
               description: 'A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)'
               items:

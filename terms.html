@@ -155,26 +155,33 @@
             const componentName = selectElementNgsiName(componentKey, component);
 
             const properties = [];
-            for (const propertyKey in component.properties) {
-                const property = component.properties[propertyKey];
 
-                if (isElementToDisplayed(property)) {
-                    const {id, namespace} = buildElementUiId(propertyKey, property);
-                    const name = selectElementNgsiName(propertyKey, property);
-
-                    warnIfDuplicatedIds(id, elements.properties);
-                    warnIfDuplicatedIds(id, elements.components);
-
-                    elements.properties[id] = {
-                        id,
-                        namespace,
-                        name,
-                        componentId,
-                        ...property
-                    };
-
-                    properties.push(id);
+            if(component.allOf) {
+                for (const subComponent of component.allOf) {
+                  if (subComponent.properties) {
+                      for (const propertyKey in subComponent.properties) {
+                        // La propriété est trouvée dans l'un des composants de allOf
+                        const property = subComponent.properties[propertyKey];
+                        // Faire quelque chose avec la propriété, par exemple imprimer son nom
+                        console.log(`Property (in allOf): ${propertyKey}`);
+                        //break; // Sortir de la boucle une fois que la propriété est trouvée
+                      }
+                  }
                 }
+            }
+
+            let componentProperties = [];
+            if(component.allOf) {
+                for (const subComponent of component.allOf) {
+                  if (subComponent.properties) {
+                      componentProperties = subComponent.properties;
+                      processComponentProperties(componentProperties, elements, componentId, properties);
+                  }
+                }
+            }
+            if(component.properties) {
+                componentProperties = component.properties;
+                processComponentProperties(componentProperties, elements, componentId, properties);
             }
 
             if (isElementToDisplayed(component)) {
@@ -189,6 +196,30 @@
             }
         }
         return elements;
+    }
+
+    function processComponentProperties(componentProperties, elements, componentId, properties) {
+        for (const propertyKey in componentProperties) {
+            const property = componentProperties[propertyKey];
+
+            if (isElementToDisplayed(property)) {
+                const { id, namespace } = buildElementUiId(propertyKey, property);
+                const name = selectElementNgsiName(propertyKey, property);
+
+                warnIfDuplicatedIds(id, elements.properties);
+                warnIfDuplicatedIds(id, elements.components);
+
+                elements.properties[id] = {
+                    id,
+                    namespace,
+                    name,
+                    componentId,
+                    ...property
+                };
+
+                properties.push(id);
+            }
+        }
     }
 
     /**

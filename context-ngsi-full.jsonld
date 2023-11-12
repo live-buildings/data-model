@@ -47,6 +47,7 @@
             "peopleOccupancyIPNetworkView": "https://live-buildings.github.io/data-model/terms#peopleOccupancyIPNetworkView",
             "postOfficeBoxNumber": "https://schema.org/postOfficeBoxNumber",
             "postalCode": "https://schema.org/postalCode",
+            "refMap": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap",
             "region": "https://live-buildings.github.io/data-model/terms#region",
             "shortId": "https://live-buildings.github.io/data-model/terms#shortId",
             "shortName": "https://live-buildings.github.io/data-model/terms#shortName",
