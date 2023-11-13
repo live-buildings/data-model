@@ -142,6 +142,10 @@
                 "@id": "https://schema.org/postalCode",
                 "@type": "xsd:string"
             },
+            "refMap": {
+                "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/refMap",
+                "@type": "@id"
+            },
             "region": {
                 "@id": "https://live-buildings.github.io/data-model/terms#region",
                 "@type": "xsd:string"
