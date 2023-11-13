@@ -44,6 +44,10 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#building",
                 "@type": "xsd:string"
             },
+            "capacity": {
+                "@id": "https://live-buildings.github.io/data-model/terms#ZoneCapacity",
+                "@type": "xsd:string"
+            },
             "category": {
                 "@id": "https://schema.org/category",
                 "@type": "xsd:array"

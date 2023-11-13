@@ -9,6 +9,24 @@ info:
 components:
   schemas:
 
+    Zone:
+      description: 'A part of the physical world or a virtual world that is inherently both located in this world and has a 3D spatial extent; Sub-classes of bot:Zone include bot:Site, bot:Building, bot:Storey, or bot:Space. An instance of bot:Zone can contain other bot:Zone instances, making it possible to group or subdivide zones. An instance of bot:Zone can be adjacent to or intersecting other bot:Zone instances.'
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://w3id.org/bot#Zone
+        uri-prefix: https://w3id.org/bot#
+      properties:
+        capacity:
+          description: A test property.
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#ZoneCapacity
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+
     PostalAddress:
       description: 'The mailing address of the item'
       type: object
