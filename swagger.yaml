@@ -9,6 +9,41 @@ info:
 components:
   schemas:
 
+    floorMeasurement:
+      description: 'The floor measurements of a Zone, typically a Building, or Storey.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#floorMeasurement
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        subl:
+          description: 'Notion Française: Surface Utile Brute Locative'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#subl
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        subla:
+          description: 'Notion Française: Surface Utile Brute Locative Amenageable'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#subla
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        sublt:
+          description: 'Notion Française: Surface Utile Brute Locative Tertiaire'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#sublt
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+
     PostalAddress:
       description: 'The mailing address of the item'
       type: object
@@ -47,7 +82,7 @@ components:
           description: 'Property. The street address. Model:''https://schema.org/streetAddress''. In french: ''Numero et rue'''
           type: string
 
-    ContainedIn:
+    containedIn:
       description: 'The basic containment relation between a place and one that contains it.'
       type: object
       x-lb-terms:
@@ -400,7 +435,9 @@ components:
             address:
               $ref: "#/components/schemas/PostalAddress"
             containedIn:
-              $ref: "#/components/schemas/ContainedIn"
+              $ref: "#/components/schemas/containedIn"
+            floorMeasurement:
+              $ref: "#/components/schemas/floorMeasurement"
             peopleCapacity:
               description: 'Allowed people present at the place.'
               minimum: 0
@@ -518,6 +555,26 @@ components:
               x-ngsi:
                 type: Property
                 uri: https://schema.org/openingHours
+            outdoorParkingSpacesCount:
+              description: 'Number of outdoor parking spaces available at this place.'
+              type: number
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                model: https://schema.org/Number
+                type: Property
+                uri: https://live-buildings.github.io/data-model/terms#outdoorParkingSpacesCount
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+            indoorParkingSpacesCount:
+              description: 'Number of indoor parking spaces available at this place.'
+              type: number
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                model: https://schema.org/Number
+                type: Property
+                uri: https://live-buildings.github.io/data-model/terms#indoorParkingSpacesCount
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
 
     AdministrativeArea:
       description: 'A geographical region, typically under the jurisdiction of a particular government, or company.'

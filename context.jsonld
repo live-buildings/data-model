@@ -7,7 +7,6 @@
             "xsd": "http://www.w3.org/2001/XMLSchema#",
             "AdministrativeArea": "https://schema.org/AdministrativeArea",
             "Building": "https://w3id.org/bot#Building",
-            "ContainedIn": "https://schema.org/containedIn",
             "Location": "https://uri.etsi.org/ngsi-ld/location",
             "Organization": "https://schema.org/Organization",
             "PostalAddress": "https://schema.org/PostalAddress",
@@ -77,6 +76,7 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#flexWorkstationCount",
                 "@type": "xsd:number"
             },
+            "floorMeasurement": "https://live-buildings.github.io/data-model/terms#floorMeasurement",
             "floorsAboveGround": {
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/floorsAboveGround",
                 "@type": "xsd:number"
@@ -91,6 +91,10 @@
             },
             "individualWorkstationCount": {
                 "@id": "https://live-buildings.github.io/data-model/terms#individualWorkstationCount",
+                "@type": "xsd:number"
+            },
+            "indoorParkingSpacesCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#indoorParkingSpacesCount",
                 "@type": "xsd:number"
             },
             "legalName": {
@@ -113,6 +117,10 @@
             "openingHours": {
                 "@id": "https://schema.org/openingHours",
                 "@type": "xsd:array"
+            },
+            "outdoorParkingSpacesCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#outdoorParkingSpacesCount",
+                "@type": "xsd:number"
             },
             "owner": {
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/owner",
@@ -174,6 +182,18 @@
                 "@id": "https://schema.org/streetAddress",
                 "@type": "xsd:string"
             },
+            "subl": {
+                "@id": "https://live-buildings.github.io/data-model/terms#subl",
+                "@type": "xsd:number"
+            },
+            "subla": {
+                "@id": "https://live-buildings.github.io/data-model/terms#subla",
+                "@type": "xsd:number"
+            },
+            "sublt": {
+                "@id": "https://live-buildings.github.io/data-model/terms#sublt",
+                "@type": "xsd:number"
+            },
             "taxID": {
                 "@id": "https://schema.org/taxID",
                 "@type": "xsd:string"
@@ -190,6 +210,73 @@
         "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ],
     "@graph": [
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#floorMeasurement",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The floor measurements of a Zone, typically a Building, or Storey."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "floorMeasurement"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#floorMeasurement",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Notion Française: Surface Utile Brute Locative"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "subl"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#floorMeasurement",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Notion Française: Surface Utile Brute Locative Amenageable"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "subla"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#floorMeasurement",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Notion Française: Surface Utile Brute Locative Tertiaire"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "sublt"
+                }
+            ]
+        },
         {
             "@id": "https://schema.org/PostalAddress",
             "@type": "rdfs:Class",
@@ -333,7 +420,7 @@
             "rdfs:label": [
                 {
                     "@language": "en",
-                    "@value": "ContainedIn"
+                    "@value": "containedIn"
                 }
             ],
             "rdfs:subClassOf": {
