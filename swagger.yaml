@@ -555,7 +555,7 @@ components:
               x-ngsi:
                 type: Property
                 uri: https://schema.org/openingHours
-            outdoorParkingSpacesCount:
+            outdoorParkingSpaceCount:
               description: 'Number of outdoor parking spaces available at this place.'
               type: number
               x-lb-terms:
@@ -563,9 +563,9 @@ components:
               x-ngsi:
                 model: https://schema.org/Number
                 type: Property
-                uri: https://live-buildings.github.io/data-model/terms#outdoorParkingSpacesCount
+                uri: https://live-buildings.github.io/data-model/terms#outdoorParkingSpaceCount
                 uri-prefix: https://live-buildings.github.io/data-model/terms#
-            indoorParkingSpacesCount:
+            indoorParkingSpaceCount:
               description: 'Number of indoor parking spaces available at this place.'
               type: number
               x-lb-terms:
@@ -573,7 +573,7 @@ components:
               x-ngsi:
                 model: https://schema.org/Number
                 type: Property
-                uri: https://live-buildings.github.io/data-model/terms#indoorParkingSpacesCount
+                uri: https://live-buildings.github.io/data-model/terms#indoorParkingSpaceCount
                 uri-prefix: https://live-buildings.github.io/data-model/terms#
 
     AdministrativeArea:

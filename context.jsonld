@@ -93,8 +93,8 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#individualWorkstationCount",
                 "@type": "xsd:number"
             },
-            "indoorParkingSpacesCount": {
-                "@id": "https://live-buildings.github.io/data-model/terms#indoorParkingSpacesCount",
+            "indoorParkingSpaceCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#indoorParkingSpaceCount",
                 "@type": "xsd:number"
             },
             "legalName": {
@@ -118,8 +118,8 @@
                 "@id": "https://schema.org/openingHours",
                 "@type": "xsd:array"
             },
-            "outdoorParkingSpacesCount": {
-                "@id": "https://live-buildings.github.io/data-model/terms#outdoorParkingSpacesCount",
+            "outdoorParkingSpaceCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#outdoorParkingSpaceCount",
                 "@type": "xsd:number"
             },
             "owner": {
