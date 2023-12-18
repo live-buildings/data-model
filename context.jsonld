@@ -7,7 +7,9 @@
             "xsd": "http://www.w3.org/2001/XMLSchema#",
             "AdministrativeArea": "https://schema.org/AdministrativeArea",
             "Building": "https://w3id.org/bot#Building",
+            "CommonProperties": "https://live-buildings.github.io/data-model/terms#CommonProperties",
             "Location": "https://uri.etsi.org/ngsi-ld/location",
+            "ObservationPoint": "https://live-buildings.github.io/data-model/terms#ObservationPoint",
             "Organization": "https://schema.org/Organization",
             "PostalAddress": "https://schema.org/PostalAddress",
             "Site": "https://w3id.org/bot#Site",
@@ -47,6 +49,10 @@
                 "@id": "https://schema.org/category",
                 "@type": "xsd:array"
             },
+            "commodity": {
+                "@id": "https://saref.etsi.org/core/Commodity",
+                "@type": "xsd:string"
+            },
             "containedIn": "https://schema.org/containedIn",
             "country": {
                 "@id": "https://schema.org/country",
@@ -72,6 +78,10 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#employeeCount",
                 "@type": "xsd:number"
             },
+            "featureOfInterest": {
+                "@id": "https://saref.etsi.org/core/FeatureOfInterest",
+                "@type": "xsd:string"
+            },
             "flexWorkstationCount": {
                 "@id": "https://live-buildings.github.io/data-model/terms#flexWorkstationCount",
                 "@type": "xsd:number"
@@ -88,6 +98,10 @@
             "headOffice": {
                 "@id": "https://live-buildings.github.io/data-model/terms#hasHeadOffice",
                 "@type": "@id"
+            },
+            "inPropertyStockDate": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inPropertyStockDate",
+                "@type": "xs:dateTime"
             },
             "individualWorkstationCount": {
                 "@id": "https://live-buildings.github.io/data-model/terms#individualWorkstationCount",
@@ -106,9 +120,21 @@
                 "@type": "xsd:string"
             },
             "location": "https://uri.etsi.org/ngsi-ld/location",
+            "measureProperty": {
+                "@id": "https://saref.etsi.org/core/Property",
+                "@type": "xsd:string"
+            },
+            "measureType": {
+                "@id": "http://purl.org/linked-data/cube#measureType",
+                "@type": "xsd:string"
+            },
             "name": {
                 "@id": "https://schema.org/name",
                 "@type": "xsd:string"
+            },
+            "observation": {
+                "@id": "https://live-buildings.github.io/data-model/terms#observation",
+                "@type": "xsd:number"
             },
             "occupier": {
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/occupier",
@@ -117,6 +143,10 @@
             "openingHours": {
                 "@id": "https://schema.org/openingHours",
                 "@type": "xsd:array"
+            },
+            "outPropertyStockDate": {
+                "@id": "https://live-buildings.github.io/data-model/terms#outPropertyStockDate",
+                "@type": "xs:dateTime"
             },
             "outdoorParkingSpaceCount": {
                 "@id": "https://live-buildings.github.io/data-model/terms#outdoorParkingSpaceCount",
@@ -141,6 +171,14 @@
             "peopleOccupancyIPNetworkView": {
                 "@id": "https://live-buildings.github.io/data-model/terms#peopleOccupancyIPNetworkView",
                 "@type": "xsd:number"
+            },
+            "periodBeginning": {
+                "@id": "https://live-buildings.github.io/data-model/terms#periodBeginning",
+                "@type": "xs:dateTime"
+            },
+            "periodDuration": {
+                "@id": "https://live-buildings.github.io/data-model/terms#periodDuration",
+                "@type": "xsd:string"
             },
             "postOfficeBoxNumber": {
                 "@id": "https://schema.org/postOfficeBoxNumber",
@@ -194,6 +232,10 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#sublt",
                 "@type": "xsd:number"
             },
+            "sun": {
+                "@id": "https://live-buildings.github.io/data-model/terms#netUsableArea",
+                "@type": "xsd:number"
+            },
             "taxID": {
                 "@id": "https://schema.org/taxID",
                 "@type": "xsd:string"
@@ -205,11 +247,66 @@
             "url": {
                 "@id": "https://schema.org/url",
                 "@type": "xs:anyURI"
+            },
+            "yearBuilt": {
+                "@id": "https://schema.org/yearBuilt",
+                "@type": "xsd:number"
             }
         },
         "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ],
     "@graph": [
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#CommonProperties",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Some cross-domain properties."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "CommonProperties"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#CommonProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A duration of time given in ISO 8601 format. E.g 'P1D' for a duration of 1 day, or 'P1Y3M5DT7H10M' for 1 year 3 months 5 days 7 hours and 10 minutes"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "periodDuration"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#CommonProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The beginning date and time of a period of time."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "periodBeginning"
+                }
+            ]
+        },
         {
             "@id": "https://live-buildings.github.io/data-model/terms#floorMeasurement",
             "@type": "rdfs:Class",
@@ -274,6 +371,22 @@
                 {
                     "@language": "en",
                     "@value": "sublt"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#floorMeasurement",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Net Usable Area"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "sun"
                 }
             ]
         },
@@ -914,6 +1027,41 @@
             "rdfs:subClassOf": {
                 "@id": "schema:Thing"
             }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#ObservationPoint",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "An observation point that ollows observing the evolution of any featureOfInterst. E.g. the electrical consumption of a building, or the flow of people entering a building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "ObservationPoint"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#ObservationPoint",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A particular observation or measure made by an ObservationPoint. It is typically the temporal property of the observationPoint, and may include the following meta-data : value, unitCode, dataProvider, source, periodDuration, periodBeginning, and any other meta-data qualifying this observation"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "observation"
+                }
+            ]
         }
     ]
 }

@@ -9,6 +9,34 @@ info:
 components:
   schemas:
 
+    CommonProperties:
+      description: 'Some cross-domain properties.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#CommonProperties
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        periodDuration:
+          description: 'A duration of time given in ISO 8601 format. E.g ''P1D'' for a duration of 1 day, or ''P1Y3M5DT7H10M'' for 1 year 3 months 5 days 7 hours and 10 minutes'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#periodDuration
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        periodBeginning:
+          description: 'The beginning date and time of a period of time.'
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#periodBeginning
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+
     floorMeasurement:
       description: 'The floor measurements of a Zone, typically a Building, or Storey.'
       type: object
@@ -42,6 +70,14 @@ components:
             enabled: true
           x-ngsi:
             uri: https://live-buildings.github.io/data-model/terms#sublt
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        sun:
+          description: 'Net Usable Area'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#netUsableArea
             uri-prefix: https://live-buildings.github.io/data-model/terms#
 
     PostalAddress:
@@ -555,6 +591,33 @@ components:
               x-ngsi:
                 type: Property
                 uri: https://schema.org/openingHours
+            yearBuilt:
+              description: 'The year an Accommodation was constructed. This corresponds to the YearBuilt field in RESO.'
+              type: number
+              x-ngsi:
+                model: https://schema.org/Number
+                type: Property
+                uri: https://schema.org/yearBuilt
+            inPropertyStockDate:
+              description: 'Date of entry into the property stock.'
+              type: string
+              format: date-time
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                type: Property
+                uri: https://live-buildings.github.io/data-model/terms#inPropertyStockDate
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+            outPropertyStockDate:
+              description: 'Exit date from the property stock.'
+              type: string
+              format: date-time
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                type: Property
+                uri: https://live-buildings.github.io/data-model/terms#outPropertyStockDate
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
             outdoorParkingSpaceCount:
               description: 'Number of outdoor parking spaces available at this place.'
               type: number
@@ -759,6 +822,82 @@ components:
               x-ngsi:
                 type: Property
                 uri: https://schema.org/category
+
+    ObservationPoint:
+      description: 'An observation point that ollows observing the evolution of any featureOfInterst. E.g. the electrical consumption of a building, or the flow of people entering a building'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#ObservationPoint
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        featureOfInterest:
+          description: 'A feature of interest represents any real world entity from which a property is measured'
+          type: string
+          enum:
+            - ElectricityConsumption
+            - GasConsumption
+            - WaterConsumption
+            - UrbanHeatingConsumption
+            - ZoneTemperature
+            - PeopleFlow
+            - PeopleFlowIn
+            - PeopleFlowOut
+            - PeopleFlowInOut
+          x-ngsi:
+            type: Property
+            uri: https://saref.etsi.org/core/FeatureOfInterest
+        measureType:
+          description: 'Generic measure dimension, that indicates which measure is being given by the observation.value property'
+          type: string
+          enum:
+            - Occurence
+            - Delta
+            - CountAggregation
+            - DistinctCountAggregation
+            - SumAggregation
+            - MeanAggregation
+            - BooleanAggregation
+            - MinimumAggregation
+            - MaximumAggregation
+          x-ngsi:
+            type: Property
+            uri: http://purl.org/linked-data/cube#measureType
+        measureProperty:
+          description: 'A quality of a feature of interest that can be measured; an aspect of a feature of interest that is intrinsic to and cannot exist without the feature. Directly reflects the unit of measure'
+          type: string
+          enum:
+            - Energy
+            - FlowVolume
+            - Temperature
+            - People
+          x-ngsi:
+            type: Property
+            uri: https://saref.etsi.org/core/Property
+        commodity:
+          description: 'A marketable item for which there is demand, but which is supplied without qualitative differentiation across a market. SAREF refers to energy commodities such as electricity, gas, coal and oil'
+          type: string
+          enum:
+            - Electricity
+            - Gas
+            - Heating
+            - Water
+            - Coal
+            - Oil
+          x-ngsi:
+            type: Property
+            uri: https://saref.etsi.org/core/Commodity
+        observation:
+          description: 'A particular observation or measure made by an ObservationPoint. It is typically the temporal property of the observationPoint, and may include the following meta-data : value, unitCode, dataProvider, source, periodDuration, periodBeginning, and any other meta-data qualifying this observation'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#observation
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
 
 paths:
   /ngsi-ld/v1/entities:
