@@ -22,6 +22,7 @@
             "addressRegion": "https://schema.org/addressRegion",
             "alternateName": "https://schema.org/alternateName",
             "building": "https://live-buildings.github.io/data-model/terms#building",
+            "campus": "https://live-buildings.github.io/data-model/terms#campus",
             "category": "https://schema.org/category",
             "commodity": "https://saref.etsi.org/core/Commodity",
             "containedIn": "https://schema.org/containedIn",

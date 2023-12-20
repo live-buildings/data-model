@@ -163,6 +163,14 @@ components:
           x-ngsi:
             uri: https://live-buildings.github.io/data-model/terms#locality
             uri-prefix: https://live-buildings.github.io/data-model/terms#
+        campus:
+          description: 'Relationship. The campus (a type of AdministrativeArea which is a group of Site(s)) the item is contained in'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#campus
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         site:
           description: 'Relationship. The bot:Site(s) the item is contained in'
           type: string
@@ -669,6 +677,7 @@ components:
                   - Tile250
                   - TileINSEE200
                   - TileINSEE1000
+                  - Campus
                   - TerritorialRealEstateDivision
                 type: string
               type: array

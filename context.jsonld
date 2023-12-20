@@ -45,6 +45,10 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#building",
                 "@type": "xsd:string"
             },
+            "campus": {
+                "@id": "https://live-buildings.github.io/data-model/terms#campus",
+                "@type": "xsd:string"
+            },
             "category": {
                 "@id": "https://schema.org/category",
                 "@type": "xsd:array"
@@ -617,6 +621,22 @@
                 {
                     "@language": "en",
                     "@value": "locality"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Relationship. The campus (a type of AdministrativeArea which is a group of Site(s)) the item is contained in"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "campus"
                 }
             ]
         },
