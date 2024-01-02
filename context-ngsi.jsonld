@@ -4,7 +4,6 @@
         "id": "@id",
         "AdministrativeArea": "https://schema.org/AdministrativeArea",
         "Building": "https://w3id.org/bot#Building",
-        "CommonProperties": "https://live-buildings.github.io/data-model/terms#CommonProperties",
         "Location": "https://uri.etsi.org/ngsi-ld/location",
         "ObservationPoint": "https://live-buildings.github.io/data-model/terms#ObservationPoint",
         "Organization": "https://schema.org/Organization",
@@ -12,6 +11,7 @@
         "Site": "https://w3id.org/bot#Site",
         "Storey": "https://w3id.org/bot#Storey",
         "Thing": "https://schema.org/Thing",
+        "TimeProperties": "https://live-buildings.github.io/data-model/terms#CommonProperties",
         "Zone": "https://w3id.org/bot#Zone",
         "additionalProperty": "https://schema.org/additionalProperty",
         "address": "https://schema.org/PostalAddress",
@@ -72,9 +72,11 @@
         "subla": "https://live-buildings.github.io/data-model/terms#subla",
         "sublt": "https://live-buildings.github.io/data-model/terms#sublt",
         "sun": "https://live-buildings.github.io/data-model/terms#netUsableArea",
+        "supplyPointId": "https://live-buildings.github.io/data-model/terms#supplyPointId",
         "taxID": "https://schema.org/taxID",
         "territorialRealEstateDivision": "https://live-buildings.github.io/data-model/terms#territorialRealEstateDivision",
         "url": "https://schema.org/url",
+        "value": "https://uri.etsi.org/ngsi-ld/hasValue",
         "yearBuilt": "https://schema.org/yearBuilt"
     }
 }

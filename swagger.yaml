@@ -9,8 +9,8 @@ info:
 components:
   schemas:
 
-    CommonProperties:
-      description: 'Some cross-domain properties.'
+    TimeProperties:
+      description: 'Some cross-domain time properties.'
       type: object
       x-lb-terms:
         enabled: true
@@ -832,6 +832,34 @@ components:
                 type: Property
                 uri: https://schema.org/category
 
+    observation:
+      description: 'A particular observation or measure made by an ObservationPoint. It is typically the temporal property of the observationPoint, and may include the following meta-data : value, unitCode, dataProvider, source, periodDuration, periodBeginning, and any other meta-data qualifying this observation'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#observation
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      allOf:
+        - $ref: '#/components/schemas/TimeProperties'
+        - type: object
+          properties:
+            value:
+              description: 'Observed value.'
+              type: number
+              x-ngsi:
+                uri: "https://uri.etsi.org/ngsi-ld/hasValue"
+            supplyPointId:
+              description: 'Supply point identifier, in the case of an observation value provided by a supply point.'
+              type: string
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#supplyPointId
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+
     ObservationPoint:
       description: 'An observation point that ollows observing the evolution of any featureOfInterst. E.g. the electrical consumption of a building, or the flow of people entering a building'
       type: object
@@ -899,14 +927,9 @@ components:
             type: Property
             uri: https://saref.etsi.org/core/Commodity
         observation:
-          description: 'A particular observation or measure made by an ObservationPoint. It is typically the temporal property of the observationPoint, and may include the following meta-data : value, unitCode, dataProvider, source, periodDuration, periodBeginning, and any other meta-data qualifying this observation'
-          type: number
-          x-lb-terms:
-            enabled: true
-          x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#observation
-            uri-prefix: https://live-buildings.github.io/data-model/terms#
-            type: Property
+          $ref: "#/components/schemas/observation"
+
+
 
 paths:
   /ngsi-ld/v1/entities:
