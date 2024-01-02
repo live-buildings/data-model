@@ -15,7 +15,7 @@ components:
       x-lb-terms:
         enabled: true
       x-ngsi:
-        uri: https://live-buildings.github.io/data-model/terms#CommonProperties
+        uri: https://live-buildings.github.io/data-model/terms#TimeProperties
         uri-prefix: https://live-buildings.github.io/data-model/terms#
         type: Property
       properties:
