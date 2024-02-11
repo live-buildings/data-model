@@ -450,6 +450,24 @@ components:
           x-ngsi:
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
             type: Property
+        dataProviderDevice:
+          description: 'The data provider device. In the case of a data being prodided by a system that manages devices, dataProvider depicts the system, whereas dataProviderDevice depicts the device.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#dataProviderDevice
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+        dataProviderPoint:
+          description: 'The data provider point. In the case of a data being prodided by a system or device that manages points, dataProvider depicts the system, dataProviderDevice depicts the device, and dataProviderPoint depicts the point.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#dataProviderPoint
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
         additionalProperty:
           description: 'A property-value pair representing an additional characteristic of the entity, e.g. a product feature or another characteristic for which there is no matching property.'
           type: string
@@ -857,6 +875,81 @@ components:
                 enabled: true
               x-ngsi:
                 uri: https://live-buildings.github.io/data-model/terms#supplyPointId
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+            eventType:
+              description: 'The type of the observed event, if any. E.g. for a people flow observed through an access control system, the event type used by the ACS to depict this event.'
+              type: string
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#eventType
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+            eventMessage:
+              description: 'The message associated with the observed event, if any. E.g. for a people flow observed through an access control system, the message used by the ACS, to describe this event.'
+              type: string
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#eventMessage
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+            eventDirection:
+              description: 'The direction of the observed event, if any. E.g. for a people flow observed through an access control system, people can be allowed to get in or out a place.'
+              type: string
+              enum:
+                - In
+                - Out
+                - In|Out
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#eventDirection
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+            userId:
+              description: 'The identifier (anonymised or not) of the user associated with the observed event, if any. E.g. for a people flow observed through an access control system: the id of the access control system user.'
+              type: string
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#userId
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+            userProfile:
+              description: 'The profile of the user associated with the observed event, if any. E.g. for a people flow observed through an access control system: the profile of the access control system user.'
+              type: string
+              enum:
+                - R
+                - N
+                - E
+                - V
+                - R|N
+                - R|N|E
+                - R|N|E|V
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#userProfile
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+            userCompany:
+              description: 'The company of the user associated with the observed event, if any.'
+              type: string
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#userCompany
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+            userService:
+              description: 'The service (in the user company) of the user associated with the observed event, if any.'
+              type: string
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#userService
                 uri-prefix: https://live-buildings.github.io/data-model/terms#
                 type: Property
 
