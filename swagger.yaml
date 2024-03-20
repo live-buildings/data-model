@@ -195,6 +195,14 @@ components:
           x-ngsi:
             uri: https://live-buildings.github.io/data-model/terms#storey
             uri-prefix: https://live-buildings.github.io/data-model/terms#
+        space:
+          description: 'Relationship. The Space the item is contained in'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#space
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
         territorialRealEstateDivision:
           description: 'Relationship. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: "urn:AdministrativeArea:orange:dit:IDF"'
           type: string
@@ -844,6 +852,34 @@ components:
             category:
               description: 'Category of the item. TODO'
               items:
+                type: string
+              type: array
+              x-ngsi:
+                type: Property
+                uri: https://schema.org/category
+
+    Space:
+      description: 'A part of the physical world or a virtual world whose 3D spatial extent is bounded actually or theoretically, and provides for certain functions within the zone it is contained in.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://w3id.org/bot#Space
+        uri-prefix: https://w3id.org/bot#
+      x-license-url: https://creativecommons.org/licenses/by/4.0/
+      allOf:
+        - $ref: '#/components/schemas/Zone'
+        - type: object
+          properties:
+            category:
+              description: 'Category of the item.'
+              items:
+                enum:
+                  - meetingRoom
+                  - room
+                  - pod
+                  - openSpace
+                  - kitchen
                 type: string
               type: array
               x-ngsi:

@@ -12,6 +12,7 @@
             "Organization": "https://schema.org/Organization",
             "PostalAddress": "https://schema.org/PostalAddress",
             "Site": "https://w3id.org/bot#Site",
+            "Space": "https://w3id.org/bot#Space",
             "Storey": "https://w3id.org/bot#Storey",
             "Thing": "https://schema.org/Thing",
             "TimeProperties": "https://live-buildings.github.io/data-model/terms#TimeProperties",
@@ -231,6 +232,10 @@
             },
             "source": {
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source",
+                "@type": "xsd:string"
+            },
+            "space": {
+                "@id": "https://live-buildings.github.io/data-model/terms#space",
                 "@type": "xsd:string"
             },
             "storey": {
@@ -735,6 +740,22 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
+                    "@value": "Relationship. The Space the item is contained in"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "space"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/containedIn",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
                     "@value": "Relationship. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: \"urn:AdministrativeArea:orange:dit:IDF\""
                 }
             ],
@@ -1115,6 +1136,25 @@
                 {
                     "@language": "en",
                     "@value": "Storey"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://w3id.org/bot#Space",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A part of the physical world or a virtual world whose 3D spatial extent is bounded actually or theoretically, and provides for certain functions within the zone it is contained in."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "Space"
                 }
             ],
             "rdfs:subClassOf": {
