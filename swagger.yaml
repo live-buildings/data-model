@@ -458,6 +458,16 @@ components:
           x-ngsi:
             uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
             type: Property
+        dataProviderLastUpdateDate:
+          description: 'The date on which the entity was last updated from the data provider perspective.'
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#dataProviderLastUpdateDate
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
         dataProviderDevice:
           description: 'The data provider device. In the case of a data being prodided by a system that manages devices, dataProvider depicts the system, whereas dataProviderDevice depicts the device.'
           type: string

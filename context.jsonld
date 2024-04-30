@@ -75,6 +75,10 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#dataProviderDevice",
                 "@type": "xsd:string"
             },
+            "dataProviderLastUpdateDate": {
+                "@id": "https://live-buildings.github.io/data-model/terms#dataProviderLastUpdateDate",
+                "@type": "xs:dateTime"
+            },
             "dataProviderPoint": {
                 "@id": "https://live-buildings.github.io/data-model/terms#dataProviderPoint",
                 "@type": "xsd:string"
@@ -961,6 +965,22 @@
                 {
                     "@language": "en",
                     "@value": "dataProvider"
+                }
+            ]
+        },
+        {
+            "@id": "https://schema.org/Thing",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The date on which the entity was last updated from the data provider perspective."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dataProviderLastUpdateDate"
                 }
             ]
         },

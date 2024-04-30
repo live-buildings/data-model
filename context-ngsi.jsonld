@@ -30,6 +30,7 @@
         "countrySubdivision": "https://live-buildings.github.io/data-model/terms#countrySubdivision",
         "dataProvider": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider",
         "dataProviderDevice": "https://live-buildings.github.io/data-model/terms#dataProviderDevice",
+        "dataProviderLastUpdateDate": "https://live-buildings.github.io/data-model/terms#dataProviderLastUpdateDate",
         "dataProviderPoint": "https://live-buildings.github.io/data-model/terms#dataProviderPoint",
         "department": "https://live-buildings.github.io/data-model/terms#department",
         "description": "https://schema.org/description",
