@@ -37,6 +37,142 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#periodBeginning
             uri-prefix: https://live-buildings.github.io/data-model/terms#
 
+    InseeProperties:
+      description: "Some INSEE notions to be used as values of 'additionalProperties' of AdministrativeArea(s) representing an INSEE area such as a France region or department"
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#TimeProperties
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        inseeGeographie:
+          description: 'Date of the insee geographie from which the AdministrativeArea is based on. Indeed, the list of France regions, departments, localities, etc can change from time to time. The INSEE publish at least one geographie per year'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeGeographie
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeGeographieRef:
+          description: 'URL of the insee Geographie reference this AdministrativeArea is based on.'
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeGeographieRef
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeREG:
+          description: "INSEE 'Code Région'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeREG
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeCHEFLIEU:
+          description: 'INSEE identifier of the main locality of a Region.'
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeCHEFLIEU
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeTNCC:
+          description: "INSEE 'Type de nom en clair'. Refers to NCC, NCCENR, LIBELLE"
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeTNCC
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeNCC:
+          description: "INSEE 'Nom en clair (majuscules)'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeNCC
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeNCCENR:
+          description: "INSEE 'Nom en clair (typographie riche)'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeNCCENR
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeLIBELLE:
+          description: "INSEE 'Nom en clair (typographie riche) avec article'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeLIBELLE
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeTYPECOM:
+          description: "INSEE 'Type de commune'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeTYPECOM
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeCOM:
+          description: "INSEE 'Code commune'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeCOM
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeDEP:
+          description: "INSEE 'Code département'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeDEP
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeARR:
+          description: "INSEE 'Code arrondissement'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeARR
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeCAN:
+          description: "INSEE 'Code canton. Pour les communes « multi-cantonales » code décliné de 99 à 90 (pseudo-canton) ou de 89 à 80 (communes nouvelles)'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeCAN
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        inseeCOMPARENT:
+          description: "INSEE 'Code de la commune parente pour les arrondissements municipaux et les communes associées ou déléguées'."
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#inseeCOMPARENT
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+
     floorMeasurement:
       description: 'The floor measurements of a Zone, typically a Building, or Storey.'
       type: object

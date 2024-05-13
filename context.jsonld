@@ -7,6 +7,7 @@
             "xsd": "http://www.w3.org/2001/XMLSchema#",
             "AdministrativeArea": "https://schema.org/AdministrativeArea",
             "Building": "https://w3id.org/bot#Building",
+            "InseeProperties": "https://live-buildings.github.io/data-model/terms#TimeProperties",
             "Location": "https://uri.etsi.org/ngsi-ld/location",
             "ObservationPoint": "https://live-buildings.github.io/data-model/terms#ObservationPoint",
             "Organization": "https://schema.org/Organization",
@@ -139,6 +140,62 @@
             "indoorParkingSpaceCount": {
                 "@id": "https://live-buildings.github.io/data-model/terms#indoorParkingSpaceCount",
                 "@type": "xsd:number"
+            },
+            "inseeARR": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeARR",
+                "@type": "xs:dateTime"
+            },
+            "inseeCAN": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeCAN",
+                "@type": "xs:dateTime"
+            },
+            "inseeCHEFLIEU": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeCHEFLIEU",
+                "@type": "xs:dateTime"
+            },
+            "inseeCOM": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeCOM",
+                "@type": "xs:dateTime"
+            },
+            "inseeCOMPARENT": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeCOMPARENT",
+                "@type": "xs:dateTime"
+            },
+            "inseeDEP": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeDEP",
+                "@type": "xs:dateTime"
+            },
+            "inseeGeographie": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeGeographie",
+                "@type": "xsd:string"
+            },
+            "inseeGeographieRef": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeGeographieRef",
+                "@type": "xs:dateTime"
+            },
+            "inseeLIBELLE": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeLIBELLE",
+                "@type": "xs:dateTime"
+            },
+            "inseeNCC": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeNCC",
+                "@type": "xs:dateTime"
+            },
+            "inseeNCCENR": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeNCCENR",
+                "@type": "xs:dateTime"
+            },
+            "inseeREG": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeREG",
+                "@type": "xs:dateTime"
+            },
+            "inseeTNCC": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeTNCC",
+                "@type": "xs:dateTime"
+            },
+            "inseeTYPECOM": {
+                "@id": "https://live-buildings.github.io/data-model/terms#inseeTYPECOM",
+                "@type": "xs:dateTime"
             },
             "legalName": {
                 "@id": "https://schema.org/legalName",
@@ -358,6 +415,249 @@
                 {
                     "@language": "en",
                     "@value": "periodBeginning"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Some INSEE notions to be used as values of 'additionalProperties' of AdministrativeArea(s) representing an INSEE area such as a France region or department"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "InseeProperties"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Date of the insee geographie from which the AdministrativeArea is based on. Indeed, the list of France regions, departments, localities, etc can change from time to time. The INSEE publish at least one geographie per year"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeGeographie"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "URL of the insee Geographie reference this AdministrativeArea is based on."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeGeographieRef"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Code Région'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeREG"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE identifier of the main locality of a Region."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeCHEFLIEU"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Type de nom en clair'. Refers to NCC, NCCENR, LIBELLE"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeTNCC"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Nom en clair (majuscules)'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeNCC"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Nom en clair (typographie riche)'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeNCCENR"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Nom en clair (typographie riche) avec article'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeLIBELLE"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Type de commune'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeTYPECOM"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Code commune'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeCOM"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Code département'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeDEP"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Code arrondissement'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeARR"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Code canton. Pour les communes « multi-cantonales » code décliné de 99 à 90 (pseudo-canton) ou de 89 à 80 (communes nouvelles)'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeCAN"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "INSEE 'Code de la commune parente pour les arrondissements municipaux et les communes associées ou déléguées'."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "inseeCOMPARENT"
                 }
             ]
         },
