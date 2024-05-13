@@ -4,7 +4,7 @@
         "id": "@id",
         "AdministrativeArea": "https://schema.org/AdministrativeArea",
         "Building": "https://w3id.org/bot#Building",
-        "InseeProperties": "https://live-buildings.github.io/data-model/terms#TimeProperties",
+        "InseeProperties": "https://live-buildings.github.io/data-model/terms#InseeProperties",
         "Location": "https://uri.etsi.org/ngsi-ld/location",
         "ObservationPoint": "https://live-buildings.github.io/data-model/terms#ObservationPoint",
         "Organization": "https://schema.org/Organization",
