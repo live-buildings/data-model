@@ -902,7 +902,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship. The country the item is contained in. For example: \"urn:AdministrativeArea:Country:FR\". Model:'https://schema.org/country'."
+                    "@value": "Relationship to an <a href=\"https://live-buildings.github.io/data-model/terms#schema.org/AdministrativeArea\">AdministrativeArea</a>. The country the item is contained in. For example: \"urn:AdministrativeArea:Country:FR\". Model:'https://schema.org/country'."
                 }
             ],
             "rdfs:label": [
@@ -918,7 +918,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship. One or several (an array of) administrative subdivision of a Country the item is contained in. E.g: \"urn:AdministrativeArea:CountrySubdivision:FR:FranceEntiere\""
+                    "@value": "Relationship to one or several <a href=\"https://live-buildings.github.io/data-model/terms#schema.org/AdministrativeArea\">AdministrativeArea(s)</a>. One or several (an array of) administrative subdivision of a Country the item is contained in. E.g: \"urn:AdministrativeArea:CountrySubdivision:FR:FranceEntiere\""
                 }
             ],
             "rdfs:label": [
@@ -982,7 +982,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship. The campus (a type of AdministrativeArea which is a group of Site(s)) the item is contained in"
+                    "@value": "Relationship. The campus (a particular Site which is a group of Site(s)) the item is contained in"
                 }
             ],
             "rdfs:label": [
@@ -998,7 +998,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship. The bot:Site(s) the item is contained in"
+                    "@value": "Relationship to one or several <a href=\"https://live-buildings.github.io/data-model/terms#w3id.org/Site\">Site(s)</a>. The bot:Site(s) the item is contained in"
                 }
             ],
             "rdfs:label": [
@@ -1014,7 +1014,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship to a <a href=\"https://live-buildings.github.io/data-model/terms#w3id.org/Building\">Building</a>. The Building the item is contained in"
+                    "@value": "Relationship to a <a href=\"https://live-buildings.github.io/data-model/terms#w3id.org/Building\">Building</a>. The bot:Building the item is contained in"
                 }
             ],
             "rdfs:label": [
@@ -1030,7 +1030,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship. The Storey or Floor the item is contained in"
+                    "@value": "Relationship to a <a href=\"https://live-buildings.github.io/data-model/terms#w3id.org/Storey\">Storey</a>. The bot:Storey or Floor the item is contained in"
                 }
             ],
             "rdfs:label": [
@@ -1046,7 +1046,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship. The Space the item is contained in"
+                    "@value": "Relationship to a <a href=\"https://live-buildings.github.io/data-model/terms#w3id.org/Space\">Space</a>. The bot:Space the item is contained in"
                 }
             ],
             "rdfs:label": [
@@ -1062,7 +1062,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: \"urn:AdministrativeArea:orange:dit:IDF\""
+                    "@value": "Relationship to an <a href=\"https://live-buildings.github.io/data-model/terms#schema.org/AdministrativeArea\">AdministrativeArea</a>. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: \"urn:AdministrativeArea:orange:dit:IDF\""
                 }
             ],
             "rdfs:label": [

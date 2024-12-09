@@ -265,10 +265,10 @@ components:
         type: Property
       properties:
         country:
-          description: 'Relationship. The country the item is contained in. For example: "urn:AdministrativeArea:Country:FR". Model:''https://schema.org/country''.'
+          description: 'Relationship to an <a href="https://live-buildings.github.io/data-model/terms#schema.org/AdministrativeArea">AdministrativeArea</a>. The country the item is contained in. For example: "urn:AdministrativeArea:Country:FR". Model:''https://schema.org/country''.'
           type: string
         countrySubdivision:
-          description: 'Relationship. One or several (an array of) administrative subdivision of a Country the item is contained in. E.g: "urn:AdministrativeArea:CountrySubdivision:FR:FranceEntiere"'
+          description: 'Relationship to one or several <a href="https://live-buildings.github.io/data-model/terms#schema.org/AdministrativeArea">AdministrativeArea(s)</a>. One or several (an array of) administrative subdivision of a Country the item is contained in. E.g: "urn:AdministrativeArea:CountrySubdivision:FR:FranceEntiere"'
           type: string
           x-lb-terms:
             enabled: true
@@ -300,7 +300,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#locality
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         campus:
-          description: 'Relationship. The campus (a type of AdministrativeArea which is a group of Site(s)) the item is contained in'
+          description: 'Relationship. The campus (a particular Site which is a group of Site(s)) the item is contained in'
           type: string
           x-lb-terms:
             enabled: true
@@ -308,7 +308,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#campus
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         site:
-          description: 'Relationship. The bot:Site(s) the item is contained in'
+          description: 'Relationship to one or several <a href="https://live-buildings.github.io/data-model/terms#w3id.org/Site">Site(s)</a>. The bot:Site(s) the item is contained in'
           type: string
           x-lb-terms:
             enabled: true
@@ -316,7 +316,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#site
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         building:
-          description: 'Relationship to a <a href="https://live-buildings.github.io/data-model/terms#w3id.org/Building">Building</a>. The Building the item is contained in'
+          description: 'Relationship to a <a href="https://live-buildings.github.io/data-model/terms#w3id.org/Building">Building</a>. The bot:Building the item is contained in'
           type: string
           x-lb-terms:
             enabled: true
@@ -324,7 +324,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#building
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         storey:
-          description: 'Relationship. The Storey or Floor the item is contained in'
+          description: 'Relationship to a <a href="https://live-buildings.github.io/data-model/terms#w3id.org/Storey">Storey</a>. The bot:Storey or Floor the item is contained in'
           type: string
           x-lb-terms:
             enabled: true
@@ -332,7 +332,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#storey
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         space:
-          description: 'Relationship. The Space the item is contained in'
+          description: 'Relationship to a <a href="https://live-buildings.github.io/data-model/terms#w3id.org/Space">Space</a>. The bot:Space the item is contained in'
           type: string
           x-lb-terms:
             enabled: true
@@ -340,7 +340,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#space
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         territorialRealEstateDivision:
-          description: 'Relationship. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: "urn:AdministrativeArea:orange:dit:IDF"'
+          description: 'Relationship to an <a href="https://live-buildings.github.io/data-model/terms#schema.org/AdministrativeArea">AdministrativeArea</a>. The territotial real-estate division or department the item is contained in. This is typically a company internal administrative area. E.g: "urn:AdministrativeArea:orange:dit:IDF"'
           type: string
           x-lb-terms:
             enabled: true
