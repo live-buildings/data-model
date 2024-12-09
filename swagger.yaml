@@ -216,7 +216,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#netUsableArea
             uri-prefix: https://live-buildings.github.io/data-model/terms#
 
-    PostalAddress:
+    address:
       description: 'The mailing address of the item'
       type: object
       x-lb-terms:
@@ -316,7 +316,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#site
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         building:
-          description: 'Relationship. The Building the item is contained in'
+          description: 'Relationship to a <a href="https://live-buildings.github.io/data-model/terms#w3id.org/Building">Building</a>. The Building the item is contained in'
           type: string
           x-lb-terms:
             enabled: true
@@ -348,7 +348,7 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#territorialRealEstateDivision
             uri-prefix: https://live-buildings.github.io/data-model/terms#
 
-    Location:
+    location:
       description: 'Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon'
       type: object
       x-ngsi:
@@ -567,7 +567,7 @@ components:
             uri: https://schema.org/alternateName
             type: Property
         location:
-          $ref: "#/components/schemas/Location"
+          $ref: "#/components/schemas/location"
         category:
           description: 'Category of the item. '
           items:
@@ -649,7 +649,7 @@ components:
         - type: object
           properties:
             address:
-              $ref: "#/components/schemas/PostalAddress"
+              $ref: "#/components/schemas/address"
             containedIn:
               $ref: "#/components/schemas/containedIn"
             floorMeasurement:
@@ -871,7 +871,7 @@ components:
         - type: object
           properties:
             address:
-              $ref: "#/components/schemas/PostalAddress"
+              $ref: "#/components/schemas/address"
             legalName:
               description: 'The official name of the organization, e.g. the registered company name.'
               type: string
@@ -1161,6 +1161,16 @@ components:
           x-ngsi:
             type: Property
             uri: https://saref.etsi.org/core/FeatureOfInterest
+        featureKind:
+          description: 'Feature kinds allow to describe kinds of features of interest. E.g. for the FeatureOfInterest PeopleFlow, it can be IP, ACS (Access Ctrl System) or IOT depending on the method used to measure the PeopleFlow'
+          type: string
+          enum:
+            - IP
+            - ACS
+            - IOT
+          x-ngsi:
+            type: Property
+            uri: https://saref.etsi.org/core/FeatureKind
         measureType:
           description: 'Generic measure dimension, that indicates which measure is being given by the observation.value property'
           type: string

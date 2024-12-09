@@ -8,10 +8,8 @@
             "AdministrativeArea": "https://schema.org/AdministrativeArea",
             "Building": "https://w3id.org/bot#Building",
             "InseeProperties": "https://live-buildings.github.io/data-model/terms#InseeProperties",
-            "Location": "https://uri.etsi.org/ngsi-ld/location",
             "ObservationPoint": "https://live-buildings.github.io/data-model/terms#ObservationPoint",
             "Organization": "https://schema.org/Organization",
-            "PostalAddress": "https://schema.org/PostalAddress",
             "Site": "https://w3id.org/bot#Site",
             "Space": "https://w3id.org/bot#Space",
             "Storey": "https://w3id.org/bot#Storey",
@@ -106,6 +104,10 @@
             },
             "eventType": {
                 "@id": "https://live-buildings.github.io/data-model/terms#eventType",
+                "@type": "xsd:string"
+            },
+            "featureKind": {
+                "@id": "https://saref.etsi.org/core/FeatureKind",
                 "@type": "xsd:string"
             },
             "featureOfInterest": {
@@ -756,7 +758,7 @@
             "rdfs:label": [
                 {
                     "@language": "en",
-                    "@value": "PostalAddress"
+                    "@value": "address"
                 }
             ],
             "rdfs:subClassOf": {
@@ -1012,7 +1014,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Relationship. The Building the item is contained in"
+                    "@value": "Relationship to a <a href=\"https://live-buildings.github.io/data-model/terms#w3id.org/Building\">Building</a>. The Building the item is contained in"
                 }
             ],
             "rdfs:label": [
@@ -1082,7 +1084,7 @@
             "rdfs:label": [
                 {
                     "@language": "en",
-                    "@value": "Location"
+                    "@value": "location"
                 }
             ],
             "rdfs:subClassOf": {
