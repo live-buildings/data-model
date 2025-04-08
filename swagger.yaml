@@ -10,7 +10,11 @@ components:
   schemas:
 
     TimeProperties:
-      description: 'Some cross-domain time properties.'
+      description: |
+        Some cross-domain time properties.<br/>
+        Mutually exclusive : 
+        - `period` (ISO 8601) for predefined intervals
+        - `periodBeginning` + `periodDuration` for custom intervals
       type: object
       x-lb-terms:
         enabled: true
@@ -19,6 +23,27 @@ components:
         uri-prefix: https://live-buildings.github.io/data-model/terms#
         type: Property
       properties:
+        period:
+          description: |
+            A specific time period represented as a partial or complete date/time in ISO 8601 format.<br/>
+            It can cover variable granularity depending on the context:<br/>
+            - Full year: '2025'
+            - Full month: '2025-04'
+            - Full day: '2025-04-07'
+            - Specific hour: '2025-04-07T12'
+            - Specific minute: '2025-04-07T12:30'
+            - Specific second: '2025-04-07T12:30:45'
+            
+            This self-contained period replaces the need to use both periodBeginning and periodDuration when referring to fixed/predefined time frames (e.g., calendar days, months, or years). <br/>
+            Use periodBeginning/periodDuration only when needing to describe custom intervals with specific start points and durations.
+          type: string
+          format: date-time
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#period
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+
         periodDuration:
           description: 'A duration of time given in ISO 8601 format. E.g ''P1D'' for a duration of 1 day, or ''P1Y3M5DT7H10M'' for 1 year 3 months 5 days 7 hours and 10 minutes'
           type: string
@@ -36,6 +61,168 @@ components:
           x-ngsi:
             uri: https://live-buildings.github.io/data-model/terms#periodBeginning
             uri-prefix: https://live-buildings.github.io/data-model/terms#
+
+    UserProperties:
+      description: 'Some cross-domain user-related properties.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#UserProperties
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        userId:
+          description: 'The identifier (anonymised or not) of the user associated with the observed event, if any. E.g. for a people flow observed through an access control system: the id of the access control system user.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#userId
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+        userProfile:
+          description: 'The profile of the user associated with the observed event, if any. E.g. for a people flow observed through an access control system: the profile of the access control system user.'
+          type: string
+          enum:
+            - R
+            - N
+            - E
+            - V
+            - R|N
+            - R|N|E
+            - R|N|E|V
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#userProfile
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+        userCompany:
+          description: 'The company of the user associated with the observed event, if any.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#userCompany
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+        userService:
+          description: 'The service (in the user company) of the user associated with the observed event, if any.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#userService
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+
+    EventProperties:
+      description: 'Some cross-domain event-related properties.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#EventProperties
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        eventType:
+          description: 'The type of the observed event, if any. E.g. for a people flow observed through an access control system, the event type used by the ACS to depict this event.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#eventType
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+        eventMessage:
+          description: 'The message associated with the observed event, if any. E.g. for a people flow observed through an access control system, the message used by the ACS, to describe this event.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#eventMessage
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+        eventDirection:
+          description: 'The direction of the observed event, if any. E.g. for a people flow observed through an access control system, people can be allowed to get in or out a place.'
+          type: string
+          enum:
+            - In
+            - Out
+            - In|Out
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#eventDirection
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+
+    TraceabilityCoreProperties:
+      description: 'Some cross-domain core traceability properties.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#TraceabilityCoreProperties
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        source:
+          description: 'A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.'
+          type: string
+          x-ngsi:
+            type: Property
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
+        dataProvider:
+          description: 'A sequence of characters identifying the provider of the harmonised data entity.'
+          type: string
+          x-ngsi:
+            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
+            type: Property
+        dataProviderDevice:
+          description: 'The data provider device. In the case of a data being prodided by a system that manages devices, dataProvider depicts the system, whereas dataProviderDevice depicts the device.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#dataProviderDevice
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+        dataProviderPoint:
+          description: 'The data provider point. In the case of a data being prodided by a system or device that manages points, dataProvider depicts the system, dataProviderDevice depicts the device, and dataProviderPoint depicts the point.'
+          type: string
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#dataProviderPoint
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+
+    TraceabilityProperties:
+      description: 'Some cross-domain traceability properties.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#TraceabilityProperties
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      allOf:
+        - $ref: '#/components/schemas/TraceabilityCoreProperties'
+        - type: object
+          properties:
+            dataProviderLastUpdateDate:
+              description: 'The date on which the entity was last updated from the data provider perspective.'
+              type: string
+              format: date-time
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#dataProviderLastUpdateDate
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
 
     InseeProperties:
       description: "Some INSEE notions to be used as values of 'additionalProperties' of AdministrativeArea(s) representing an INSEE area such as a France region or department"
@@ -173,6 +360,46 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#inseeCOMPARENT
             uri-prefix: https://live-buildings.github.io/data-model/terms#
 
+    ObservationCoreProperties:
+      type: object
+      description: Core properties of an observation.
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#ObservationCoreProperties
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      required: [observedAt,value]
+      allOf:
+        - type: object
+          properties:
+            observedAt:
+              description: 'The standard NGSI-LD observedAt property defined as the temporal Property at which a certain Property or Relationship became valid or was observed. For example, a temperature Value was measured by the sensor at this point in time. '
+              type: string
+              format: date-time
+              x-ngsi:
+                uri: "https://uri.etsi.org/ngsi-ld/observedAt"
+            value:
+              description: 'Observed value.'
+              type: number
+              x-ngsi:
+                uri: "https://uri.etsi.org/ngsi-ld/hasValue"
+            unitCode:
+              description: |
+                Value''s unit code. 
+                Should be one of the measurement unit code in UN/ECE Recommendation 20 if available : 'https://unece.org/fileadmin/DAM/cefact/recommendations/rec20/rec20_rev3_Annex3e.pdf`. <br/>
+                Examples:
+                | Code  | Description                          | 
+                |-------|--------------------------------------|
+                | KGM   | Kilogram                             |
+                | MTR   | Meter                                |
+                | MTQ   | Cubic metre                          |
+                | KWH   | Kilowatt hour                        |
+              type: string
+              example: 'KWH'
+              x-ngsi:
+                uri: "https://uri.etsi.org/ngsi-ld/unitCode"
+
     floorMeasurement:
       description: 'The floor measurements of a Zone, typically a Building, or Storey.'
       type: object
@@ -255,7 +482,16 @@ components:
           type: string
 
     containedIn:
-      description: 'The basic containment relation between a place and one that contains it.'
+      description: |
+        Defines the hierarchical geographic containment of this entity,
+        specifying the place(s) in which it is located. (e.g., country, region, or building).
+        The `containedIn` object allows for specifying containment at
+        multiple levels, such as country, region, and locality. The most
+        specific level should be provided when available.  If there
+        are multiple relevant countrySubdivisions, provide them as an array.<br/>
+        <br/>
+        Note: This property represents a *spatial* or *administrative* containment,
+        not necessarily a physical one.
       type: object
       x-lb-terms:
         enabled: true
@@ -515,126 +751,89 @@ components:
       required:
         - id
         - type
-      properties:
-        id:
-          anyOf:
-            - description: 'Property. Identifier format of any NGSI entity'
-              maxLength: 256
-              minLength: 1
-              pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+      allOf:
+        - $ref: '#/components/schemas/TraceabilityProperties'
+        - type: object
+          properties:
+            id:
+              anyOf:
+                - description: 'Property. Identifier format of any NGSI entity'
+                  maxLength: 256
+                  minLength: 1
+                  pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+                  type: string
+                - description: 'Property. Identifier format of any NGSI entity'
+                  format: uri
+                  type: string
+              description: 'Unique identifier of the entity'
+              x-ngsi:
+                type: Property
+            type:
+              description: 'NGSI Entity type'
+              enum:
+                - Building
               type: string
-            - description: 'Property. Identifier format of any NGSI entity'
+              x-ngsi:
+                type: Property
+            shortId:
+              description: 'A short id of this item. Typically an UID that uniquely identifies this item among all items of same type.'
+              type: string
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                type: Property
+                uri: https://live-buildings.github.io/data-model/terms#shortId
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+            name:
+              description: 'The name of this item.'
+              type: string
+              x-ngsi:
+                type: Property
+                uri: https://schema.org/name
+            shortName:
+              description: 'A short name for this item. Typically for display purpose.'
+              type: string
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                type: Property
+                uri: https://live-buildings.github.io/data-model/terms#shortName
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+            alternateName:
+              description: 'An alternative name for this item'
+              type: string
+              x-ngsi:
+                uri: https://schema.org/alternateName
+                type: Property
+            location:
+              $ref: "#/components/schemas/location"
+            category:
+              description: 'Category of the item. '
+              items:
+                type: string
+              type: array
+              x-ngsi:
+                type: Property
+                uri: https://schema.org/category
+            description:
+              description: 'A description of this item'
+              type: string
+              x-ngsi:
+                type: Property
+                uri: https://schema.org/description
+            additionalProperty:
+              description: 'A property-value pair representing an additional characteristic of the entity, e.g. a product feature or another characteristic for which there is no matching property.'
+              type: string
+              x-ngsi:
+                uri: https://schema.org/additionalProperty
+                type: Property
+            url:
+              description: 'URL which provides a description or further information about this item.'
               format: uri
               type: string
-          description: 'Unique identifier of the entity'
-          x-ngsi:
-            type: Property
-        type:
-          description: 'NGSI Entity type'
-          enum:
-            - Building
-          type: string
-          x-ngsi:
-            type: Property
-        shortId:
-          description: 'A short id of this item. Typically an UID that uniquely identifies this item among all items of same type.'
-          type: string
-          x-lb-terms:
-            enabled: true
-          x-ngsi:
-            type: Property
-            uri: https://live-buildings.github.io/data-model/terms#shortId
-            uri-prefix: https://live-buildings.github.io/data-model/terms#
-        name:
-          description: 'The name of this item.'
-          type: string
-          x-ngsi:
-            type: Property
-            uri: https://schema.org/name
-        shortName:
-          description: 'A short name for this item. Typically for display purpose.'
-          type: string
-          x-lb-terms:
-            enabled: true
-          x-ngsi:
-            type: Property
-            uri: https://live-buildings.github.io/data-model/terms#shortName
-            uri-prefix: https://live-buildings.github.io/data-model/terms#
-        alternateName:
-          description: 'An alternative name for this item'
-          type: string
-          x-ngsi:
-            uri: https://schema.org/alternateName
-            type: Property
-        location:
-          $ref: "#/components/schemas/location"
-        category:
-          description: 'Category of the item. '
-          items:
-            type: string
-          type: array
-          x-ngsi:
-            type: Property
-            uri: https://schema.org/category
-        description:
-          description: 'A description of this item'
-          type: string
-          x-ngsi:
-            type: Property
-            uri: https://schema.org/description
-        source:
-          description: 'A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object.'
-          type: string
-          x-ngsi:
-            type: Property
-            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source
-        dataProvider:
-          description: 'A sequence of characters identifying the provider of the harmonised data entity.'
-          type: string
-          x-ngsi:
-            uri: https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/dataProvider
-            type: Property
-        dataProviderLastUpdateDate:
-          description: 'The date on which the entity was last updated from the data provider perspective.'
-          type: string
-          format: date-time
-          x-lb-terms:
-            enabled: true
-          x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#dataProviderLastUpdateDate
-            uri-prefix: https://live-buildings.github.io/data-model/terms#
-            type: Property
-        dataProviderDevice:
-          description: 'The data provider device. In the case of a data being prodided by a system that manages devices, dataProvider depicts the system, whereas dataProviderDevice depicts the device.'
-          type: string
-          x-lb-terms:
-            enabled: true
-          x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#dataProviderDevice
-            uri-prefix: https://live-buildings.github.io/data-model/terms#
-            type: Property
-        dataProviderPoint:
-          description: 'The data provider point. In the case of a data being prodided by a system or device that manages points, dataProvider depicts the system, dataProviderDevice depicts the device, and dataProviderPoint depicts the point.'
-          type: string
-          x-lb-terms:
-            enabled: true
-          x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#dataProviderPoint
-            uri-prefix: https://live-buildings.github.io/data-model/terms#
-            type: Property
-        additionalProperty:
-          description: 'A property-value pair representing an additional characteristic of the entity, e.g. a product feature or another characteristic for which there is no matching property.'
-          type: string
-          x-ngsi:
-            uri: https://schema.org/additionalProperty
-            type: Property
-        url:
-          description: 'URL which provides a description or further information about this item.'
-          format: uri
-          type: string
-          x-ngsi:
-            uri: https://schema.org/url
-            type: Property
+              x-ngsi:
+                uri: https://schema.org/url
+                type: Property
 
     Zone:
       description: 'A part of the physical world or a virtual world that is inherently both located in this world and has a 3D spatial extent; Sub-classes of bot:Zone include bot:Site, bot:Building, bot:Storey, or bot:Space. An instance of bot:Zone can contain other bot:Zone instances, making it possible to group or subdivide zones. An instance of bot:Zone can be adjacent to or intersecting other bot:Zone instances.'
@@ -1032,109 +1231,6 @@ components:
                 type: Property
                 uri: https://schema.org/category
 
-    observation:
-      description: 'A particular observation or measure made by an ObservationPoint. It is typically the temporal property of the observationPoint, and may include the following meta-data : value, unitCode, dataProvider, source, periodDuration, periodBeginning, and any other meta-data qualifying this observation'
-      type: object
-      x-lb-terms:
-        enabled: true
-      x-ngsi:
-        uri: https://live-buildings.github.io/data-model/terms#observation
-        uri-prefix: https://live-buildings.github.io/data-model/terms#
-        type: Property
-      allOf:
-        - $ref: '#/components/schemas/TimeProperties'
-        - type: object
-          properties:
-            value:
-              description: 'Observed value.'
-              type: number
-              x-ngsi:
-                uri: "https://uri.etsi.org/ngsi-ld/hasValue"
-            supplyPointId:
-              description: 'Supply point identifier, in the case of an observation value provided by a supply point.'
-              type: string
-              x-lb-terms:
-                enabled: true
-              x-ngsi:
-                uri: https://live-buildings.github.io/data-model/terms#supplyPointId
-                uri-prefix: https://live-buildings.github.io/data-model/terms#
-                type: Property
-            eventType:
-              description: 'The type of the observed event, if any. E.g. for a people flow observed through an access control system, the event type used by the ACS to depict this event.'
-              type: string
-              x-lb-terms:
-                enabled: true
-              x-ngsi:
-                uri: https://live-buildings.github.io/data-model/terms#eventType
-                uri-prefix: https://live-buildings.github.io/data-model/terms#
-                type: Property
-            eventMessage:
-              description: 'The message associated with the observed event, if any. E.g. for a people flow observed through an access control system, the message used by the ACS, to describe this event.'
-              type: string
-              x-lb-terms:
-                enabled: true
-              x-ngsi:
-                uri: https://live-buildings.github.io/data-model/terms#eventMessage
-                uri-prefix: https://live-buildings.github.io/data-model/terms#
-                type: Property
-            eventDirection:
-              description: 'The direction of the observed event, if any. E.g. for a people flow observed through an access control system, people can be allowed to get in or out a place.'
-              type: string
-              enum:
-                - In
-                - Out
-                - In|Out
-              x-lb-terms:
-                enabled: true
-              x-ngsi:
-                uri: https://live-buildings.github.io/data-model/terms#eventDirection
-                uri-prefix: https://live-buildings.github.io/data-model/terms#
-                type: Property
-            userId:
-              description: 'The identifier (anonymised or not) of the user associated with the observed event, if any. E.g. for a people flow observed through an access control system: the id of the access control system user.'
-              type: string
-              x-lb-terms:
-                enabled: true
-              x-ngsi:
-                uri: https://live-buildings.github.io/data-model/terms#userId
-                uri-prefix: https://live-buildings.github.io/data-model/terms#
-                type: Property
-            userProfile:
-              description: 'The profile of the user associated with the observed event, if any. E.g. for a people flow observed through an access control system: the profile of the access control system user.'
-              type: string
-              enum:
-                - R
-                - N
-                - E
-                - V
-                - R|N
-                - R|N|E
-                - R|N|E|V
-              x-lb-terms:
-                enabled: true
-              x-ngsi:
-                uri: https://live-buildings.github.io/data-model/terms#userProfile
-                uri-prefix: https://live-buildings.github.io/data-model/terms#
-                type: Property
-            userCompany:
-              description: 'The company of the user associated with the observed event, if any.'
-              type: string
-              x-lb-terms:
-                enabled: true
-              x-ngsi:
-                uri: https://live-buildings.github.io/data-model/terms#userCompany
-                uri-prefix: https://live-buildings.github.io/data-model/terms#
-                type: Property
-            userService:
-              description: 'The service (in the user company) of the user associated with the observed event, if any.'
-              type: string
-              x-lb-terms:
-                enabled: true
-              x-ngsi:
-                uri: https://live-buildings.github.io/data-model/terms#userService
-                uri-prefix: https://live-buildings.github.io/data-model/terms#
-                type: Property
-
     ObservationPoint:
       description: 'An observation point that ollows observing the evolution of any featureOfInterst. E.g. the electrical consumption of a building, or the flow of people entering a building'
       type: object
@@ -1211,8 +1307,161 @@ components:
           x-ngsi:
             type: Property
             uri: https://saref.etsi.org/core/Commodity
+        containedIn:
+          $ref: "#/components/schemas/containedIn"
         observation:
-          $ref: "#/components/schemas/observation"
+          description: 'A particular observation or measure made by an ObservationPoint. It is typically the temporal property of the observationPoint, and may include the following meta-data : value, unitCode, dataProvider, source, periodDuration, periodBeginning, and any other meta-data qualifying this observation'
+          type: object
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#observation
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+            type: Property
+          required: [observedAt,value]
+          allOf:
+            - $ref: '#/components/schemas/ObservationCoreProperties'
+            - $ref: '#/components/schemas/TraceabilityCoreProperties'
+            - $ref: '#/components/schemas/TimeProperties'
+            - $ref: '#/components/schemas/UserProperties'
+            - $ref: '#/components/schemas/EventProperties'
+            - type: object
+              properties:
+                supplyPointId:
+                  description: 'Supply point identifier, in the case of an observation value provided by a supply point.'
+                  type: string
+                  x-lb-terms:
+                    enabled: true
+                  x-ngsi:
+                    uri: https://live-buildings.github.io/data-model/terms#supplyPointId
+                    uri-prefix: https://live-buildings.github.io/data-model/terms#
+                    type: Property
+
+    BuildingEnergyPerformanceObservationPoint:
+      type: object
+      description: |
+        A specialized `ObservationPoint` designed to track the energy performance characteristics of a building, or site.  
+        This object is particularly aligned with the Energy Performance Diagnostics (EPD, known as DPE in French) framework and includes key metrics such as:
+        - **EPD Consumption**: Annual primary energy consumption in kWh/m²/year.
+        - **EPD Class**: Energy efficiency rating based on EPD consumption, ranging from A (most efficient) to G (least efficient).
+        - **Greenhouse Gas (GHG) Emissions**: Annual GHG emissions in kg CO₂/m²/year.
+        - **GHG Class**: Rating based on GHG emissions, ranging from A (lowest emissions) to G (highest emissions).
+
+        This observation point is self-descriptive, meaning it inherently defines its feature of interest, measurement properties, and related metadata. As such, there is no need to redundantly include these properties here.
+
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#BuildingEnergyPerformanceObservationPoint
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        containedIn:
+          $ref: "#/components/schemas/containedIn"
+        epdConsumption:
+          type: object
+          description: |
+            Energy Performance Diagnostics (EPD) Consumption. 
+            Annual primary energy consumption in kWh/m²/year.
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#epdConsumption
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+          required: [observedAt,value]
+          allOf:
+            - $ref: '#/components/schemas/ObservationCoreProperties'
+            - $ref: '#/components/schemas/TraceabilityCoreProperties'
+            - $ref: '#/components/schemas/TimeProperties'
+            - type: object
+              properties:
+                value:
+                  type: number
+                  format: float
+                  description: |
+                    Energy Performance Diagnostics (EPD) Consumption. 
+                    Annual primary energy consumption in kWh/m²/year.
+                  example: 250.5
+                  x-ngsi:
+                    uri: "https://uri.etsi.org/ngsi-ld/hasValue"
+        epdClass:
+          type: object
+          description: |
+            Energy Performance Diagnostics (EPD) Class.
+            Energy efficiency rating based on the EPD consumption, ranging from A (most efficient) to G (least efficient).
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#epdClass
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+          required: [observedAt,value]
+          allOf:
+            - $ref: '#/components/schemas/ObservationCoreProperties'
+            - $ref: '#/components/schemas/TraceabilityCoreProperties'
+            - $ref: '#/components/schemas/TimeProperties'
+            - type: object
+              properties:
+                value:
+                  type: string
+                  description: |
+                    Energy Performance Diagnostics (EPD) Class.
+                    Energy efficiency rating based on the EPD consumption, ranging from A (most efficient) to G (least efficient).
+                  enum: [A, B, C, D, E, F, G]
+                  example: D
+                  x-ngsi:
+                    uri: "https://uri.etsi.org/ngsi-ld/hasValue"
+        ghgEmissions:
+          type: object
+          description: |
+            Greenhouse Gas (GHG) Emissions.
+            Annual greenhouse gas emissions in kg CO₂/m²/year.
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#ghgEmissions
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+          required: [observedAt,value]
+          allOf:
+            - $ref: '#/components/schemas/ObservationCoreProperties'
+            - $ref: '#/components/schemas/TraceabilityCoreProperties'
+            - $ref: '#/components/schemas/TimeProperties'
+            - type: object
+              properties:
+                value:
+                  type: number
+                  format: float
+                  description: |
+                    Greenhouse Gas (GHG) Emissions.
+                    Annual greenhouse gas emissions in kg CO₂/m²/year.
+                  example: 60.2
+                  x-ngsi:
+                    uri: "https://uri.etsi.org/ngsi-ld/hasValue"
+        ghgClass:
+          type: object
+          description: |
+            Greenhouse Gas (GHG) Class.<br/>
+            Rating based on greenhouse gas emissions, ranging from A (lowest emissions) to G (highest emissions).
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#ghgClass
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+          required: [observedAt,value]
+          allOf:
+            - $ref: '#/components/schemas/ObservationCoreProperties'
+            - $ref: '#/components/schemas/TraceabilityCoreProperties'
+            - $ref: '#/components/schemas/TimeProperties'
+            - type: object
+              properties:
+                value:
+                  type: string
+                  description: |
+                    Greenhouse Gas (GHG) Class.<br/>
+                    Rating based on greenhouse gas emissions, ranging from A (lowest emissions) to G (highest emissions).
+                  enum: [A, B, C, D, E, F, G]
+                  example: E
+                  x-ngsi:
+                    uri: "https://uri.etsi.org/ngsi-ld/hasValue"
 
 
 
