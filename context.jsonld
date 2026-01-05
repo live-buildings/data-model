@@ -5,6 +5,38 @@
             "id": "@id",
             "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
             "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "0d": {
+                "@id": "https://live-buildings.github.io/data-model/terms#0d",
+                "@type": "xsd:number"
+            },
+            "1d": {
+                "@id": "https://live-buildings.github.io/data-model/terms#1d",
+                "@type": "xsd:number"
+            },
+            "2d": {
+                "@id": "https://live-buildings.github.io/data-model/terms#2d",
+                "@type": "xsd:number"
+            },
+            "3d": {
+                "@id": "https://live-buildings.github.io/data-model/terms#3d",
+                "@type": "xsd:number"
+            },
+            "4d": {
+                "@id": "https://live-buildings.github.io/data-model/terms#4d",
+                "@type": "xsd:number"
+            },
+            "5d": {
+                "@id": "https://live-buildings.github.io/data-model/terms#5d",
+                "@type": "xsd:number"
+            },
+            "6d": {
+                "@id": "https://live-buildings.github.io/data-model/terms#6d",
+                "@type": "xsd:number"
+            },
+            "7d": {
+                "@id": "https://live-buildings.github.io/data-model/terms#7d",
+                "@type": "xsd:number"
+            },
             "AdministrativeArea": "https://schema.org/AdministrativeArea",
             "Building": "https://w3id.org/bot#Building",
             "BuildingEnergyPerformanceObservationPoint": "https://live-buildings.github.io/data-model/terms#BuildingEnergyPerformanceObservationPoint",
@@ -100,6 +132,8 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#employeeCount",
                 "@type": "xsd:number"
             },
+            "employeeCountHomeDistance": "https://live-buildings.github.io/data-model/terms#employeeCountHomeDistance",
+            "employeeCountTeleworkDaysPerWeek": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
             "epdClass": "https://live-buildings.github.io/data-model/terms#epdClass",
             "epdConsumption": "https://live-buildings.github.io/data-model/terms#epdConsumption",
             "eventDirection": {
@@ -137,6 +171,14 @@
             },
             "ghgClass": "https://live-buildings.github.io/data-model/terms#ghgClass",
             "ghgEmissions": "https://live-buildings.github.io/data-model/terms#ghgEmissions",
+            "gt10Lte20km": {
+                "@id": "https://live-buildings.github.io/data-model/terms#gt10Lte20km",
+                "@type": "xsd:number"
+            },
+            "gt20km": {
+                "@id": "https://live-buildings.github.io/data-model/terms#gt20km",
+                "@type": "xsd:number"
+            },
             "headOffice": {
                 "@id": "https://live-buildings.github.io/data-model/terms#hasHeadOffice",
                 "@type": "@id"
@@ -218,6 +260,10 @@
                 "@type": "xsd:string"
             },
             "location": "https://uri.etsi.org/ngsi-ld/location",
+            "lte10km": {
+                "@id": "https://live-buildings.github.io/data-model/terms#lte10km",
+                "@type": "xsd:number"
+            },
             "measureProperty": {
                 "@id": "https://saref.etsi.org/core/Property",
                 "@type": "xsd:string"
@@ -1020,6 +1066,220 @@
                 {
                     "@language": "en",
                     "@value": "sun"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountHomeDistance",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The distribution of employees working in a place (site, building, etc.) according to the distance between that area and their home."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "employeeCountHomeDistance"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountHomeDistance",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees living at a distance less than or equal to 10 kilometers"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "lte10km"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountHomeDistance",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees living at a distance strictly greater than 10 kilometers and less than or equal to 20 kilometers"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "gt10Lte20km"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountHomeDistance",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees living at a distance striclty greater than 20 kilometers"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "gt20km"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Distribution of employees working in a place (site, building, etc.) based on their number of teleworking days per week."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "employeeCountTeleworkDaysPerWeek"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees teleworking 0 day per week"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "0d"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees teleworking 1 day per week"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "1d"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees teleworking 2 days per week"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "2d"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees teleworking 3 days per week"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "3d"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees teleworking 4 days per week"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "4d"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees teleworking 5 days per week"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "5d"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees teleworking 6 days per week"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "6d"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees teleworking 7 days per week"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "7d"
                 }
             ]
         },

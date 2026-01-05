@@ -443,6 +443,116 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#netUsableArea
             uri-prefix: https://live-buildings.github.io/data-model/terms#
 
+    employeeCountHomeDistance:
+      description: 'The distribution of employees working in a place (site, building, etc.) according to the distance between that area and their home.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#employeeCountHomeDistance
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        lte10km:
+          description: 'Number of employees living at a distance less than or equal to 10 kilometers'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#lte10km
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        gt10Lte20km:
+          description: 'Number of employees living at a distance strictly greater than 10 kilometers and less than or equal to 20 kilometers'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#gt10Lte20km
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        gt20km:
+          description: 'Number of employees living at a distance striclty greater than 20 kilometers'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#gt20km
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+
+    employeeCountTeleworkDaysPerWeek:
+      description: 'Distribution of employees working in a place (site, building, etc.) based on their number of teleworking days per week.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        0d:
+          description: 'Number of employees teleworking 0 day per week'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#0d
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        1d:
+          description: 'Number of employees teleworking 1 day per week'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#1d
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        2d:
+          description: 'Number of employees teleworking 2 days per week'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#2d
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        3d:
+          description: 'Number of employees teleworking 3 days per week'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#3d
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        4d:
+          description: 'Number of employees teleworking 4 days per week'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#4d
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        5d:
+          description: 'Number of employees teleworking 5 days per week'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#5d
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        6d:
+          description: 'Number of employees teleworking 6 days per week'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#6d
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        7d:
+          description: 'Number of employees teleworking 7 days per week'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#7d
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+
     address:
       description: 'The mailing address of the item'
       type: object
@@ -853,6 +963,10 @@ components:
               $ref: "#/components/schemas/containedIn"
             floorMeasurement:
               $ref: "#/components/schemas/floorMeasurement"
+            employeeCountHomeDistance:
+              $ref: "#/components/schemas/employeeCountHomeDistance"
+            employeeCountTeleworkDaysPerWeek:
+              $ref: "#/components/schemas/employeeCountTeleworkDaysPerWeek"
             peopleCapacity:
               description: 'Allowed people present at the place.'
               minimum: 0
