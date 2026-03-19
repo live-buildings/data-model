@@ -443,6 +443,73 @@ components:
             uri: https://live-buildings.github.io/data-model/terms#netUsableArea
             uri-prefix: https://live-buildings.github.io/data-model/terms#
 
+    employeesInfo:
+      description: 'Information about employees given by human resources department.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#employeesInfo
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+        type: Property
+      properties:
+        teleworkingAmendementCount:
+          description: 'Number of employees with teleworking contract amendment'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#teleworkingAmendementCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        occupantCount:
+          description: 'Number of occupants of Site or Building'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#occupantCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        apprenticeCount:
+          description: 'Number of apprentices in Site or Building'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#apprenticeCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        nomadCount:
+          description: 'Number of nomad employees'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#nomadCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        sedentaryCount:
+          description: 'Number of sedentary employees'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#sedentaryCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        contractWorkerCount:
+          description: 'Number of contract workers'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#contractWorkerCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+        civilServantCount:
+          description: 'Number of civil servants'
+          type: number
+          x-lb-terms:
+            enabled: true
+          x-ngsi:
+            uri: https://live-buildings.github.io/data-model/terms#civilServantCount
+            uri-prefix: https://live-buildings.github.io/data-model/terms#
+
     employeeCountHomeDistance:
       description: 'The distribution of employees working in a place (site, building, etc.) according to the distance between that area and their home.'
       type: object
@@ -967,6 +1034,8 @@ components:
               $ref: "#/components/schemas/employeeCountHomeDistance"
             employeeCountTeleworkDaysPerWeek:
               $ref: "#/components/schemas/employeeCountTeleworkDaysPerWeek"
+            employeesInfo:
+              $ref: "#/components/schemas/employeesInfo"
             peopleCapacity:
               description: 'Allowed people present at the place.'
               minimum: 0

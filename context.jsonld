@@ -79,6 +79,10 @@
                 "@id": "https://schema.org/alternateName",
                 "@type": "xsd:string"
             },
+            "apprenticeCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#apprenticeCount",
+                "@type": "xsd:number"
+            },
             "building": {
                 "@id": "https://live-buildings.github.io/data-model/terms#building",
                 "@type": "xsd:string"
@@ -91,11 +95,19 @@
                 "@id": "https://schema.org/category",
                 "@type": "xsd:array"
             },
+            "civilServantCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#civilServantCount",
+                "@type": "xsd:number"
+            },
             "commodity": {
                 "@id": "https://saref.etsi.org/core/Commodity",
                 "@type": "xsd:string"
             },
             "containedIn": "https://schema.org/containedIn",
+            "contractWorkerCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#contractWorkerCount",
+                "@type": "xsd:number"
+            },
             "country": {
                 "@id": "https://schema.org/country",
                 "@type": "xsd:string"
@@ -134,6 +146,7 @@
             },
             "employeeCountHomeDistance": "https://live-buildings.github.io/data-model/terms#employeeCountHomeDistance",
             "employeeCountTeleworkDaysPerWeek": "https://live-buildings.github.io/data-model/terms#employeeCountTeleworkDaysPerWeek",
+            "employeesInfo": "https://live-buildings.github.io/data-model/terms#employeesInfo",
             "epdClass": "https://live-buildings.github.io/data-model/terms#epdClass",
             "epdConsumption": "https://live-buildings.github.io/data-model/terms#epdConsumption",
             "eventDirection": {
@@ -276,10 +289,18 @@
                 "@id": "https://schema.org/name",
                 "@type": "xsd:string"
             },
+            "nomadCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#nomadCount",
+                "@type": "xsd:number"
+            },
             "observation": "https://live-buildings.github.io/data-model/terms#observation",
             "observedAt": {
                 "@id": "https://uri.etsi.org/ngsi-ld/observedAt",
                 "@type": "xs:dateTime"
+            },
+            "occupantCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#occupantCount",
+                "@type": "xsd:number"
             },
             "occupier": {
                 "@id": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/occupier",
@@ -345,6 +366,10 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#region",
                 "@type": "xsd:string"
             },
+            "sedentaryCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#sedentaryCount",
+                "@type": "xsd:number"
+            },
             "shortId": {
                 "@id": "https://live-buildings.github.io/data-model/terms#shortId",
                 "@type": "xsd:string"
@@ -396,6 +421,10 @@
             "taxID": {
                 "@id": "https://schema.org/taxID",
                 "@type": "xsd:string"
+            },
+            "teleworkingAmendementCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#teleworkingAmendementCount",
+                "@type": "xsd:number"
             },
             "territorialRealEstateDivision": {
                 "@id": "https://live-buildings.github.io/data-model/terms#territorialRealEstateDivision",
@@ -1066,6 +1095,137 @@
                 {
                     "@language": "en",
                     "@value": "sun"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeesInfo",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Information about employees given by human resources department."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "employeesInfo"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeesInfo",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of employees with teleworking contract amendment"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "teleworkingAmendementCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeesInfo",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of occupants of Site or Building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "occupantCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeesInfo",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of apprentices in Site or Building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "apprenticeCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeesInfo",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of nomad employees"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "nomadCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeesInfo",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of sedentary employees"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "sedentaryCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeesInfo",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of contract workers"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "contractWorkerCount"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#employeesInfo",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of civil servants"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "civilServantCount"
                 }
             ]
         },
