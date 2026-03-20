@@ -453,13 +453,13 @@ components:
         uri-prefix: https://live-buildings.github.io/data-model/terms#
         type: Property
       properties:
-        teleworkingAmendementCount:
+        teleworkingAmendmentCount:
           description: 'Number of employees with teleworking contract amendment'
           type: number
           x-lb-terms:
             enabled: true
           x-ngsi:
-            uri: https://live-buildings.github.io/data-model/terms#teleworkingAmendementCount
+            uri: https://live-buildings.github.io/data-model/terms#teleworkingAmendmentCount
             uri-prefix: https://live-buildings.github.io/data-model/terms#
         occupantCount:
           description: 'Number of occupants of Site or Building'

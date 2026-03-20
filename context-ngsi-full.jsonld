@@ -129,7 +129,7 @@
             "sun": "https://live-buildings.github.io/data-model/terms#netUsableArea",
             "supplyPointId": "https://live-buildings.github.io/data-model/terms#supplyPointId",
             "taxID": "https://schema.org/taxID",
-            "teleworkingAmendementCount": "https://live-buildings.github.io/data-model/terms#teleworkingAmendementCount",
+            "teleworkingAmendmentCount": "https://live-buildings.github.io/data-model/terms#teleworkingAmendmentCount",
             "territorialRealEstateDivision": "https://live-buildings.github.io/data-model/terms#territorialRealEstateDivision",
             "unitCode": "https://uri.etsi.org/ngsi-ld/unitCode",
             "url": "https://schema.org/url",

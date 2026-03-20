@@ -422,8 +422,8 @@
                 "@id": "https://schema.org/taxID",
                 "@type": "xsd:string"
             },
-            "teleworkingAmendementCount": {
-                "@id": "https://live-buildings.github.io/data-model/terms#teleworkingAmendementCount",
+            "teleworkingAmendmentCount": {
+                "@id": "https://live-buildings.github.io/data-model/terms#teleworkingAmendmentCount",
                 "@type": "xsd:number"
             },
             "territorialRealEstateDivision": {
@@ -1129,7 +1129,7 @@
             "rdfs:label": [
                 {
                     "@language": "en",
-                    "@value": "teleworkingAmendementCount"
+                    "@value": "teleworkingAmendmentCount"
                 }
             ]
         },
