@@ -936,8 +936,8 @@ components:
       x-lb-terms:
         enabled: true
       x-ngsi:
-        uri: https://w3id.org/bot#WeatherStation
-        uri-prefix: https://w3id.org/bot#
+        uri: https://live-buildings.github.io/data-model/terms#WeatherStation
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
       x-license-url: https://creativecommons.org/licenses/by/4.0/
       allOf:
         - $ref: '#/components/schemas/Thing'
@@ -948,8 +948,6 @@ components:
             temperature:
               description: 'temperature under shelter'
               type: object
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/temperature
                 type: Property
@@ -958,8 +956,6 @@ components:
             relativeHumidity:
               description: 'relative humidity in percentage'
               type: object
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/relativeHumidity
                 type: Property
@@ -968,8 +964,6 @@ components:
             visibility:
               description: 'horizontal visibility'
               type: object
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/visibility
                 type: Property
@@ -978,8 +972,6 @@ components:
             atmosphericPressure:
               description: 'atmospheric pressure at the level of the station'
               type: object
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/atmosphericPressure
                 type: Property
@@ -999,8 +991,6 @@ components:
             dewPoint:
               description: 'dew point at 2 meters high'
               type: object
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/dewpoint
                 type: Property
@@ -1009,8 +999,6 @@ components:
             rainFall:
               description: 'precipitation in millimeter'
               type: object
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/rainFall
                 type: Property
@@ -1041,8 +1029,6 @@ components:
             stationCode:
               description: 'The code of the weather station.'
               type: string
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/stationcode
                 type: Property
@@ -1071,8 +1057,6 @@ components:
             windSpeed:
               description: 'max wind speed for the period at 10 meters high'
               type: object
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/windSpeed
                 type: Property
@@ -1081,8 +1065,6 @@ components:
             windDirection:
               description: 'max wind direction for the period at 10 meters high'
               type: object
-              x-lb-terms:
-                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/windDirection
                 type: Property

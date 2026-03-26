@@ -53,7 +53,7 @@
             "TraceabilityCoreProperties": "https://live-buildings.github.io/data-model/terms#TraceabilityCoreProperties",
             "TraceabilityProperties": "https://live-buildings.github.io/data-model/terms#TraceabilityProperties",
             "UserProperties": "https://live-buildings.github.io/data-model/terms#UserProperties",
-            "WeatherStation": "https://w3id.org/bot#WeatherStation",
+            "WeatherStation": "https://live-buildings.github.io/data-model/terms#WeatherStation",
             "Zone": "https://w3id.org/bot#Zone",
             "additionalProperty": {
                 "@id": "https://schema.org/additionalProperty",
@@ -1823,7 +1823,7 @@
             }
         },
         {
-            "@id": "https://w3id.org/bot#WeatherStation",
+            "@id": "https://live-buildings.github.io/data-model/terms#WeatherStation",
             "@type": "rdfs:Class",
             "rdfs:comment": [
                 {

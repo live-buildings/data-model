@@ -27,7 +27,7 @@
             "TraceabilityCoreProperties": "https://live-buildings.github.io/data-model/terms#TraceabilityCoreProperties",
             "TraceabilityProperties": "https://live-buildings.github.io/data-model/terms#TraceabilityProperties",
             "UserProperties": "https://live-buildings.github.io/data-model/terms#UserProperties",
-            "WeatherStation": "https://w3id.org/bot#WeatherStation",
+            "WeatherStation": "https://live-buildings.github.io/data-model/terms#WeatherStation",
             "Zone": "https://w3id.org/bot#Zone",
             "additionalProperty": "https://schema.org/additionalProperty",
             "address": "https://schema.org/PostalAddress",
