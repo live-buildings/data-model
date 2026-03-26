@@ -1041,6 +1041,8 @@ components:
             stationCode:
               description: 'The code of the weather station.'
               type: string
+              x-lb-terms:
+                enabled: true
               x-ngsi:
                 uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/stationcode
                 type: Property
@@ -1072,7 +1074,7 @@ components:
               x-lb-terms:
                 enabled: true
               x-ngsi:
-                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/dewpoint
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/windSpeed
                 type: Property
               allOf:
                 - $ref: '#/components/schemas/ObservationCoreProperties'

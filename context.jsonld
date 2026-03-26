@@ -491,7 +491,7 @@
             },
             "visibility": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/visibility",
             "windDirection": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/windDirection",
-            "windSpeed": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/dewpoint",
+            "windSpeed": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/windSpeed",
             "yearBuilt": {
                 "@id": "https://schema.org/yearBuilt",
                 "@type": "xsd:number"
@@ -1828,7 +1828,7 @@
             "rdfs:comment": [
                 {
                     "@language": "en",
-                    "@value": "Weather Station location, name and associated hourly weaher observations data."
+                    "@value": "Weather Station location, name and associated hourly weather observations data."
                 }
             ],
             "rdfs:label": [
