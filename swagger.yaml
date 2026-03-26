@@ -399,7 +399,21 @@ components:
               example: 'KWH'
               x-ngsi:
                 uri: "https://uri.etsi.org/ngsi-ld/unitCode"
-
+            unitSymbol:
+              description: |
+                Symbol SI used for the unit of the value<br/>
+                Examples:
+                | Code  | Symbol                               | 
+                |-------|--------------------------------------|
+                | KGM   | kg                                   |
+                | MTR   | m                                    |
+                | MTQ   | m3                                   |
+                | KWH   | kw/h                                 |
+              type: string
+              example: 'kw/h'
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#unitSymbol
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
     floorMeasurement:
       description: 'The floor measurements of a Zone, typically a Building, or Storey.'
       type: object
@@ -916,7 +930,311 @@ components:
             - coordinates
           title: GeoJSON MultiPolygon
           type: object
-
+    WeatherStation:
+      description: 'Weather Station location, name and associated hourly weather observations data.'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://w3id.org/bot#WeatherStation
+        uri-prefix: https://w3id.org/bot#
+      x-license-url: https://creativecommons.org/licenses/by/4.0/
+      allOf:
+        - $ref: '#/components/schemas/Thing'
+        - $ref: '#/components/schemas/TraceabilityCoreProperties'
+        - $ref: '#/components/schemas/TimeProperties'
+        - type: object
+          properties:
+            temperature:
+              description: 'temperature under shelter'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/temperature
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            relativeHumidity:
+              description: 'relative humidity in percentage'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/relativeHumidity
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            visibility:
+              description: 'horizontal visibility'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/visibility
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            atmosphericPressure:
+              description: 'atmospheric pressure at the level of the station'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/atmosphericPressure
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'             
+            seaLevelAtmosphericPressure:
+              description: 'atmospheric pressure at sea level'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#seaLevelAtmosphericPressure
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties' 
+            dewPoint:
+              description: 'dew point at 2 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/dewpoint
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            rainFall:
+              description: 'precipitation in millimeter'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/rainFall
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties' 
+            relativeHumidityMin:
+              description: 'minimum of the relative humidity on the period'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#relativeHumidityMin
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            relativeHumidityMax:
+              description: 'maximum of the relative humidity on the period'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#relativeHumidityMax
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'             
+            stationCode:
+              description: 'The code of the weather station.'
+              type: string
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/stationcode
+                type: Property
+            temperatureMin:
+              description: 'temperature minimum recorded on the period at 2 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#temperatureMin
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            temperatureMax:
+              description: 'temperature maximum recorded on the period at 2 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#temperatureMax
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            windSpeed:
+              description: 'max wind speed for the period at 10 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/dewpoint
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            windDirection:
+              description: 'max wind direction for the period at 10 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/windDirection
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            averageWindSpeed:
+              description: 'average on 10 mins of wind speed at 10 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#averageWindSpeed
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            averageWindSpeedMax:
+              description: 'max value on the period of the average on 10 mins of wind speed at 10 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#averageWindSpeedMax
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'             
+            averageWindSpeedMaxDirection:
+              description: 'direction of the max value on the period of the average on 10 mins of wind speed at 10 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#averageWindSpeedMaxDirection
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'             
+            undergroundTemperature10cm:
+              description: 'temperature at 10 cm underground'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#undergroundTemperature10cm
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'              
+            undergroundTemperature20cm:
+              description: 'temperature at 20 cm underground'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#undergroundTemperature20cm
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'             
+            undergroundTemperature50cm:
+              description:  'temperature at 50 cm underground'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#undergroundTemperature50cm
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'             
+            undergroundTemperature100cm:
+              description: 'temperature at 1 meter (100cm) underground'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#undergroundTemperature100cm
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'             
+            snowHeight:
+              description: 'height of the snow on the floor'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#snowHeight
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'            
+            totalCloudiness:
+              description: 'cloud cover on the period expressed in octas corresponding to x/8 
+                of the sky coverage: 0=no cloud, 8=entirely covered
+                SKC: (Sky Clear), 0 octas, clear sky, no clouds or NSC (No Significant Cloud)
+                FEW: (Few, a few clouds), between 1 and 2 octas, 1 to 2 eighths of the sky overcast
+                SCT: (Scattered, scattered), between 3 and 4 octas, less than half the sky overcast
+                BKN: (Broken, fragmented), between 5 and 7 octas, 5 to 7 eighths of the sky overcast
+                OVC: (Overcast, overcast), 8 octas, completely overcast.'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#totalCloudiness
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'              
+            sunshineTime:
+              description: 'sunshine time on the period'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#sunshineTime
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'              
+            groundState:
+              description: 'state of the ground
+                0: Dry ground surface (no cracks, dust, or significant amounts of loose sand)
+                1: Damp ground surface
+                2: Wet ground surface (stagnant water in small or large pools)
+                3: Flooded
+                4: Frozen ground surface
+                5: Ice on the ground
+                6: Dry dust or loose sand not completely covering the ground
+                7: Thin layer of dust or loose sand completely covering the ground
+                8: Thick or medium-thick layer of dust or loose sand completely covering the ground
+                9: Very dry with cracks'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#groundState
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+            globalRadiation:
+              description: 'intensity of sun radiation'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#globalRadiation
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+ 
     Thing:
       description: 'The most generic type of item.'
       type: object
