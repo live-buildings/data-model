@@ -1081,6 +1081,17 @@ components:
                 type: Property
               allOf:
                 - $ref: '#/components/schemas/ObservationCoreProperties'
+            averageWindSpeedDirection:
+              description: 'direction of the average on 10 mins of wind speed at 10 meters high'
+              type: object
+              x-lb-terms:
+                enabled: true
+              x-ngsi:
+                uri: https://live-buildings.github.io/data-model/terms#averageWindSpeedDirection
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'                 
             averageWindSpeedMax:
               description: 'max value on the period of the average on 10 mins of wind speed at 10 meters high'
               type: object

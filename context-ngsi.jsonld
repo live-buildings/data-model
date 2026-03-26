@@ -38,6 +38,7 @@
         "apprenticeCount": "https://live-buildings.github.io/data-model/terms#apprenticeCount",
         "atmosphericPressure": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/atmosphericPressure",
         "averageWindSpeed": "https://live-buildings.github.io/data-model/terms#averageWindSpeed",
+        "averageWindSpeedDirection": "https://live-buildings.github.io/data-model/terms#averageWindSpeedDirection",
         "averageWindSpeedMax": "https://live-buildings.github.io/data-model/terms#averageWindSpeedMax",
         "averageWindSpeedMaxDirection": "https://live-buildings.github.io/data-model/terms#averageWindSpeedMaxDirection",
         "building": "https://live-buildings.github.io/data-model/terms#building",
