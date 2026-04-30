@@ -40,6 +40,8 @@
             "AdministrativeArea": "https://schema.org/AdministrativeArea",
             "Building": "https://w3id.org/bot#Building",
             "BuildingEnergyPerformanceObservationPoint": "https://live-buildings.github.io/data-model/terms#BuildingEnergyPerformanceObservationPoint",
+            "ComfortData": "https://live-buildings.github.io/data-model/terms#ComfortData",
+            "DeviceMapping": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
             "EventProperties": "https://live-buildings.github.io/data-model/terms#EventProperties",
             "InseeProperties": "https://live-buildings.github.io/data-model/terms#InseeProperties",
             "ObservationCoreProperties": "https://live-buildings.github.io/data-model/terms#ObservationCoreProperties",
@@ -85,6 +87,10 @@
                 "@type": "xsd:number"
             },
             "atmosphericPressure": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/atmosphericPressure",
+            "attribute": {
+                "@id": "https://live-buildings.github.io/data-model/terms#attribute",
+                "@type": "xsd:string"
+            },
             "averageWindSpeed": "https://live-buildings.github.io/data-model/terms#averageWindSpeed",
             "averageWindSpeedDirection": "https://live-buildings.github.io/data-model/terms#averageWindSpeedDirection",
             "averageWindSpeedMax": "https://live-buildings.github.io/data-model/terms#averageWindSpeedMax",
@@ -105,6 +111,7 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#civilServantCount",
                 "@type": "xsd:number"
             },
+            "co2": "https://smartdatamodels.org/dataModel.Environment/co2",
             "commodity": {
                 "@id": "https://saref.etsi.org/core/Commodity",
                 "@type": "xsd:string"
@@ -145,6 +152,10 @@
             "description": {
                 "@id": "https://schema.org/description",
                 "@type": "xsd:string"
+            },
+            "deviceMapping": {
+                "@id": "https://live-buildings.github.io/data-model/terms#deviceMapping",
+                "@type": "xsd:array"
             },
             "dewPoint": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/dewpoint",
             "employeeCount": {
@@ -205,6 +216,7 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#hasHeadOffice",
                 "@type": "@id"
             },
+            "illuminance": "https://smartdatamodels.org/dataModel.Environment/illuminance",
             "inPropertyStockDate": {
                 "@id": "https://live-buildings.github.io/data-model/terms#inPropertyStockDate",
                 "@type": "xs:dateTime"
@@ -286,6 +298,10 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#lte10km",
                 "@type": "xsd:number"
             },
+            "measureId": {
+                "@id": "https://live-buildings.github.io/data-model/terms#measureId",
+                "@type": "xsd:string"
+            },
             "measureProperty": {
                 "@id": "https://saref.etsi.org/core/Property",
                 "@type": "xsd:string"
@@ -298,6 +314,7 @@
                 "@id": "https://schema.org/name",
                 "@type": "xsd:string"
             },
+            "noiseLevelObserved": "https://smartdatamodels.org/dataModel.Environment/NoiseLevelObserved",
             "nomadCount": {
                 "@id": "https://live-buildings.github.io/data-model/terms#nomadCount",
                 "@type": "xsd:number"
@@ -359,12 +376,28 @@
                 "@id": "https://live-buildings.github.io/data-model/terms#periodDuration",
                 "@type": "xsd:string"
             },
+            "pm1": "https://smartdatamodels.org/dataModel.Environment/pm1",
+            "pm10": "https://smartdatamodels.org/dataModel.Environment/pm10",
+            "pm25": "https://smartdatamodels.org/dataModel.Environment/pm25",
+            "pm4": "https://smartdatamodels.org/dataModel.Environment/pm4",
+            "poll": {
+                "@id": "https://live-buildings.github.io/data-model/terms#poll",
+                "@type": "xsd:boolean"
+            },
             "postOfficeBoxNumber": {
                 "@id": "https://schema.org/postOfficeBoxNumber",
                 "@type": "xsd:string"
             },
             "postalCode": {
                 "@id": "https://schema.org/postalCode",
+                "@type": "xsd:string"
+            },
+            "provider": {
+                "@id": "https://live-buildings.github.io/data-model/terms#provider",
+                "@type": "xsd:string"
+            },
+            "providerEntityId": {
+                "@id": "https://live-buildings.github.io/data-model/terms#providerEntityId",
                 "@type": "xsd:string"
             },
             "rainFall": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/rainFall",
@@ -458,6 +491,10 @@
             "undergroundTemperature10cm": "https://live-buildings.github.io/data-model/terms#undergroundTemperature10cm",
             "undergroundTemperature20cm": "https://live-buildings.github.io/data-model/terms#undergroundTemperature20cm",
             "undergroundTemperature50cm": "https://live-buildings.github.io/data-model/terms#undergroundTemperature50cm",
+            "unit": {
+                "@id": "https://live-buildings.github.io/data-model/terms#unit",
+                "@type": "xsd:string"
+            },
             "unitCode": {
                 "@id": "https://uri.etsi.org/ngsi-ld/unitCode",
                 "@type": "xsd:string"
@@ -491,6 +528,7 @@
                 "@type": "xsd:string"
             },
             "visibility": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/visibility",
+            "volatileOrganicCompoundsTotal": "https://smartdatamodels.org/dataModel.Environment/volatileOrganicCompoundsTotal",
             "windDirection": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/windDirection",
             "windSpeed": "https://www.gsma.com/iot/iot-big-data/ngsi-ld/windSpeed",
             "yearBuilt": {
@@ -1841,6 +1879,156 @@
             "rdfs:subClassOf": {
                 "@id": "schema:Thing"
             }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#ComfortData",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Comfort data of a room"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "ComfortData"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "mapping of device"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "DeviceMapping"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "provider identifier entity corresponding to the ngsi entity"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "providerEntityId"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "device provider"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "attribute"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "device provider"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "provider"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "provider measure point identifier"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "measureId"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "provider measure type"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "measureType"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "unit of the measure"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "unit"
+                }
+            ]
+        },
+        {
+            "@id": "https://live-buildings.github.io/data-model/terms#DeviceMapping",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "indicates the measure must be polled"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "poll"
+                }
+            ]
         },
         {
             "@id": "https://schema.org/Thing",

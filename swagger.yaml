@@ -1230,6 +1230,150 @@ components:
               allOf:
                 - $ref: '#/components/schemas/ObservationCoreProperties'
  
+    ComfortData:
+      description: 'Comfort data of a room'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#ComfortData
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+      x-license-url: https://creativecommons.org/licenses/by/4.0/
+      allOf:
+        - type: object
+          properties:
+            deviceMapping:
+              $ref: "#/components/schemas/DeviceMapping"
+            containedIn:
+              $ref: "#/components/schemas/containedIn"
+            temperature:
+              description: 'air temperature'
+              type: object
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/temperature
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'
+            atmosphericPressure:
+              description: 'atmospheric pressure'
+              type: object
+              x-ngsi:
+                uri: https://www.gsma.com/iot/iot-big-data/ngsi-ld/atmosphericPressure
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'                
+            co2: 
+              description: 'co2 rate'
+              type: object
+              x-ngsi:
+                uri: https://smartdatamodels.org/dataModel.Environment/co2
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'
+            pm1: 
+              description: 'part per million of less than 1 µm particules'
+              type: object
+              x-ngsi:
+                uri: https://smartdatamodels.org/dataModel.Environment/pm1
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'                
+            pm10:   
+              description: 'part per million of particules between 4 and 10 µm'
+              type: object
+              x-ngsi:
+                uri: https://smartdatamodels.org/dataModel.Environment/pm10
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'                
+            pm25:
+              description: 'part per million of particules between 1 and 2.5 µm'
+              type: object
+              x-ngsi:
+                uri: https://smartdatamodels.org/dataModel.Environment/pm25
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'                
+            pm4:
+              description: 'part per million of particules between 2.5 and 4 µm'
+              type: object
+              x-ngsi:
+                uri: https://smartdatamodels.org/dataModel.Environment/pm4
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'                
+            volatileOrganicCompoundsTotal:
+              description: 'part per billion of volatil organic compounds'
+              type: object
+              x-ngsi:
+                uri: https://smartdatamodels.org/dataModel.Environment/volatileOrganicCompoundsTotal
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'
+            noiseLevelObserved:
+              description: 'noise level'
+              type: object
+              x-ngsi:
+                uri: https://smartdatamodels.org/dataModel.Environment/NoiseLevelObserved
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties'              
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'                
+            illuminance:
+              description: 'quantity of light'
+              type: object
+              x-ngsi:
+                uri: https://smartdatamodels.org/dataModel.Environment/illuminance
+                type: Property
+              allOf:
+                - $ref: '#/components/schemas/ObservationCoreProperties' 
+                - $ref: '#/components/schemas/TraceabilityCoreProperties'
+    
+    DeviceMapping:
+      description: 'mapping of device'
+      type: object
+      x-lb-terms:
+        enabled: true
+      x-ngsi:
+        uri: https://live-buildings.github.io/data-model/terms#DeviceMapping
+        uri-prefix: https://live-buildings.github.io/data-model/terms#
+      required:
+        - providerEntityId
+        - measureId
+        - provider
+        - measureType
+        - attribute
+      properties:
+        providerEntityId:
+          description: 'provider identifier entity corresponding to the ngsi entity'
+          type: string
+        attribute:
+          description: 'device provider'
+          type: string          
+        provider:
+          description: 'device provider'
+          type: string          
+        measureId:
+          description: 'provider measure point identifier'
+          type: string
+        measureType:
+          description: 'provider measure type'
+          type: string
+        unit:
+          description: 'unit of the measure'
+          type: string
+        poll:
+          description: 'indicates the measure must be polled'
+          type: boolean
+          
     Thing:
       description: 'The most generic type of item.'
       type: object
@@ -1324,7 +1468,15 @@ components:
               x-ngsi:
                 uri: https://schema.org/url
                 type: Property
-
+            deviceMapping:
+              type: array
+              items:
+                $ref: "#/components/schemas/DeviceMapping"
+              x-ngsi:
+                type: Property
+                uri: https://live-buildings.github.io/data-model/terms#deviceMapping
+                uri-prefix: https://live-buildings.github.io/data-model/terms#
+                
     Zone:
       description: 'A part of the physical world or a virtual world that is inherently both located in this world and has a 3D spatial extent; Sub-classes of bot:Zone include bot:Site, bot:Building, bot:Storey, or bot:Space. An instance of bot:Zone can contain other bot:Zone instances, making it possible to group or subdivide zones. An instance of bot:Zone can be adjacent to or intersecting other bot:Zone instances.'
       type: object
